@@ -1,53 +1,59 @@
 import { useState } from 'react';
 
 export default function Signup() {
-  const [loginForm, setLoginForm] = useState({
+  const [signUpForm, setSignUpForm] = useState({
     name: '',
     email: '',
     password: '',
     password_confirmation: ''
   });
 
-  const { name, email, password, password_confirmation } = loginForm;
+  const { name, email, password, password_confirmation } = signUpForm;
 
 
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
 
-    setLoginForm({
-      ...loginForm,
+    setSignUpForm({
+      ...signUpForm,
       [key]: value
     })
   };
-
-  console.log(loginForm);
 
   return (
     <div>
       <form className='box' >
         <h1>SIGN UP</h1>
 
-        <label>
-          Name:
-          <input type='text' name='name' onChange={handleChange} value={name} />
-        </label>
+        <input 
+          type='text' 
+          name='name' 
+          onChange={handleChange} 
+          value={name} 
+          placeholder='Full Name' />
 
-        <label>
-          Email:
-          <input type='text' name='email' onChange={handleChange} value={email} />
-        </label>
+        <input 
+          type='text' 
+          name='email' 
+          onChange={handleChange} 
+          value={email} 
+          placeholder='Email address' />
 
-        <label>
-          Password:
-          <input type='password' name='password' onChange={handleChange} value={password} />
-        </label>
+        <input 
+          type='password' 
+          name='password' 
+          onChange={handleChange} 
+          value={password} 
+          placeholder='Enter password' />
 
-        <label>
-          Password Confirmation:
-          <input type='password' name='password_confirmation' onChange={handleChange} value={password_confirmation} />
-        </label>
-
+        <input 
+          type='password' 
+          name='password_confirmation' 
+          onChange={handleChange} 
+          value={password_confirmation}
+          placeholder='Confirm password' />
+        
         <input type='submit' name='submit' />
 
       </form>

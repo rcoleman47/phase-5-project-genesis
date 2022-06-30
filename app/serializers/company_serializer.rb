@@ -1,3 +1,5 @@
 class CompanySerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :phone_number, :logo
+  attributes :id, :name, :city, :state, :address, :phone_number, :logo
+
+  
 end

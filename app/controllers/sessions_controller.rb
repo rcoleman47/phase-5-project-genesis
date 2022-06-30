@@ -1,12 +1,12 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:current_user] = user.id
-      render json: :user
+      render json: user
     else
-      render json: { error: "Invalid Username and/or Username" },  status: :unauthorized
+      render json: { error: "Invalid Username and/or Password" },  status: :unauthorized
     end
   end
 

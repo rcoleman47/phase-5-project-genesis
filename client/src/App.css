@@ -46,10 +46,10 @@ code {
 .box input[type = "text"]{
   border:0;
   display: block;
-  margin: 2% auto;
+  margin: 5% auto;
   text-align: center;
   border: 2px solid black;
-  padding: 14px 10px;
+  padding: 3% 2%;
   width: 50%;
   outline: none;
   color: black;
@@ -57,13 +57,18 @@ code {
   font-weight: 600;
 }
 
+.box input::placeholder{
+ color: #282c34;
+ font-weight: 400;
+}
+
 .box input[type = "password"]{
   border:0;
   display: block;
-  margin: 2% auto;
+  margin: 5% auto;
   text-align: center;
   border: 2px solid black;
-  padding: 14px 10px;
+  padding: 3% 2%;
   width: 50%;
   outline: none;
   color: black;

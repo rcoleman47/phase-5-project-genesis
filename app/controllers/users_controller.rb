@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user
       render json: current_user
     else
-      render json: { error: "not signed in"}, status: :not_found
+      render json: { error: "Not signed in"}, status: :not_found
     end  
   end
 
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password, :cell_number, :roll, :admin, :company_id)
+    params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :cell_number, :roll, :admin, :company_id)
   end
 end
