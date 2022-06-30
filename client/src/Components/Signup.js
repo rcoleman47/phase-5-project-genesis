@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Signup() {
+  const [errors, setErrors] = useState();
   const [signUpForm, setSignUpForm] = useState({
     name: '',
     email: '',
@@ -21,9 +23,14 @@ export default function Signup() {
     })
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+  };
+
   return (
     <div>
-      <form className='box' >
+      <form onSubmit={handleSubmit} className='box' >
         <h1>SIGN UP</h1>
 
         <input 
@@ -55,6 +62,10 @@ export default function Signup() {
           placeholder='Confirm password' />
         
         <input type='submit' name='submit' />
+
+        {errors ? <h5 style={{color: 'orange'}}>{errors}</h5> : null}
+
+        <Link style={{color: '#00BFFF'}} to='/login'>Log in to existing account</Link>   
 
       </form>
     </div>

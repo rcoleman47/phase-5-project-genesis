@@ -76,7 +76,12 @@ code {
   font-family: Verdana, sans-serif;
 }
 
-.box input:focus{
+.box input[type = "text"]:focus{
+  width: 55%;
+  border-color: orange;
+}
+
+.box input[type = "password"]:focus{
   width: 55%;
   border-color: orange;
 }
