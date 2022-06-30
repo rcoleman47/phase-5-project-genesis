@@ -1,11 +1,29 @@
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../Redux/Reducers/user';
 
 export default function Home() {
+  const user = useSelector( state => state.user.value);
 
-  const user = useSelector( state => state.user.value)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { name, address, city, state, phone_number, logo } = user.company
+  const handleClick = () => {
+    fetch('/logout', {
+      method: 'DELETE',
+    });
+    
+    dispatch(logout()); 
+    
+    navigate('/login'); 
+  };
+
+ 
   return (
-    <div style={{background: logo}}>{name}</div>
+    <div>
+      <h1>{user.first_name}</h1>
+      <button onClick={handleClick} >Log Out</button>
+    
+    </div>
   )
 }

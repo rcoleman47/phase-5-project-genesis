@@ -51,8 +51,6 @@ export default function Login() {
     })
   };
 
-  console.log(loginForm);
-
   return (
     <div>
       <form className='box' onSubmit={handleSubmit} >
@@ -76,7 +74,7 @@ export default function Login() {
 
         {error ? <h5 style={{color: 'orange'}}>{error}</h5> : null}
 
-        <Link style={{color: '#00BFFF'}} to='/signup'>Create new account</Link>        
+        <Link style={{color: '#00BFFF'}} to='/register'>New company registration</Link>        
       </form>
     </div>
   )

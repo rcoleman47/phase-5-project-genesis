@@ -1,16 +1,26 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../Redux/Reducers/user';
+import { finished } from '../Redux/Reducers/register';
 
 export default function Signup() {
   const [errors, setErrors] = useState();
   const [signUpForm, setSignUpForm] = useState({
-    name: '',
+    first_name: '',
+    last_name: '',
+    roll: 'Executive',
     email: '',
     password: '',
     password_confirmation: ''
   });
 
-  const { name, email, password, password_confirmation } = signUpForm;
+  const {id} = useSelector(state => state.company.value);
+
+  const { first_name, last_name, email, password, password_confirmation } = signUpForm;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   const handleChange = (e) => {
@@ -19,12 +29,40 @@ export default function Signup() {
 
     setSignUpForm({
       ...signUpForm,
-      [key]: value
+      [key]: value,
+      company_id: id
     })
   };
 
+  console.log(signUpForm)
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    fetch('/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(signUpForm),
+    })
+    .then( r => {
+      if(r.ok){
+        r.json().then( user => dispatch(login(user)));
+
+        dispatch(finished());
+
+        setSignUpForm({
+          first_name: '',
+          last_name: '',
+          roll: 'Executive',
+          email: '',
+          password: '',
+          password_confirmation: ''
+        });
+
+        navigate('/home');
+        
+      } else r.json().then(json=>setErrors(json.error));
+    })
 
   };
 
@@ -35,10 +73,17 @@ export default function Signup() {
 
         <input 
           type='text' 
-          name='name' 
+          name='first_name' 
           onChange={handleChange} 
-          value={name} 
-          placeholder='Full Name' />
+          value={first_name} 
+          placeholder='First Name' />
+
+        <input 
+          type='text' 
+          name='last_name' 
+          onChange={handleChange} 
+          value={last_name} 
+          placeholder='Last Name' />
 
         <input 
           type='text' 
@@ -63,9 +108,7 @@ export default function Signup() {
         
         <input type='submit' name='submit' />
 
-        {errors ? <h5 style={{color: 'orange'}}>{errors}</h5> : null}
-
-        <Link style={{color: '#00BFFF'}} to='/login'>Log in to existing account</Link>   
+        {errors ? errors.map(e => <h5 style={{color: 'orange'}}>{e}</h5> ): null}
 
       </form>
     </div>
