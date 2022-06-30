@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { login } from '../Redux/Reducers/user';
@@ -31,12 +31,6 @@ function App() {
     });
 
   }, []);
-
-  const user = useSelector( state => state.user.value)
-  const company = useSelector( state => state.company.value)
-  console.log(user)
-  console.log(company)
-
 
   return (
     <div className="App">

@@ -34,8 +34,6 @@ export default function Signup() {
     })
   };
 
-  console.log(signUpForm)
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
