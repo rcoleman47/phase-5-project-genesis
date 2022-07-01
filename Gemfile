@@ -52,3 +52,9 @@ gem "active_model_serializers", "~> 0.10.13"
 gem 'faker', '~> 1.6', '>= 1.6.6'
 
 gem 'byebug', '~> 11.1', '>= 11.1.3'
+
+gem 'open-uri', '~> 0.2.0'
+
+gem 'net-http', '~> 0.2.2'
+
+gem 'json', '~> 2.6', '>= 2.6.2'
