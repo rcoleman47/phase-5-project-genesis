@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :budget_items
   resources :budgets, only: [:create, :destroy]
   resources :user_projects, only: [:create, :update, :destroy]
   resources :projects

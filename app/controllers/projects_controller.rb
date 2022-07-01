@@ -21,8 +21,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    render json: project, status: 204
-    project.destroy
+    project.destroy!
+    head 204
   end
 
 
