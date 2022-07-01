@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :budgets, only: [:create, :destroy]
+  resources :user_projects, only: [:create, :update, :destroy]
   resources :projects
   resources :users, except: [:update, :destroy]
   resources :companies, only: [:index, :create, :show]

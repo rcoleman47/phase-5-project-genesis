@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_30_211102) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_01_135241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budgets", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_budgets_on_project_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -38,6 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_211102) do
     t.index ["company_id"], name: "index_projects_on_company_id"
   end
 
+  create_table "user_projects", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id"
+    t.index ["user_id"], name: "index_user_projects_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -52,6 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_211102) do
     t.index ["company_id"], name: "index_users_on_company_id"
   end
 
+  add_foreign_key "budgets", "projects"
   add_foreign_key "projects", "companies"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
   add_foreign_key "users", "companies"
 end

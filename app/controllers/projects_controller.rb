@@ -16,8 +16,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    project.update(project_params)
-    render json: project, states: 202
+    project.update!(project_params)
+    render json: project, status: 202
   end
 
   def destroy
