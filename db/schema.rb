@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_02_204300) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_02_213308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_02_204300) do
   end
 
   create_table "cost_codes", force: :cascade do |t|
-    t.string "number"
     t.string "description"
     t.bigint "division_id", null: false
     t.datetime "created_at", null: false

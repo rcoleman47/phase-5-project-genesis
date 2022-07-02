@@ -28,7 +28,7 @@ class CostCodesController < ApplicationController
   private
 
   def cost_code_params
-    params.permit(:number, :description)
+    params.permit(:description)
   end
 
   def cost_code

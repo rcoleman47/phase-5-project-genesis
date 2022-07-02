@@ -55,13 +55,12 @@ class Scraper
 
   def create_cost_codes
     codes = []
-
-    get_data_array.map do |cc|
-      number = cc.first
-      description = cc.last
+    desc_only = get_data_array.map{|a| a.join(" ")}
+    
+    desc_only.map do |cc|
+      description = cc
 
       cc_info = {
-        number: number,
         description: description,
       }
       codes << cc_info

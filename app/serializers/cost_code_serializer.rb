@@ -1,4 +1,4 @@
 class CostCodeSerializer < ActiveModel::Serializer
-  attributes :id, :number, :description
+  attributes :id, :description
   has_one :division
 end

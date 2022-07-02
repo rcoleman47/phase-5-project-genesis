@@ -1,9 +1,15 @@
 BudgetItem.destroy_all
 Project.destroy_all
 Company.destroy_all
+CostCode.destroy_all
+Division.destroy_all
 
+
+# Company
 c1 = Company.create!(name: 'Schema Construction', city: Faker::Address.city, state: Faker::Address.state, address: Faker::Address.street_address, phone_number: Faker::PhoneNumber.cell_phone, logo: 'https://dcassetcdn.com/design_img/3623917/746674/746674_19904371_3623917_a90eaa26_image.jpg')
 
+
+# Projects
 sectors = ['Restaurant', 'Medical', 'Office', 'School', 'Multi-Family', 'Residential']
 classifications = ['New Construction', 'Remodel', 'Interior Renovation', 'Exterior Renovation']
 phases = ['Pre-Construction', 'Construction', 'Complete']
@@ -22,6 +28,7 @@ project_data = []
   project_data << project_data_hash
 end
 
+# BudgetItems
 
 scraper = Scraper.new
 cost_codes_array = scraper.get_data_array.reject{|k, v| k.include?('Division')}.map{|a| a.join(" ")}
@@ -44,13 +51,9 @@ end
 
 Project.create_from_collection(project_data, budget_items_data)
 
-# # the below data has been created successfully
 
-# CostCode.destroy_all
-# Division.destroy_all
+# Divisions and CostCodes
+divisions = scraper.create_divisions
+cost_codes = scraper.cc_array
 
-# scraper = Scraper.new
-# divisions = scraper.create_divisions
-# cost_codes = scraper.cc_array
-
-# Division.create_from_collection(divisions, cost_codes)
+Division.create_from_collection(divisions, cost_codes)
