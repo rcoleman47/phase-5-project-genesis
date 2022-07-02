@@ -11,6 +11,7 @@ class Project < ApplicationRecord
 
   validate :construction_types
   validate :construction_sectors
+  validate :construction_phases
 
   def construction_types
     types = [/New Construction|Remodel|Interior Renovation|Exterior Renovation/]
@@ -20,6 +21,11 @@ class Project < ApplicationRecord
   def construction_sectors
     sectors = [/Restaurant|Medical|Office|School|Multi-Family|Residential/]
     errors.add(:sector, "invalid, please select type from the list") unless sectors.any?{|s| s.match?(sector)}
+  end
+
+  def construction_phases
+    phases = [/Pre-Construction|Construction|Complete/]
+    errors.add(:phase, "invalid, please select type from the list") unless phases.any?{|ph| ph.match?(phase)}
   end
 
 
