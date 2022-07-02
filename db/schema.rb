@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_02_021149) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_02_204300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,17 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_02_021149) do
     t.boolean "taxed"
     t.boolean "subcontracted"
     t.string "notes"
-    t.bigint "budget_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_budget_items_on_budget_id"
-  end
-
-  create_table "budgets", force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_budgets_on_project_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_budget_items_on_project_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -89,7 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_02_021149) do
     t.string "location"
     t.string "phase"
     t.string "sector"
-    t.string "type"
+    t.string "classification"
     t.integer "size"
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
@@ -133,8 +126,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_02_021149) do
 
   add_foreign_key "bids", "projects"
   add_foreign_key "bids", "subcontractors"
-  add_foreign_key "budget_items", "budgets"
-  add_foreign_key "budgets", "projects"
+  add_foreign_key "budget_items", "projects"
   add_foreign_key "contacts", "subcontractors"
   add_foreign_key "cost_codes", "divisions"
   add_foreign_key "projects", "companies"

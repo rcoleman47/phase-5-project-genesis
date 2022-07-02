@@ -1,35 +1,48 @@
-c1 = Company.create!(name: 'Schema Construction', city: Faker::Address.city, state: Faker::Address.state, address: Faker::Address.street_address, phone_number: Faker::PhoneFaker::PhoneNumber.cell_phone, logo: 'https://dcassetcdn.com/design_img/3623917/746674/746674_19904371_3623917_a90eaa26_image.jpg')
+BudgetItem.destroy_all
+Project.destroy_all
+Company.destroy_all
+
+c1 = Company.create!(name: 'Schema Construction', city: Faker::Address.city, state: Faker::Address.state, address: Faker::Address.street_address, phone_number: Faker::PhoneNumber.cell_phone, logo: 'https://dcassetcdn.com/design_img/3623917/746674/746674_19904371_3623917_a90eaa26_image.jpg')
 
 sectors = ['Restaurant', 'Medical', 'Office', 'School', 'Multi-Family', 'Residential']
-types = ['New Construction', 'Remodel', 'Interior Renovation', 'Exterior Renovation']
+classifications = ['New Construction', 'Remodel', 'Interior Renovation', 'Exterior Renovation']
 phases = ['Pre-Construction', 'Construction', 'Complete']
 
-project_data = {
-  title: Faker::University.name, 
-  location: Faker::Address.street_address, 
-  phase: phases.sample, sector: sectors.sample, 
-  type: types.sample, 
-  size: Faker::Number.number(digits: 4)}
+project_data = []
 
-scraper = Scraper.new
-
-cost_codes_array = scraper.get_data_array.reject{|k, v| k.include?('Division')}.map{|a| a.join(" ")}
-
-budget_items_values = []
-
-15.times do 
-  hash = {
-    cost_code: cost_codes_array.sample,
-    unit_quantity: '',
-    unit: '',
-    taxed: [true, false].sample,
-    subcontracted: [true, false].sample,
-    notes: '',
-    }
-  budget_items_values << hash
+10.times do 
+  project_data_hash = {
+    title: Faker::Company.name, 
+    location: Faker::Address.street_address, 
+    phase: phases.sample, sector: sectors.sample, 
+    classification: classifications.sample, 
+    size: Faker::Number.number(4).to_i,
+    company_id: c1.id
+  }
+  project_data << project_data_hash
 end
 
 
+scraper = Scraper.new
+cost_codes_array = scraper.get_data_array.reject{|k, v| k.include?('Division')}.map{|a| a.join(" ")}
+
+budget_items_data = []
+
+20.times do
+  budget_items_hash = {
+    cost_code: cost_codes_array.sample,
+    unit_quantity: 1,
+    unit: 'ls',
+    unit_cost: Faker::Number.number(4).to_i,
+    taxed: [true, false].sample,
+    subcontracted: [true, false].sample,
+    notes: '',
+  }
+  budget_items_data << budget_items_hash
+end
+
+
+Project.create_from_collection(project_data, budget_items_data)
 
 # # the below data has been created successfully
 

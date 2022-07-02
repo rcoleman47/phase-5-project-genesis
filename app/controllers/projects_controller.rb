@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
 
-
   def index
     projects = Project.all
     render json: projects
@@ -29,7 +28,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:title, :location, :phase, :sector, :type, :size, :company_id)
+    params.permit(:title, :location, :phase, :sector, :classification, :size, :company_id)
   end
 
   def project

@@ -1,5 +1,5 @@
 class BudgetItem < ApplicationRecord
-  belongs_to :budget
+  belongs_to :project
 
   after_initialize :init
 

@@ -1,21 +1,21 @@
 class Project < ApplicationRecord
   belongs_to :company
-  has_one :budget, dependent: :destroy
+  has_many :budget_items, dependent: :destroy
   has_many :user_projects, dependent: :destroy
   has_many :users, through: :user_projects
   has_many :bids, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { scope: :company }
-  validates :location, presense: true
+  validates :title, presence: true, uniqueness: { scope: :company }
+  validates :location, presence: true
   validates :size, presence: true, numericality: { only_integer: true}
 
-  validate :construction_types
+  validate :construction_classifications
   validate :construction_sectors
   validate :construction_phases
 
-  def construction_types
-    types = [/New Construction|Remodel|Interior Renovation|Exterior Renovation/]
-    errors.add(:type, "invalid, please select type from the list") unless types.any?{|t| t.match?(type)}
+  def construction_classifications
+    classifications = [/New Construction|Remodel|Interior Renovation|Exterior Renovation/]
+    errors.add(:classification, "invalid, please select class from the list") unless classifications.any?{|c| c.match?(classification)}
   end
 
   def construction_sectors
@@ -26,6 +26,10 @@ class Project < ApplicationRecord
   def construction_phases
     phases = [/Pre-Construction|Construction|Complete/]
     errors.add(:phase, "invalid, please select type from the list") unless phases.any?{|ph| ph.match?(phase)}
+  end
+
+  def self.create_from_collection(project_data, budget_items_data)
+    project_data.map{|proj| Project.create!(proj).budget_items.create!(budget_items_data)}
   end
 
 
