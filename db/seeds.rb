@@ -1,6 +1,10 @@
+puts 'Seeding in progress...'
+
 BudgetItem.destroy_all
 Project.destroy_all
 User.destroy_all
+Contact.destroy_all
+Subcontractor.destroy_all
 Company.destroy_all
 CostCode.destroy_all
 Division.destroy_all
@@ -65,7 +69,8 @@ sub_data = []
 
 20.times do 
   sub_data_hash = {
-    name: Faker::Company.name, 
+    name: Faker::Company.name,
+    phone_number: Faker::PhoneNumber.cell_phone,
     address: Faker::Address.street_address, 
     trade: Faker::Construction.subcontract_category,
     company_id: c1.id
@@ -77,19 +82,20 @@ contact_data = []
 
 4.times do 
   contact_data_hash = {
-    name: Faker::Name.name , 
+    name: Faker::Name.name, 
     cell_number: Faker::PhoneNumber.cell_phone, 
     email: Faker::Internet.email,
     role: roles.sample,
-    company_id: c1.id
   }
   contact_data << contact_data_hash
 end
 
-Subcontractors.create_from_collection(sub_data, contact_data)
+Subcontractor.create_from_collection(sub_data, contact_data)
 
 # Divisions and CostCodes
 divisions = scraper.create_divisions
 cost_codes = scraper.cc_array
 
 Division.create_from_collection(divisions, cost_codes)
+
+puts "Seeding completed successfully!"
