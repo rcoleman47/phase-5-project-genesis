@@ -1,6 +1,8 @@
 class Company < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :projects, dependent: :destroy
+  has_many :subcontractors, dependent: :destroy
+  has_many :contacts, through: :subcontractors
 
   after_initialize :init
 

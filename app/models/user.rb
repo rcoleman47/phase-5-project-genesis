@@ -9,14 +9,14 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
-  validates :roll, presence: true
+  validates :role, presence: true
 
-  validate :roll_types
+  validate :role_types
 
 
-  def roll_types
-    rolls = [/Executive|Project Manager|Estimator|Superintendent/]
-    errors.add(:roll, "Please select valid roll.") unless rolls.any?{|r| r.match?(roll)}
+  def role_types
+    roles = [/Executive|Project Manager|Estimator|Superintendent/]
+    errors.add(:role, "Please select valid role.") unless roles.any?{|r| r.match?(role)}
   end
 
 end

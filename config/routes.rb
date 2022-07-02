@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :bids
+  resources :contacts
+  resources :subcontractors
   resources :cost_codes
   resources :divisions
   resources :budget_items
