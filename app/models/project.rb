@@ -18,8 +18,8 @@ class Project < ApplicationRecord
   end
 
   def construction_sectors
-    types = [/Restaurant|Medical|Office|School|Multi-Family|Residential/]
-    errors.add(:type, "invalid, please select type from the list") unless types.any?{|t| t.match?(type)}
+    sectors = [/Restaurant|Medical|Office|School|Multi-Family|Residential/]
+    errors.add(:sector, "invalid, please select type from the list") unless sectors.any?{|s| s.match?(sector)}
   end
 
 

@@ -5,7 +5,7 @@ require 'byebug'
 
 
 class Scraper
-  ARRAY = [1..31, 33..86, 88..100, 102..109, 111..120, 122..128, 130..139, 141..150, 152..162, 164..188, 190..224, 226..234, 236..263, 265..273, 275..285, 287..294, 296..300]
+  ARRAY = [1..31, 33..86, 88..100, 102..109, 111..120, 122..128, 130..139, 141..150, 152..162, 164..188, 190..224, 226..234, 236..263, 265..273, 275..285, 287..294, 296..299]
 
   URL = "https://support.procore.com/faq/what-are-procores-default-cost-codes"
 
@@ -23,13 +23,15 @@ class Scraper
     keys = array_e.collect do |a|
       if a.length === 3 && a.include?('-')
         "Division " + a.chop
+      elsif a.length === 12
+        a.chop
       elsif a === '16'
         "Division " + a
       else
-        a.chop
+        a
       end
     end
-   
+
     array = keys.zip values
   end
 
@@ -52,11 +54,9 @@ class Scraper
   end
 
   def create_cost_codes
-    cost_codes = get_data_array.reject{|k, v| k.include?('Division')}
-
     codes = []
 
-    cost_codes.map do |cc|
+    get_data_array.map do |cc|
       number = cc.first
       description = cc.last
 
@@ -71,9 +71,7 @@ class Scraper
   end
 
   def cc_array
-    array = ARRAY.map{|range| create_cost_codes[range]}
-    array.pop(2)
-    array
+    ARRAY.map{|range| create_cost_codes[range]}
   end
 
 
