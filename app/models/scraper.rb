@@ -1,11 +1,11 @@
 require 'open-uri'
 require 'net/http'
 require 'nokogiri'
-require 'json'
 require 'byebug'
 
 
 class Scraper
+  ARRAY = [1..31, 33..86, 88..100, 102..109, 111..120, 122..128, 130..139, 141..150, 152..162, 164..188, 190..224, 226..234, 236..263, 265..273, 275..285, 287..294, 296..300]
 
   URL = "https://support.procore.com/faq/what-are-procores-default-cost-codes"
 
@@ -39,12 +39,12 @@ class Scraper
     divs = []
 
     divisions.map do |division|
-      name = division.first
-      description = division.last
+      number = division.first
+      title = division.last
 
       division_info = {
-        name: name,
-        description: description,
+        number: number,
+        title: title,
       }
       divs << division_info
     end
@@ -57,21 +57,30 @@ class Scraper
     codes = []
 
     cost_codes.map do |cc|
-      name = cc.first
+      number = cc.first
       description = cc.last
 
       cc_info = {
-        name: name,
+        number: number,
         description: description,
       }
       codes << cc_info
     end
     codes
+
+  end
+
+  def cc_array
+    array = ARRAY.map{|range| create_cost_codes[range]}
+    array.pop(2)
+    array
   end
 
 
 end
 
-scrape = Scraper.new
+
+# Index values for the division, cost codes for each division between each index
+# indexes = keys.each_index.select{|x| keys[x].include?("Division")}
 
 # [0, 32, 87, 101, 110, 121, 129, 140, 151, 163, 189, 225, 235, 264, 274, 286, 295]

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_01_165518) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_02_011933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_01_165518) do
     t.string "address"
     t.string "phone_number"
     t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cost_codes", force: :cascade do |t|
+    t.string "number"
+    t.string "description"
+    t.bigint "division_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["division_id"], name: "index_cost_codes_on_division_id"
+  end
+
+  create_table "divisions", force: :cascade do |t|
+    t.string "number"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_01_165518) do
 
   add_foreign_key "budget_items", "budgets"
   add_foreign_key "budgets", "projects"
+  add_foreign_key "cost_codes", "divisions"
   add_foreign_key "projects", "companies"
   add_foreign_key "user_projects", "projects"
   add_foreign_key "user_projects", "users"

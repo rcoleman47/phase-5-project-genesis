@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cost_codes
+  resources :divisions
   resources :budget_items
   resources :budgets, only: [:create, :destroy]
   resources :user_projects, only: [:create, :update, :destroy]
