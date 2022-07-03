@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
   end
 
   def is_admin
-    render json: { error: "Administrative permissions required. Contact company admin for assistance." }, status: :unauthorized unless current_user.admin
+    render json: { error: "Administrative permissions required. Contact company admin for assistance." }, status: :unauthorized unless current_user && current_user.admin
   end
 
   def sign_in_error
