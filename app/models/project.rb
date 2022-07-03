@@ -5,9 +5,12 @@ class Project < ApplicationRecord
   has_many :users, through: :user_projects
   has_many :bids, dependent: :destroy
 
+  after_initialize :init
+
   validates :title, presence: true, uniqueness: { scope: :company }
   validates :location, presence: true
   validates :size, presence: true, numericality: { only_integer: true}
+  validates :tax_rate, numericality: true
 
   validate :construction_classifications
   validate :construction_sectors
@@ -32,5 +35,12 @@ class Project < ApplicationRecord
     project_data.map{|proj| Project.create!(proj).budget_items.create!(budget_items_data)}
   end
 
+  def init
+    self.tax_rate ||= (8.5).to_d
+  end
+
+  def total
+    budget_items.all.map{|item| item.total}.sum
+  end
 
 end

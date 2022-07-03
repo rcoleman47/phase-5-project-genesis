@@ -1,12 +1,16 @@
 class ProjectsController < ApplicationController
+  before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
-    projects = Project.all
-    render json: projects
+    if current_user.role == 'Executive' && current_user.admin
+      render json: current_user.company.projects
+    else
+      render json: current_user.projects
+    end
   end
 
   def show
-    render json: project
+    render json: project, status: 200
   end
 
   def create
@@ -28,7 +32,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:title, :location, :phase, :sector, :classification, :size, :company_id)
+    params.permit(:title, :location, :phase, :sector, :classification, :size, :tax_rate, :company_id)
   end
 
   def project

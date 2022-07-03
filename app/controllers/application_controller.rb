@@ -15,7 +15,6 @@ class ApplicationController < ActionController::API
   def is_admin
     render json: { error: "Administrative permissions required. Contact company admin for assistance." }, status: :unauthorized unless current_user.admin
   end
-  
 
   private
 

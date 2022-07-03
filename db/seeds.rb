@@ -50,7 +50,7 @@ budget_items_data = []
     cost_code: cost_codes_array.sample,
     unit_quantity: 1,
     unit: 'ls',
-    unit_cost: Faker::Number.number(4).to_i,
+    unit_cost: Faker::Number.number(5).to_i,
     taxed: [true, false].sample,
     subcontracted: [true, false].sample,
     notes: '',
@@ -99,3 +99,8 @@ cost_codes = scraper.cc_array
 Division.create_from_collection(divisions, cost_codes)
 
 puts "Seeding completed successfully!"
+
+# ActiveRecord::Base.connection.tables.each do |t|
+#   ActiveRecord::Base.connection.reset_pk_sequence!(t)
+# end
+

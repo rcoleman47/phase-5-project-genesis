@@ -18,4 +18,13 @@ class BudgetItem < ApplicationRecord
     self.taxed ||= false
   end
 
+  def total
+    if taxed
+     taxed_total = (unit_quantity * unit_cost) * (1 + (project.tax_rate / 100))
+     taxed_total.round
+    else
+      unit_quantity * unit_cost
+    end
+  end
+
 end
