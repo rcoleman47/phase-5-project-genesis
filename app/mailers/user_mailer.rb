@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "genesis.estimator@gmail.com"
+  default from: ENV['GMAIL_USERNAME']
 
   def welcome_email
     @user = params[:user]

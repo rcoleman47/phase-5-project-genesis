@@ -1,5 +1,5 @@
 class UserProjectMailer < ApplicationMailer
-  default from: "genesis.estimator@gmail.com"
+  default from: ENV['GMAIL_USERNAME']
 
 
   def user_project_email

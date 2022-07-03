@@ -60,3 +60,5 @@ gem 'net-http', '~> 0.2.2'
 gem 'json', '~> 2.6', '>= 2.6.2'
 
 gem 'delayed_job_active_record'
+
+gem 'figaro', '~> 1.1', '>= 1.1.1'
