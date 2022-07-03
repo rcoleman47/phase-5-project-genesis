@@ -7,7 +7,6 @@ class CompaniesController < ApplicationController
 
   #Route /user_company
   def show
-    current_company = Company.find_by(id: session[:company_id])
     if current_company
       render json: current_company, status: 200
     else

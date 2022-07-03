@@ -1,4 +1,5 @@
 class DivisionsController < ApplicationController
+  before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
     divisions = Division.all

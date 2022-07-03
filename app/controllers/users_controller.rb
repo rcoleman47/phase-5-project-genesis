@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :is_admin, only: [:create, :update]
 
   def index
-    render json: User.all
+    company_users = current_user.company.users
+    render json: company_users
+  rescue
+    sign_in_error
   end
 
   # Route /authorized_user

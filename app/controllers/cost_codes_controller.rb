@@ -1,4 +1,5 @@
 class CostCodesController < ApplicationController
+  before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
     cost_codes = CostCode.all

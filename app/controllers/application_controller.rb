@@ -8,12 +8,20 @@ class ApplicationController < ActionController::API
     User.find_by(id: session[:current_user])
   end
 
+  def current_company
+    Company.find_by(id: session[:current_company])
+  end
+
   def is_authenticated
     render json: { error: "User Not Authenticated" }, status: :unauthorized unless current_user
   end
 
   def is_admin
     render json: { error: "Administrative permissions required. Contact company admin for assistance." }, status: :unauthorized unless current_user.admin
+  end
+
+  def sign_in_error
+    render json: { error: "Not Signed In" }, status: 401
   end
 
   private

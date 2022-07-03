@@ -1,8 +1,10 @@
 class SubcontractorsController < ApplicationController
+  before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
-    subcontractors = Subcontractor.all
-    render json: subcontractors
+    render json: current_company.subcontractors
+  rescue
+    sign_in_error
   end
 
   def show
