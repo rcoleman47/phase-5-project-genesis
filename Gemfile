@@ -58,3 +58,5 @@ gem 'open-uri', '~> 0.2.0'
 gem 'net-http', '~> 0.2.2'
 
 gem 'json', '~> 2.6', '>= 2.6.2'
+
+gem 'delayed_job_active_record'

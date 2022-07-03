@@ -19,4 +19,8 @@ class User < ApplicationRecord
     errors.add(:role, "Please select valid role.") unless roles.any?{|r| r.match?(role)}
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 end

@@ -44,5 +44,21 @@ module Phase5Project
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
     config.action_dispatch.cookies_same_site_protection = :strict
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { 
+      :host => '127.0.0.1:3000', 
+      :protocol => 'http'
+      }
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 3000,
+      domain:               'example.com',
+      user_name:            'genesis.estimator',
+      password:             'Inthebeginning07',
+      authentication:       'plain',
+      enable_starttls_auto: true,
+      open_timeout:         5,
+      read_timeout:         5 }
   end
 end

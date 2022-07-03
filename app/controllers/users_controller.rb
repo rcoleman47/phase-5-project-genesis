@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_admin, only: [:create, :update]
+  before_action :is_admin, only: [:update]
 
   def index
     company_users = current_user.company.users
@@ -19,8 +19,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create!(user_params)
-    render json: user, status: 201
+    if user = User.create!(user_params)
+      UserMailer.with(user: user, company: Company.find(user.company_id)).welcome_email.deliver_later
+      render json: user, status: 201
+    end
   end
 
   def update
