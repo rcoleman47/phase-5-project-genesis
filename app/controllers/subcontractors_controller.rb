@@ -34,6 +34,6 @@ class SubcontractorsController < ApplicationController
   end
 
   def subcontractor
-    Subcontractor.find(params[:id])
+    current_company.subcontractors.find(params[:id])
   end
 end

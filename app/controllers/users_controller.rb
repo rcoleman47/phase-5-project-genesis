@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_admin, only: [:update]
+  before_action :is_admin, only: [:update, :destroy]
 
   def index
     company_users = current_user.company.users
@@ -25,10 +25,15 @@ class UsersController < ApplicationController
     end
   end
 
+  # modify to update self if not admin, admin can modify all
   def update
-    user = User.find(params[:id])
     user.update!(update_params)
     render json: user, status: 202
+  end
+
+  def destroy
+    user.destroy!
+    head 204
   end
 
 
@@ -41,6 +46,10 @@ class UsersController < ApplicationController
 
   def update_params
     params.permit(:first_name, :last_name, :email, :cell_number, :role, :admin)
+  end
+
+  def user
+    current_user.company.users.find(params[:id])
   end
 
 end

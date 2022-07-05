@@ -1,6 +1,5 @@
 class UserProjectsController < ApplicationController
-  before_action :is_authenticated
-  before_action :is_admin, only: [:create, :destroy]
+  before_action :is_admin
 
   def create
     if user_project = UserProject.create!(user_project_params)

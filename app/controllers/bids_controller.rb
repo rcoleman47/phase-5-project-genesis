@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
-
+  before_action :is_admin
+  
   def index
     bids = Bid.all
     render json: bids

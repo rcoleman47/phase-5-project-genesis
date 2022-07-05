@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    render json: project, status: 200
+    render json: project, serializer: SingleProjectSerializerSerializer, status: 200
   end
 
   def create
@@ -36,6 +36,6 @@ class ProjectsController < ApplicationController
   end
 
   def project
-    Project.find(params[:id])
+    current_company.projects.find(params[:id])
   end
 end

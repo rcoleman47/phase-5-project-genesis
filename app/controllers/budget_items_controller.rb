@@ -1,11 +1,14 @@
 class BudgetItemsController < ApplicationController
+  # Remove only during cleanup
   before_action :is_admin, only: [:create, :update, :destroy]
 
+  # Delete during cleanup, not needed for production
   def index
     budget_items = BudgetItem.all
     render json: budget_items
   end
 
+   # Delete during cleanup, not needed for production
   def show
     render json: budget_item
   end
@@ -29,7 +32,7 @@ class BudgetItemsController < ApplicationController
   private
 
   def budget_item_params
-    params.permit(:cost_code, :unit_quantity, :unit_cost, :unit, :taxed, :subcontracted, :notes, :budget_id)
+    params.permit(:cost_code, :unit_quantity, :unit_cost, :unit, :taxed, :subcontracted, :notes, :project_id)
   end
 
   def budget_item
