@@ -7,7 +7,8 @@ import { mount } from '../Redux/Reducers/company';
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
-import '../App.css'
+import '../App.css';
+
 
 
 function App() {
@@ -33,15 +34,13 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <>
       <Routes>
-
         <Route path='/login' element={ <Login /> } />
         <Route path='/register' element={ <Registration /> } />
         <Route path='/home' element={ <Home /> } />
-
       </Routes>
-    </div>
+    </>
   );
 }
 

@@ -14,13 +14,13 @@ class Scraper
     html = URI.open(URL)
     doc = Nokogiri::HTML(html)
 
-    trow = doc.css('tr').text.split("\n").collect(&:strip).reject{|a| a.empty?}.drop(2)
+    cc_data = doc.css('tr').text.split("\n").collect(&:strip).reject{|a| a.empty?}.drop(2)
 
-    array_e = trow.values_at(* trow.each_index.select {|i| i.even?})
+    key_data = cc_data.values_at(* cc_data.each_index.select {|i| i.even?})
 
-    values = trow.values_at(* trow.each_index.select {|i| i.odd?})
+    values = cc_data.values_at(* cc_data.each_index.select {|i| i.odd?})
 
-    keys = array_e.collect do |a|
+    keys = key_data.collect do |a|
       if a.length === 3 && a.include?('-')
         "Division " + a.chop
       elsif a.length === 12
