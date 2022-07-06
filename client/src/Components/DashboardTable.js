@@ -1,6 +1,20 @@
-export default function DashboardTable({projects}) {
+export default function DashboardTable({projects, sort}) {
 
-  const renderDashboard = projects ? projects.map(project => {
+  const renderDashboard = projects ? [...projects].sort((a, b) => {
+    if(sort === 'title'){
+      return a.title.localeCompare(b.title);
+    } else if(sort === 'phase'){
+        return a.phase.localeCompare(b.phase);
+    } else if(sort === 'sector'){
+        return a.sector.localeCompare(b.sector);
+    } else if(sort === 'sector'){
+        return a.sector.localeCompare(b.sector);
+    } else if(sort === 'classification'){
+        return a.classification.localeCompare(b.classification);
+    } else{
+        return a.id - b.id
+      }
+    }).map(project => {
     return (
       <tr key={project.id}>
         <td>{project.title}</td>

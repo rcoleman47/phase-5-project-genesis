@@ -21,6 +21,40 @@ code {
   flex-direction: column;
 }
 
+/* Dashboard */
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+}
+
+.dashboard table {
+  border-collapse: collapse;
+  width: 90%;
+  align-self: center;
+}
+
+.dashboard tbody {
+  border: 2px solid black;
+}
+
+.dashboard th {
+  padding: 20px;
+  border: 2px solid black;
+  font-size: x-large;
+  text-align: left;
+}
+
+.dashboard td {
+  padding: 20px;
+  border: 1px solid black;
+}
+
 /* View nav bar */
 
 .viewNavContainer {

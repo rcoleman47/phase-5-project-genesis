@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { login } from '../Redux/Reducers/user';
 
 
@@ -15,9 +15,6 @@ export default function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const user = useSelector( state => state.user.value);
-
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -47,7 +44,7 @@ export default function Login() {
         });
 
         navigate('/');
-        console.log(user)
+
       } else r.json().then(json=>setError(json.error));
     })
   };

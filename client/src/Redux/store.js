@@ -3,6 +3,7 @@ import userReducer from './Reducers/user';
 import registerReducer from './Reducers/register';
 import companyReducer from './Reducers/company';
 import projectsReducer from './Reducers/projects';
+import searchReducer from './Reducers/search';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     register: registerReducer,
     company: companyReducer,
     projects: projectsReducer,
+    search: searchReducer,
   },
 })
