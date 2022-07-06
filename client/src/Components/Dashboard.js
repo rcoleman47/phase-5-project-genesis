@@ -1,28 +1,17 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setProjects } from '../Redux/Reducers/projects';
+import { useSelector } from 'react-redux';
+import DashboardTable from './DashboardTable';
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const projects = useSelector(state => state.projects.value);
-
-  useEffect(() => {
-    fetch('/projects')
-    .then(r => {
-      if (r.ok){
-        r.json().then(projects => dispatch(setProjects(projects)))
-      }
-      else navigate('/login');
-    });
-
-  }, []);
 
   console.log(projects)
 
+  const renderDashboard = projects ? <DashboardTable projects={projects} /> : <h1>Loading...</h1>
+
   return (
-    <div>Dashboard</div>
+    <div className='dashboard'>
+
+      {renderDashboard}
+    </div>
   )
 }

@@ -46,7 +46,7 @@ export default function Login() {
           password: '',
         });
 
-        navigate('/')
+        navigate('/');
         console.log(user)
       } else r.json().then(json=>setError(json.error));
     })

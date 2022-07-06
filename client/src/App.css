@@ -61,9 +61,10 @@ code {
   display: none;
 }
 
-.viewNavContainer .select-selected
+
 
 .viewNavContainer select:hover {
+  border: 2px solid;
   border-color: orange;
 }
 

@@ -1,13 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../Redux/Reducers/user';
+import { useState, useEffect } from 'react';
 
 export default function ViewNavBar() {
+  const [view, setView] = useState('/dashboard')
   const company = useSelector(state => state.company.value);
-  const user = useSelector(state => state.user.value);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(()=> {
+    navigate(`${view}`)
+  }, [view])
+
+  const handleSelect = (e) => {
+    setView(e.target.value);
+  };
 
   const handleClick = () => {
     fetch('/logout', {
@@ -21,13 +30,13 @@ export default function ViewNavBar() {
 
   return (
     <div className='viewNavContainer' >
-      <img src={company.logo} alt="Company logo" />
+      <img src={company ? company.logo : "Loading..."} alt="Company logo" />
       <label>Select View
-        <select>
-          <option>Dashboard</option>
-          <option>Projects</option>
-          <option>Subcontractors</option>
-          <option>Cost Codes</option>
+        <select onChange={handleSelect} value={view}>
+          <option value='/dashboard' >Dashboard</option>
+          <option value='/projects' >Projects</option>
+          <option value='/subcontractors' >Subcontractors</option>
+          <option value='/costcodes'>Cost Codes</option>
         </select>
       </label>
 

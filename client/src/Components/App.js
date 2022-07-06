@@ -8,6 +8,9 @@ import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
 import Dashboard from './Dashboard';
+import Projects from './Projects';
+import Subcontractors from './Subcontractors';
+import CostCodes from './CostCodes';
 import '../App.css';
 
 
@@ -42,6 +45,9 @@ function App() {
         
         <Route path='/' element={ <Home /> } >
           <Route path='dashboard' element={ <Dashboard /> } />
+          <Route path='projects' element={ <Projects /> } />
+          <Route path='subcontractors' element={ <Subcontractors /> } />
+          <Route path='costcodes' element={ <CostCodes /> } />
         </Route>
       </Routes>
     </>
