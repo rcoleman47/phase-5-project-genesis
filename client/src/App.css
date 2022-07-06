@@ -51,10 +51,20 @@ code {
   margin-top: 10px;
   text-align: center;
   align-self: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none; 
   display: block;
+  cursor: pointer;
+  outline: none;
+}
+
+.viewNavContainer select-selected{
+  display: none;
+}
+
+.viewNavContainer .select-selected
+
+.viewNavContainer select:hover {
+  border-color: orange;
 }
 
 .viewNavContainer button {

@@ -4,6 +4,7 @@ import { logout } from '../Redux/Reducers/user';
 
 export default function ViewNavBar() {
   const company = useSelector(state => state.company.value);
+  const user = useSelector(state => state.user.value);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
