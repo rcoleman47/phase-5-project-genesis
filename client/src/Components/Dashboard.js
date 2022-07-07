@@ -6,9 +6,10 @@ import DashPagination from './DashPagination';
 export default function Dashboard() {
   const [sort, setSort] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectsPerPage] = useState(10);
+  const [projectsPerPage] = useState(2);
 
   const projects = useSelector(state => state.projects.value);
+  console.log(projects)
 
   const handleSelect = (e) => {
     setSort(e.target.value);
@@ -19,7 +20,7 @@ export default function Dashboard() {
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
   const currentProjects = projects ? [...projects].slice(indexOfFirstProject, indexOfLastProject) : projects;
   
-  const renderDashboard = projects ? <DashboardTable sort={sort} currentProjects={currentProjects} /> : <h1 style={{alignSelf: 'center', color: 'orange'}}>Loading...</h1>;
+  const renderDashboard = projects ? <DashboardTable sort={sort} currentProjects={currentProjects} /> : <h1 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h1>;
 
   const paginate = (number) => setCurrentPage(number);
 
@@ -47,18 +48,3 @@ export default function Dashboard() {
     </div>
   )
 }
-
-
-// projects.sort((a, b) => {
-//   if(sort === 'title'){
-//     return a.title.localeCompare(b.title);
-//   } else if(sort === 'phase'){
-//       return a.phase.localeCompare(b.phase);
-//   } else if(sort === 'sector'){
-//       return a.sector.localeCompare(b.sector);
-//   } else if(sort === 'sector'){
-//       return a.sector.localeCompare(b.sector);
-//   } else if(sort === 'classification'){
-//       return a.classification.localeCompare(b.classification);
-//     } else return a.id - b.id
-//   })

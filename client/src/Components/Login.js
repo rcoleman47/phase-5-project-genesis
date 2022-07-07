@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
+import { setProjects } from '../Redux/Reducers/projects';
 import { login } from '../Redux/Reducers/user';
+import { mount } from '../Redux/Reducers/company';
 
 
 export default function Login() {
@@ -36,14 +38,21 @@ export default function Login() {
     })
     .then( r => {
       if(r.ok){
-        r.json().then( user => dispatch(login(user)));
+        r.json().then( user => {
+          dispatch(login(user))
+          dispatch(mount(user.company))
+        });
+
+        fetch('/projects')
+        .then(r => r.json())
+        .then(projects => dispatch(setProjects(projects)))
 
         setLoginForm({
           email: '',
           password: '',
         });
 
-        navigate('/');
+        navigate('/dashboard');
 
       } else r.json().then(json=>setError(json.error));
     })

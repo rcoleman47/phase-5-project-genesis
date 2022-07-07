@@ -23,7 +23,7 @@ export default function DashboardTable({currentProjects, sort}) {
         <td>{project.size.toLocaleString()} sf</td>
       </tr>
     )
-  } ) : <tr><th>Loading...</th></tr>
+  } ) : <tr><th>No Current Projects</th></tr>
 
   return (
     <table>

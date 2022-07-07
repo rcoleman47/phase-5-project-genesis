@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../Redux/Reducers/user';
+import { mount } from '../Redux/Reducers/company';
 import { finished } from '../Redux/Reducers/register';
 
 export default function Signup() {
@@ -44,7 +45,10 @@ export default function Signup() {
     })
     .then( r => {
       if(r.ok){
-        r.json().then( user => dispatch(login(user)));
+        r.json().then( user => {
+          dispatch(login(user))
+          dispatch(mount(user.company))
+        });
 
         dispatch(finished());
 

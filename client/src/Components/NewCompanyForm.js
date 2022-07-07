@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { created } from '../Redux/Reducers/register';
-import { mount } from '../Redux/Reducers/company';
 
 export default function NewCompanyForm() {
   const [errors, setErrors] = useState();
@@ -38,7 +37,7 @@ export default function NewCompanyForm() {
     })
     .then( r => {
       if(r.ok){
-        r.json().then( company => dispatch(mount(company)));
+        r.json().then( company => console.log(company));
 
         setNewCompanyForm({
           name: '',
