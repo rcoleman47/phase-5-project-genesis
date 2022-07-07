@@ -1,12 +1,10 @@
-export default function DashboardTable({projects, sort}) {
+export default function DashboardTable({currentProjects, sort}) {
 
-  const renderDashboard = projects ? [...projects].sort((a, b) => {
+  const renderDashboard = currentProjects ? [...currentProjects].sort((a, b) => {
     if(sort === 'title'){
       return a.title.localeCompare(b.title);
     } else if(sort === 'phase'){
-        return a.phase.localeCompare(b.phase);
-    } else if(sort === 'sector'){
-        return a.sector.localeCompare(b.sector);
+        return b.phase.localeCompare(a.phase);
     } else if(sort === 'sector'){
         return a.sector.localeCompare(b.sector);
     } else if(sort === 'classification'){

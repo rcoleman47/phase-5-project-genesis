@@ -30,7 +30,34 @@ code {
   flex-wrap: wrap;
   height: auto;
   width: 100%;
-  padding: 20px 0px 20px 20px;
+  margin: 20px 0px 40px 40px;
+  /* padding: 40px 20px 40px 40px; */
+}
+
+.dashboard label {
+  display: block;
+  width: 10%;
+  text-align: center;
+  font-weight: 600;
+  margin: 0px 0px 0px 200px;
+}
+
+.dashboard select {
+  display: block;
+  height: 25px;
+  width: 150px;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+.dashboard select:hover {
+  border: 2px solid;
+  border-color: orange;
 }
 
 .dashboard table {
@@ -55,6 +82,15 @@ code {
   border: 1px solid black;
 }
 
+.paginate {
+  margin: 15px 0 0 100px;
+}
+
+.paginate button {
+  color: black;
+  margin-right: 3px;
+}
+
 /* View nav bar */
 
 .viewNavContainer {
@@ -65,17 +101,18 @@ code {
   background: #c0c0c0;
   border-bottom: 2px solid #c0c0c0;
 }
-.viewNavContainer label {
-  display: block;
-  align-self: center;
-  text-align: center;
-  font-weight: 600;
-}
 
 .viewNavContainer img {
   height: 75px;
   width: 125px;
   float: left;
+}
+
+.viewNavContainer label {
+  display: block;
+  align-self: center;
+  text-align: center;
+  font-weight: 600;
 }
 
 .viewNavContainer select {
@@ -90,12 +127,6 @@ code {
   cursor: pointer;
   outline: none;
 }
-
-.viewNavContainer select-selected{
-  display: none;
-}
-
-
 
 .viewNavContainer select:hover {
   border: 2px solid;
