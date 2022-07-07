@@ -14,7 +14,7 @@ export default function Dashboard() {
     setSort(e.target.value);
   };
 
-  const totalProjects = projects ? projects.length : 0;
+  const totalProjects = projects?.length
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
   const currentProjects = projects ? [...projects].slice(indexOfFirstProject, indexOfLastProject) : projects;
