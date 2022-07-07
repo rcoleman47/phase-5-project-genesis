@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setProjects } from '../Redux/Reducers/projects';
+import { setProjects, setCurrentProject } from '../Redux/Reducers/projects';
 import { login } from '../Redux/Reducers/user';
 import { mount } from '../Redux/Reducers/company';
 import ViewNavBar from './ViewNavBar';
@@ -18,9 +18,7 @@ export default function Home() {
         r.json().then(user => {
           dispatch(login(user))
           dispatch(mount(user.company))
-          dispatch(setProjects(user.projects))
-        });
-        navigate('dashboard');
+        })
       }
       else {
         r.json().then(json=>console.log(json.error));
@@ -29,6 +27,23 @@ export default function Home() {
     });
 
   }, []);
+
+  useEffect(() => {
+    fetch('/projects')
+    .then(r => {
+      if (r.ok){
+        r.json().then(projects => {
+          dispatch(setProjects(projects))
+          dispatch(setCurrentProject(projects[0]))
+        })
+        navigate('dashboard');
+      }
+      else {
+        r.json().then(json=>console.log(json.error));
+        navigate('/login');
+    };
+    });
+  }, [])
 
   return (
     <div className='pageContainer'>

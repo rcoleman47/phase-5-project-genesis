@@ -13,10 +13,10 @@ export default function Login() {
     password: '',
   });
 
-  const { email, password } = loginForm;
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { email, password } = loginForm;
 
   const handleChange = (e) => {
     const key = e.target.name;
@@ -41,11 +41,8 @@ export default function Login() {
         r.json().then( user => {
           dispatch(login(user))
           dispatch(mount(user.company))
+          dispatch(setProjects(user.projects))
         });
-
-        fetch('/projects')
-        .then(r => r.json())
-        .then(projects => dispatch(setProjects(projects)))
 
         setLoginForm({
           email: '',

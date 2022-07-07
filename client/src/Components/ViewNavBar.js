@@ -36,7 +36,6 @@ export default function ViewNavBar() {
           <option value='/dashboard' >Dashboard</option>
           <option value='/projects' >Projects</option>
           <option value='/subcontractors' >Subcontractors</option>
-          <option value='/costcodes'>Cost Codes</option>
         </select>
       </label>
 

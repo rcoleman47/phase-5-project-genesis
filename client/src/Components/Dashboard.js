@@ -8,8 +8,7 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage] = useState(2);
 
-  const projects = useSelector(state => state.projects.value);
-  console.log(projects)
+  const projects = useSelector(state => state.projects.allProjects);
 
   const handleSelect = (e) => {
     setSort(e.target.value);
