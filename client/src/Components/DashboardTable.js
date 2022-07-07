@@ -20,7 +20,7 @@ export default function DashboardTable({currentProjects, sort}) {
         <td>{project.phase}</td>
         <td>{project.sector}</td>
         <td>{project.classification}</td>
-        <td>{project.size}</td>
+        <td>{project.size.toLocaleString()} sf</td>
       </tr>
     )
   } ) : <tr><th>Loading...</th></tr>
