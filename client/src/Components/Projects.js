@@ -1,32 +1,32 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentProject } from '../Redux/Reducers/projects';
+import { useState } from 'react';
+import ProjectTable from './ProjectTable';
 
 export default function Projects() {
-
   const projects = useSelector(state => state.projects.allProjects);
-  const currentProject = useSelector(state => state.projects.currentProject);
+  const [selectTitle, setSelectTitle] = useState(projects?.[0].title)
 
-  const dispatch = useDispatch();
-  
+  console.log(projects)
 
-  const renderOptions = projects?.length > 0 ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
+  const renderOptions = projects?.length > 0 ? projects?.map(project => <option key={project.id} value={project.title}>{project.title}</option> ) : <option>No Current Projects</option>;
+
+  const currentProject = projects?.length ? [...projects].find(project => project.title === selectTitle) : projects;
 
   const handleSelect = (e) => {
-    console.log(e.target.value);
-    dispatch(setCurrentProject([...projects].filter(project => project.id === e.target.value)))
+    setSelectTitle(e.target.value)
+
   };
-  console.log(projects)
 
   return (
     <div>
       <div>
         <label>Select Project
-          <select onChange={handleSelect} value={currentProject?.title}  >
-            {renderOptions}
-          </select>
+            <select onChange={handleSelect} value={selectTitle}  >
+              {renderOptions}
+            </select>
         </label>
       </div>
-
+      <ProjectTable currentProject={currentProject} selectTitle={selectTitle} />
 
     </div>
   )

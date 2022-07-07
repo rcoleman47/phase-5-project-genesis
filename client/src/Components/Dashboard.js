@@ -6,7 +6,7 @@ import DashPagination from './DashPagination';
 export default function Dashboard() {
   const [sort, setSort] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectsPerPage] = useState(2);
+  const [projectsPerPage] = useState(10);
 
   const projects = useSelector(state => state.projects.allProjects);
 
