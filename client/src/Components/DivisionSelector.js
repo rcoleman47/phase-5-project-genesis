@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { setCurrentDiv, setCurrentCodes } from '../Redux/Reducers/costcodes';
+import { addCurrentProjectItem } from '../Redux/Reducers/projects';
 import CostCodeSelector from './CostCodeSelector';
 
 
@@ -9,6 +10,7 @@ export default function DivisionSelector() {
   const divisions = useSelector(state => state.costCodes.all);
   const currentDiv = useSelector(state => state.costCodes.currentDiv);
 
+  const [error, setError] = useState(null);
   const [codeId, setCodeId] = useState(undefined)
   const [divisionId, setDivisionId] = useState(divisions?.[0].id);
 
@@ -31,10 +33,30 @@ export default function DivisionSelector() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target)
-    console.log(divisionId)
-    console.log(codeId)
 
+    fetch(`/budget_items`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        division: divisionId,
+        cost_code: codeId,
+        unit_quantity: 1,
+        unit: 'ls'
+      })
+    })
+    .then(r=>{
+      if(r.ok){ 
+        r.json().then(item => {
+          dispatch(addCurrentProjectItem(item))
+        });
+
+        setError(null);
+
+      }
+      else
+        r.json().then(json=>setError(json.error));
+    });
+    
   };
 
   return (
@@ -45,6 +67,9 @@ export default function DivisionSelector() {
         </select> 
     
         <CostCodeSelector currentDiv={currentDiv} codeId={codeId} setCodeId={setCodeId} />
+
+        {error ? <h5>{error}</h5> : null}
+
         <button type='submit'>Select Project</button>
       </form>
     </div>
