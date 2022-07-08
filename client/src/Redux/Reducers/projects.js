@@ -14,13 +14,13 @@ export const projectsSlice = createSlice({
     setCurrentProject: (state, action) => {
       state.currentProject = action.payload
     },
-    updateCurrentProject: (state, action) => {
-      state.currentProject = [...state].currentProject.filter(attr => attr.id !== action.payload.id)
+    addProject: (state, action) => {
+      state.allProjects = [...state.allProjects, action.payload];
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setProjects, setCurrentProject } = projectsSlice.actions
+export const { setProjects, setCurrentProject, addProject } = projectsSlice.actions
 
 export default projectsSlice.reducer
