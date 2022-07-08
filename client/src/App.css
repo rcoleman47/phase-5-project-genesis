@@ -17,11 +17,20 @@ code {
   display: flex;
   width: 100%;
   position: absolute;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   flex-direction: column;
 }
 
 /* projects */
+.projects-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  margin: 20px 0px 40px 40px;
+}
+
 .projects {
   display: flex;
   justify-content: center;
@@ -29,12 +38,35 @@ code {
   flex-wrap: wrap;
   height: auto;
   width: 100%;
-  margin: 20px 0px 40px 40px;
+  /* margin: 20px 0px 40px 40px; */
+}
+.project-navbar {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 10%;
+  margin-left: 80%;
 }
 
-.dashboard form button {
-  display: inline;
-  width: 10%;
+.project-navbar select {
+  height: 30px;
+  width: auto;
+  padding: auto;
+  margin-top: 10px;
+  text-align: center;
+  align-self: right;
+  appearance: none; 
+  display: block;
+}
+
+.project-navbar select:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+
+.project-navbar label {
+  display: block;
+  align-self: right;
   text-align: center;
   font-weight: 600;
 }
@@ -42,7 +74,7 @@ code {
 .projects select {
   display: inline;
   height: 25px;
-  width: 150px;
+  width: auto;
   padding: auto;
   align-content: center;
   text-align: center;
@@ -60,7 +92,7 @@ code {
 
 .projects table {
   border-collapse: collapse;
-  width: 90%;
+  width: 95%;
   align-self: center;
 }
 
@@ -86,10 +118,9 @@ code {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  flex-wrap: wrap;
   height: auto;
   width: 100%;
-  margin: 20px 0px 40px 40px;
+  margin-top: 25px;
 }
 
 .dashboard label {
@@ -120,7 +151,7 @@ code {
 
 .dashboard table {
   border-collapse: collapse;
-  width: 90%;
+  width: 95%;
   align-self: center;
 }
 
@@ -129,14 +160,14 @@ code {
 }
 
 .dashboard th {
-  padding: 20px;
+  padding: 10px;
   border: 2px solid black;
-  font-size: x-large;
+  font-size: large;
   text-align: left;
 }
 
 .dashboard td {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid black;
 }
 

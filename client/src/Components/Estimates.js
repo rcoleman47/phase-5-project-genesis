@@ -43,7 +43,7 @@ export default function Estimates() {
   // };
 
   return (
-    <div className='projects'>
+    <>
       <div>
           {/* <form onSubmit={handleSubmit}> */}
             <select onChange={handleSelect} value={projectId}  >
@@ -53,7 +53,6 @@ export default function Estimates() {
           {/* </form> */}
       </div>
       <EstimateTable projects={projects} projectId={projectId}  />
-
-    </div>
+    </>
   )
 }

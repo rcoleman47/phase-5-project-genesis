@@ -8,6 +8,7 @@ import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
 import Projects from './Projects';
+import EstimateContainer from './EstimateContainer';
 import Estimates from './Estimates';
 import Subcontractors from './Subcontractors';
 import '../App.css';
@@ -43,8 +44,11 @@ function App() {
         
         <Route index='/' element={ <Home /> } >
           <Route path='/projects' element={ <Projects /> } />
-          <Route path='/estimates' element={ <Estimates /> } />
-          <Route path='/subcontractors' element={ <Subcontractors /> } />
+          <Route path='/e' element={ <EstimateContainer /> } >
+            <Route path='estimates' element={ <Estimates /> } />
+            <Route path='subcontractors' element={ <Subcontractors /> } />
+          </Route>
+          
         </Route>
       </Routes>
     </>
