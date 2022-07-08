@@ -67,35 +67,35 @@ budget_items_data = Array.new(30){Array.new(25){|a| a = {
 Project.create_from_collection(project_data, budget_items_data)
 
 
-# # Subcontractors & contacts
-# roles = ['Project Manager', 'Estimator', 'Executive', 'Superintendent']
+# Subcontractors & contacts
+roles = ['Project Manager', 'Estimator', 'Executive', 'Superintendent']
 
-# sub_data = []
+sub_data = []
 
-# 20.times do 
-#   sub_data_hash = {
-#     name: Faker::Company.name,
-#     phone_number: Faker::PhoneNumber.cell_phone,
-#     address: Faker::Address.street_address, 
-#     trade: Faker::Construction.subcontract_category,
-#     company_id: c1.id
-#   }
-#   sub_data << sub_data_hash
-# end
+20.times do 
+  sub_data_hash = {
+    name: Faker::Company.name,
+    phone_number: Faker::PhoneNumber.cell_phone,
+    address: Faker::Address.street_address, 
+    trade: Faker::Construction.subcontract_category,
+    company_id: c1.id
+  }
+  sub_data << sub_data_hash
+end
 
-# contact_data = []
+contact_data = []
 
-# 4.times do 
-#   contact_data_hash = {
-#     name: Faker::Name.name, 
-#     cell_number: Faker::PhoneNumber.cell_phone, 
-#     email: Faker::Internet.email,
-#     role: roles.sample,
-#   }
-#   contact_data << contact_data_hash
-# end
+4.times do 
+  contact_data_hash = {
+    name: Faker::Name.name, 
+    cell_number: Faker::PhoneNumber.cell_phone, 
+    email: Faker::Internet.email,
+    role: roles.sample,
+  }
+  contact_data << contact_data_hash
+end
 
-# Subcontractor.create_from_collection(sub_data, contact_data)
+Subcontractor.create_from_collection(sub_data, contact_data)
 
 puts "Seeding completed successfully!"
 

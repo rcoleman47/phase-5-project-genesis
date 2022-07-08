@@ -42,7 +42,6 @@ export default function Home() {
       <img src={company ? company.logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} to='/projects'>Projects</NavLink>
       <NavLink style={navStyle} to='/estimates'>Estimates</NavLink>
-      <NavLink style={navStyle} to='/subcontractors'>Subcontractors</NavLink>
 
       <button onClick={handleClick} >Log Out</button>
     </div>
