@@ -1,20 +1,11 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { setCurrentProject } from '../Redux/Reducers/projects';
+import { useSelector} from 'react-redux';
 
-export default function ProjectTable({projects, projectId}) {
+export default function ProjectTable({projects}) {
   const currentProject = useSelector(state => state.projects.currentProject);
 
-  const dispatch = useDispatch();
-  console.log(projects)
-
-  useEffect(() => {
-    fetch(`/projects/${projectId}`)
-    .then(r => r.json())
-    .then(project => dispatch(setCurrentProject(project)));
-  }, [projectId])
-
-  const renderBudget = currentProject ? currentProject.budget_items.map(item => {
+  const renderBudget = currentProject.budget_items ? currentProject?.budget_items.slice().sort((a, b) => {
+    return a.cost_code[0] - b.cost_code[0]
+  }).map(item => {
     return (
       <tr key={item.id}>
         <td>{item.cost_code}</td>
@@ -27,7 +18,7 @@ export default function ProjectTable({projects, projectId}) {
         <td>{item.notes}</td>
       </tr>
     )
-  } ) : projects ? currentProject.budget_items.map(item => {
+  } ) : projects ? projects[0].budget_items.map(item => {
     return (
       <tr key={item.id}>
         <td>{item.cost_code}</td>
@@ -62,7 +53,7 @@ export default function ProjectTable({projects, projectId}) {
       <thead style={{border: 'none'}}>
         <tr>
           <th>Total:</th>
-          <th>${currentProject.total.toLocaleString()}</th>
+          <th>${currentProject?.total ? currentProject.total.toLocaleString() : '' }</th>
         </tr>
       </thead>
     </table>

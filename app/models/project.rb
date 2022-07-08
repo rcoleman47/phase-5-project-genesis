@@ -32,7 +32,7 @@ class Project < ApplicationRecord
   end
 
   def self.create_from_collection(project_data, budget_items_data)
-    project_data.map{|proj| Project.create!(proj).budget_items.create!(budget_items_data)}
+    project_data.each_with_index.map{|proj, i| Project.create!(proj).budget_items.create!(budget_items_data[i])}
   end
 
   def init

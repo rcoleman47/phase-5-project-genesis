@@ -1,4 +1,5 @@
 export default function DashboardTable({currentProjects, sort}) {
+  console.log(currentProjects)
 
   const renderDashboard = currentProjects ? [...currentProjects].sort((a, b) => {
     if(sort === 'title'){

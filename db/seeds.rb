@@ -25,7 +25,7 @@ phases = ['Pre-Construction', 'Construction', 'Complete']
 
 project_data = []
 
-10.times do 
+30.times do 
   project_data_hash = {
     title: Faker::Company.name, 
     location: Faker::Address.street_address, 
@@ -43,20 +43,16 @@ end
 scraper = Scraper.new
 cost_codes_array = scraper.get_data_array.reject{|k, v| k.include?('Division')}.map{|a| a.join(" ")}
 
-budget_items_data = []
 
-20.times do
-  budget_items_hash = {
-    cost_code: cost_codes_array.sample,
-    unit_quantity: 1,
-    unit: 'ls',
-    unit_cost: Faker::Number.number(5).to_i,
-    taxed: [true, false].sample,
-    subcontracted: [true, false].sample,
-    notes: '',
-  }
-  budget_items_data << budget_items_hash
-end
+budget_items_data = Array.new(30){Array.new(25){|a| a = {
+  cost_code: cost_codes_array.sample,
+  unit_quantity: 1,
+  unit: 'ls',
+  unit_cost: Faker::Number.number(5).to_i,
+  taxed: [true, false].sample,
+  subcontracted: [true, false].sample,
+  notes: '',
+}}}
 
 
 Project.create_from_collection(project_data, budget_items_data)

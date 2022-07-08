@@ -26,6 +26,10 @@ export default function Home() {
     fontWeight: '900',
   });
 
+  const handleNavClick = () => {
+    localStorage.clear();
+  };
+
   const handleClick = () => {
     fetch('/logout', {
       method: 'DELETE',
