@@ -108,31 +108,6 @@ code {
   float: left;
 }
 
-.viewNavContainer label {
-  display: block;
-  align-self: center;
-  text-align: center;
-  font-weight: 600;
-}
-
-.viewNavContainer select {
-  height: 40px;
-  width: 150px;
-  padding: auto;
-  margin-top: 10px;
-  text-align: center;
-  align-self: center;
-  appearance: none; 
-  display: block;
-  cursor: pointer;
-  outline: none;
-}
-
-.viewNavContainer select:hover {
-  border: 2px solid;
-  border-color: orange;
-}
-
 .viewNavContainer button {
   float: right;
   align-self: center;

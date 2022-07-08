@@ -1,22 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { logout } from '../Redux/Reducers/user';
-import { useState, useEffect } from 'react';
 
 export default function ViewNavBar() {
-  const [view, setView] = useState('/dashboard')
   const company = useSelector(state => state.company.value);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    navigate(`${view}`)
-  }, [view])
-
-  const handleSelect = (e) => {
-    setView(e.target.value);
-  };
+  const navStyle = ({isActive})=>({
+    color: isActive ? "#ff8c00":"black",
+    marginTop: '30px',
+    fontWeight: '900',
+  });
 
   const handleClick = () => {
     fetch('/logout', {
@@ -31,16 +27,11 @@ export default function ViewNavBar() {
   return (
     <div className='viewNavContainer' >
       <img src={company ? company.logo : "Loading..."} alt="Company logo" />
-      <label>Select View
-        <select onChange={handleSelect} value={view}>
-          <option value='/dashboard' >Dashboard</option>
-          <option value='/projects' >Projects</option>
-          <option value='/subcontractors' >Subcontractors</option>
-        </select>
-      </label>
+      <NavLink style={navStyle} to='/dashboard'>Dashboard</NavLink>
+      <NavLink style={navStyle} to='/projects'>Projects</NavLink>
+      <NavLink style={navStyle} to='/subcontractors'>Subcontractors</NavLink>
 
       <button onClick={handleClick} >Log Out</button>
-
     </div>
   )
 }

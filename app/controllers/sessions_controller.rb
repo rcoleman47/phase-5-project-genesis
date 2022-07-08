@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def login
     user = User.find_by(email: params[:email])
+
     if user&.authenticate(params[:password])
       session[:current_user] = user.id
       render json: user

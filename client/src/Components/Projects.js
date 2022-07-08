@@ -1,32 +1,45 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import ProjectTable from './ProjectTable';
+import { setCurrentProject } from '../Redux/Reducers/projects';
+
 
 export default function Projects() {
   const projects = useSelector(state => state.projects.allProjects);
-  const [selectTitle, setSelectTitle] = useState(projects?.[0].title)
+  const currentProject = useSelector(state => state.projects.currentProject);
 
-  console.log(projects)
+  const [projectId, setProjectId] = useState(currentProject?.id);
 
-  const renderOptions = projects?.length > 0 ? projects?.map(project => <option key={project.id} value={project.title}>{project.title}</option> ) : <option>No Current Projects</option>;
+  const dispatch = useDispatch();
 
-  const currentProject = projects?.length ? [...projects].find(project => project.title === selectTitle) : projects;
+  const renderOptions = projects ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
 
   const handleSelect = (e) => {
-    setSelectTitle(e.target.value)
-
+    setProjectId(e.target.value)
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch(`/projects/${projectId}`)
+    .then(r => r.json())
+    .then(project => dispatch(setCurrentProject(project)));
+
+    window.location.reload();
+  };
+
+  console.log(projectId)
 
   return (
     <div>
       <div>
-        <label>Select Project
-            <select onChange={handleSelect} value={selectTitle}  >
+          <form onSubmit={handleSubmit}>
+            <select onChange={handleSelect} value={projectId}  >
               {renderOptions}
             </select>
-        </label>
+            <button type='submit'>Select Project</button>
+          </form>
       </div>
-      <ProjectTable currentProject={currentProject} selectTitle={selectTitle} />
+      <ProjectTable projects={projects} projectId={projectId}  />
 
     </div>
   )

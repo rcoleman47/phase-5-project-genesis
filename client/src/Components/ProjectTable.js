@@ -1,6 +1,20 @@
-export default function ProjectTable({currentProject}) {
-  console.log(currentProject)
-  const renderBudget = currentProject?.length > 0 ? currentProject[0].budget_items.map(item => {
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { setCurrentProject } from '../Redux/Reducers/projects';
+
+export default function ProjectTable({projects, projectId}) {
+  const currentProject = useSelector(state => state.projects.currentProject);
+
+  const dispatch = useDispatch();
+  console.log(projects)
+
+  useEffect(() => {
+    fetch(`/projects/${projectId}`)
+    .then(r => r.json())
+    .then(project => dispatch(setCurrentProject(project)));
+  }, [projectId])
+
+  const renderBudget = currentProject ? currentProject.budget_items.map(item => {
     return (
       <tr key={item.id}>
         <td>{item.cost_code}</td>
@@ -13,7 +27,20 @@ export default function ProjectTable({currentProject}) {
         <td>{item.notes}</td>
       </tr>
     )
-  } ) : <th style={{alignSelf: 'center', color: 'orange'}}>No Budget Items</th>;
+  } ) : projects ? currentProject.budget_items.map(item => {
+    return (
+      <tr key={item.id}>
+        <td>{item.cost_code}</td>
+        <td>{item.unit_quantity}</td>
+        <td>{item.unit}</td>
+        <td>${item.unit_cost.toLocaleString()}</td>
+        <td>{item.taxed ? '✓' : 'x'}</td>
+        <td>{item.subcontracted ? '✓' : 'x'}</td>
+        <td>${item.total.toLocaleString()}</td>
+        <td>{item.notes}</td>
+      </tr>
+    )
+  } ) : <tr><td style={{alignSelf: 'center', color: 'orange'}}>No Budget Items</td></tr>;
 
   return (
     <table>
@@ -34,7 +61,7 @@ export default function ProjectTable({currentProject}) {
       <thead>
         <tr>
           <th>Total:</th>
-          <th>$</th>
+          <th>${currentProject.total.toLocaleString()}</th>
         </tr>
       </thead>
     </table>
