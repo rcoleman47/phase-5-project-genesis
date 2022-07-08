@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-export default function DashPagination({ projectsPerPage, totalProjects, paginate}) {
+export default function ProjectPagination({ projectsPerPage, totalProjects, paginate}) {
   const [active, setActive] = useState(1);
 
   const pageNumbers = [];

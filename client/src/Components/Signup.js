@@ -61,7 +61,7 @@ export default function Signup() {
           password_confirmation: ''
         });
 
-        navigate('/');
+        navigate('/projects');
         
       } else r.json().then(json=>setErrors(json.error));
     })

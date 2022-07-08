@@ -1,59 +1,49 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { setCurrentProject } from '../Redux/Reducers/projects';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import ProjectTable from './ProjectTable';
-
+import ProjectPagination from './ProjectPagination';
 
 export default function Projects() {
+  const [sort, setSort] = useState('default');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage] = useState(10);
+
   const projects = useSelector(state => state.projects.allProjects);
-  const currentProject = useSelector(state => state.projects.currentProject);
-
-  const [projectId, setProjectId] = useState(projects?.[0].id);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    setProjectId(JSON.parse(window.localStorage.getItem('projectId')));
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem('projectId', projectId);
-  }, [projectId]);
-
-  useEffect(() => {
-    fetch(`/projects/${projectId}`)
-    .then(r => r.json())
-    .then(project => dispatch(setCurrentProject(project)));
-  }, [projectId])
-
-  const renderOptions = projects ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
 
   const handleSelect = (e) => {
-    setProjectId(e.target.value)
+    setSort(e.target.value);
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch(`/projects/${projectId}`)
-  //   .then(r => r.json())
-  //   .then(project => dispatch(setCurrentProject(project)));
+  const totalProjects = projects?.length
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projects?.length ? [...projects]?.slice(indexOfFirstProject, indexOfLastProject) : undefined;
+  
+  const renderDashboard = projects ? <ProjectTable sort={sort} currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
 
-  //   // window.location.reload();
-  // };
+  const paginate = (number) => setCurrentPage(number);
 
   return (
-    <div className='projects'>
+    <div className='dashboard'>
       <div>
-          {/* <form onSubmit={handleSubmit}> */}
-            <select onChange={handleSelect} value={projectId}  >
-              {renderOptions}
-            </select>
-            {/* <button type='submit'>Select Project</button> */}
-          {/* </form> */}
+        <label>Filter
+          <select onChange={handleSelect} value={sort}>
+            <option value='default' >Default</option>
+            <option value='title' >Name</option>
+            <option value='phase' >Phase</option>
+            <option value='sector' >Sector</option>
+            <option value='classification'>Classification</option>
+          </select>
+        </label>
+       
       </div>
-      <ProjectTable projects={projects} projectId={projectId}  />
 
+      {renderDashboard}
+
+      <ProjectPagination 
+        projectsPerPage={projectsPerPage}
+        totalProjects={totalProjects} 
+        paginate={paginate} />
     </div>
   )
 }

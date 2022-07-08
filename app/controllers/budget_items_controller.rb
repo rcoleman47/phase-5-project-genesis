@@ -32,7 +32,7 @@ class BudgetItemsController < ApplicationController
   private
 
   def budget_item_params
-    params.permit(:cost_code, :unit_quantity, :unit_cost, :unit, :taxed, :subcontracted, :notes, :project_id)
+    params.permit(:division, :cost_code, :unit_quantity, :unit_cost, :unit, :taxed, :subcontracted, :notes, :project_id)
   end
 
   def budget_item

@@ -49,7 +49,7 @@ export default function Login() {
           password: '',
         });
 
-        navigate('/dashboard');
+        navigate('/projects');
 
       } else r.json().then(json=>setError(json.error));
     })

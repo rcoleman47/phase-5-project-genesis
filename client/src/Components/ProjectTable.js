@@ -1,61 +1,46 @@
-import { useSelector} from 'react-redux';
+export default function ProjectTable({currentProjects, sort}) {
+  console.log(currentProjects)
 
-export default function ProjectTable({projects}) {
-  const currentProject = useSelector(state => state.projects.currentProject);
-
-  const renderBudget = currentProject.budget_items ? currentProject?.budget_items.slice().sort((a, b) => {
-    return a.cost_code[0] - b.cost_code[0]
-  }).map(item => {
+  const renderProjects = currentProjects ? [...currentProjects].sort((a, b) => {
+    if(sort === 'title'){
+      return a.title.localeCompare(b.title);
+    } else if(sort === 'phase'){
+        return b.phase.localeCompare(a.phase);
+    } else if(sort === 'sector'){
+        return a.sector.localeCompare(b.sector);
+    } else if(sort === 'classification'){
+        return a.classification.localeCompare(b.classification);
+    } else{
+        return a.id - b.id
+      }
+    }).map(project => {
     return (
-      <tr key={item.id}>
-        <td>{item.cost_code}</td>
-        <td>{item.unit_quantity}</td>
-        <td>{item.unit}</td>
-        <td>${item.unit_cost.toLocaleString()}</td>
-        <td>{item.taxed ? '✓' : 'x'}</td>
-        <td>{item.subcontracted ? '✓' : 'x'}</td>
-        <td>${item.total.toLocaleString()}</td>
-        <td>{item.notes}</td>
+      <tr key={project.id}>
+        <td>{project.title}</td>
+        <td>{project.location}</td>
+        <td>{project.phase}</td>
+        <td>{project.sector}</td>
+        <td>{project.classification}</td>
+        <td>{project.size.toLocaleString()} sf</td>
       </tr>
     )
-  } ) : projects ? projects[0].budget_items.map(item => {
-    return (
-      <tr key={item.id}>
-        <td>{item.cost_code}</td>
-        <td>{item.unit_quantity}</td>
-        <td>{item.unit}</td>
-        <td>${item.unit_cost.toLocaleString()}</td>
-        <td>{item.taxed ? '✓' : 'x'}</td>
-        <td>{item.subcontracted ? '✓' : 'x'}</td>
-        <td>${item.total.toLocaleString()}</td>
-        <td>{item.notes}</td>
-      </tr>
-    )
-  } ) : <tr><td style={{alignSelf: 'center', color: 'orange'}}>No Budget Items</td></tr>;
+  } ) : <tr><th>No Current Projects</th></tr>
 
   return (
     <table>
       <thead>
         <tr>
-          <th>Cost Code:</th>
-          <th>Unit Quantitiy:</th>
-          <th>Unit:</th>
-          <th>Unit Cost:</th>
-          <th>Taxed:</th>
-          <th>Subcontracted:</th>
-          <th>Total:</th>
-          <th>Notes:</th>
+          <th>Project Name:</th>
+          <th>Location:</th>
+          <th>Phase:</th>
+          <th>Sector:</th>
+          <th>Classification:</th>
+          <th>Size:</th>
         </tr>
       </thead>
       <tbody>
-          {renderBudget}
+          {renderProjects}
       </tbody>
-      <thead style={{border: 'none'}}>
-        <tr>
-          <th>Total:</th>
-          <th>${currentProject?.total ? currentProject.total.toLocaleString() : '' }</th>
-        </tr>
-      </thead>
     </table>
   )
 }

@@ -7,8 +7,8 @@ import { mount } from '../Redux/Reducers/company';
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
-import Dashboard from './Dashboard';
 import Projects from './Projects';
+import Estimates from './Estimates';
 import Subcontractors from './Subcontractors';
 import '../App.css';
 
@@ -42,8 +42,8 @@ function App() {
         <Route path='/register' element={ <Registration /> } />
         
         <Route index='/' element={ <Home /> } >
-          <Route path='/dashboard' element={ <Dashboard /> } />
           <Route path='/projects' element={ <Projects /> } />
+          <Route path='/estimates' element={ <Estimates /> } />
           <Route path='/subcontractors' element={ <Subcontractors /> } />
         </Route>
       </Routes>
