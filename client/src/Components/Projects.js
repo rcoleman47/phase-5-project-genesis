@@ -30,7 +30,7 @@ export default function Projects() {
   console.log(projectId)
 
   return (
-    <div>
+    <div className='projects'>
       <div>
           <form onSubmit={handleSubmit}>
             <select onChange={handleSelect} value={projectId}  >

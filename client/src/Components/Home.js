@@ -2,7 +2,7 @@ import { Outlet, useNavigate, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
-import { setProjects, setCurrentProject } from '../Redux/Reducers/projects';
+import { setProjects } from '../Redux/Reducers/projects';
 
 
 
@@ -17,7 +17,6 @@ export default function Home() {
     .then(r => r.json())
     .then(projects => {
       dispatch(setProjects(projects))
-      // dispatch(setCurrentProject(projects[0]))
     })
   }, [])
 

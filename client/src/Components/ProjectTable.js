@@ -53,12 +53,13 @@ export default function ProjectTable({projects, projectId}) {
           <th>Taxed:</th>
           <th>Subcontracted:</th>
           <th>Total:</th>
+          <th>Notes:</th>
         </tr>
       </thead>
       <tbody>
           {renderBudget}
       </tbody>
-      <thead>
+      <thead style={{border: 'none'}}>
         <tr>
           <th>Total:</th>
           <th>${currentProject.total.toLocaleString()}</th>
