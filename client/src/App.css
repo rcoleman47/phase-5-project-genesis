@@ -21,6 +21,11 @@ code {
   flex-direction: column;
 }
 
+button:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+
 /* projects */
 .projects-container {
   display: flex;
@@ -122,6 +127,10 @@ code {
   width: 100%;
   margin-top: 25px;
 }
+.dashboard-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
 .dashboard label {
   display: block;
@@ -132,7 +141,7 @@ code {
 }
 
 .dashboard select {
-  display: block;
+  display: inline;
   height: 25px;
   width: 150px;
   padding: auto;
@@ -144,9 +153,17 @@ code {
   outline: none;
 }
 
+
 .dashboard select:hover {
   border: 2px solid;
   border-color: orange;
+}
+
+.dashboard-buttons button {
+  display: inline;
+  margin-right: 10%;
+  margin-top: 1%;
+  height: 25px;
 }
 
 .dashboard table {

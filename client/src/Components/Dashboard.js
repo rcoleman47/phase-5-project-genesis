@@ -23,9 +23,13 @@ export default function Dashboard() {
 
   const paginate = (number) => setCurrentPage(number);
 
+  const handleClick = () => {
+
+  }
+
   return (
     <div className='dashboard'>
-      <div>
+      <div className='dashboard-buttons' >
         <label>Filter
           <select onChange={handleSelect} value={sort}>
             <option value='default' >Default</option>
@@ -36,6 +40,7 @@ export default function Dashboard() {
           </select>
         </label>
        
+        <button onClick={handleClick} >Create New Project</button>
       </div>
 
       {renderDashboard}

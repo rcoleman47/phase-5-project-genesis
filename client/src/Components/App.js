@@ -14,10 +14,6 @@ import Directory from './Directory';
 import '../App.css';
 
 
-
-
-
-
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
