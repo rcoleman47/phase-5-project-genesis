@@ -1,4 +1,4 @@
-export default function ProjectTable({currentProjects, sort}) {
+export default function DashboardTable({currentProjects, sort}) {
   console.log(currentProjects)
 
   const renderProjects = currentProjects ? [...currentProjects].sort((a, b) => {

@@ -1,7 +1,7 @@
 import ViewNavBar from "./ViewNavBar"
 import { Outlet } from 'react-router-dom';
 
-export default function EstimateContainer() {
+export default function ProjectContainer() {
   return (
     <div className='project-container'>
       <ViewNavBar />

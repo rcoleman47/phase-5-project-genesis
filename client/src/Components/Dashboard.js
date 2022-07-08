@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import ProjectTable from './ProjectTable';
-import ProjectPagination from './ProjectPagination';
+import DashboardTable from './DashboardTable';
+import DashPagination from './DashPagination';
 
-export default function Projects() {
+export default function Dashboard() {
   const [sort, setSort] = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage] = useState(10);
@@ -19,7 +19,7 @@ export default function Projects() {
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
   const currentProjects = projects?.length ? [...projects]?.slice(indexOfFirstProject, indexOfLastProject) : undefined;
   
-  const renderDashboard = projects ? <ProjectTable sort={sort} currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
+  const renderDashboard = projects ? <DashboardTable sort={sort} currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
 
   const paginate = (number) => setCurrentPage(number);
 
@@ -40,7 +40,7 @@ export default function Projects() {
 
       {renderDashboard}
 
-      <ProjectPagination 
+      <DashPagination 
         projectsPerPage={projectsPerPage}
         totalProjects={totalProjects} 
         paginate={paginate} />

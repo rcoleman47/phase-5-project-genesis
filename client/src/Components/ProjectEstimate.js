@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import EstimateTable from './EstimateTable';
 
 
-export default function Estimates() {
+export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const currentProject = useSelector(state => state.projects.currentProject);
 

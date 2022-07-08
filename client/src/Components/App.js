@@ -7,11 +7,12 @@ import { mount } from '../Redux/Reducers/company';
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
-import Projects from './Projects';
-import EstimateContainer from './EstimateContainer';
-import Estimates from './Estimates';
+import Dashboard from './Dashboard';
+import ProjectContainer from './ProjectContainer';
+import ProjectEstimate from './ProjectEstimate';
 import Subcontractors from './Subcontractors';
 import '../App.css';
+
 
 
 
@@ -43,12 +44,12 @@ function App() {
         <Route path='/register' element={ <Registration /> } />
         
         <Route index='/' element={ <Home /> } >
-          <Route path='/projects' element={ <Projects /> } />
-          <Route path='/e' element={ <EstimateContainer /> } >
-            <Route path='estimates' element={ <Estimates /> } />
-            <Route path='subcontractors' element={ <Subcontractors /> } />
+          <Route path='/dashboard' element={ <Dashboard /> } />
+          <Route path='/project' element={ <ProjectContainer /> } >
+            <Route path='estimate' element={ <ProjectEstimate /> } />
+            
           </Route>
-          
+          <Route path='subcontractors' element={ <Subcontractors /> } />
         </Route>
       </Routes>
     </>

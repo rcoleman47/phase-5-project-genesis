@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 
 export default function ViewNavBar() {
-  const [view, setView] = useState('/e/estimates')
+  const [view, setView] = useState('/project/estimate')
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function ViewNavBar() {
     <div className='project-navbar' >
       <label>View
       <select onChange={handleSelect} value={view}>
-          <option value='/e/estimates' >Estimate</option>
+          <option value='/project/estimate' >Estimate</option>
           <option value='/subcontractors' >Subcontractors</option>
         </select>
       </label>
