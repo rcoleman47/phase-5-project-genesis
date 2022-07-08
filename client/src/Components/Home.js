@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
 import { setProjects } from '../Redux/Reducers/projects';
+import { getCodes } from '../Redux/Reducers/costcodes';
 
 
 
 export default function Home() {
   const company = useSelector(state => state.company.value);
+  
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,6 +19,14 @@ export default function Home() {
     .then(r => r.json())
     .then(projects => {
       dispatch(setProjects(projects))
+    })
+  }, [])
+
+  useEffect(() => {
+    fetch('/divisions')
+    .then(r => r.json())
+    .then(codes => {
+      dispatch(getCodes(codes))
     })
   }, [])
 
@@ -42,7 +52,7 @@ export default function Home() {
       <img src={company ? company.logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} to='/project/estimate'>Projects</NavLink>
-      <NavLink style={navStyle} to='/subcontractors'>Subcontractors</NavLink>
+      <NavLink style={navStyle} to='/directory'>Directory</NavLink>
 
       <button onClick={handleClick} >Log Out</button>
     </div>

@@ -26,8 +26,8 @@ export default function EstimateTable({projects}) {
         <td>{item.unit_quantity}</td>
         <td>{item.unit}</td>
         <td>${item.unit_cost.toLocaleString()}</td>
-        <td>{item.taxed ? '✓' : 'x'}</td>
-        <td>{item.subcontracted ? '✓' : 'x'}</td>
+        <td>{item.taxed ? 'Yes' : 'No'}</td>
+        <td>{item.subcontracted ? 'Yes' : 'No'}</td>
         <td>${item.total.toLocaleString()}</td>
         <td>{item.notes}</td>
       </tr>

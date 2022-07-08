@@ -10,8 +10,9 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import ProjectContainer from './ProjectContainer';
 import ProjectEstimate from './ProjectEstimate';
-import Subcontractors from './Subcontractors';
+import Directory from './Directory';
 import '../App.css';
+
 
 
 
@@ -49,7 +50,7 @@ function App() {
             <Route path='estimate' element={ <ProjectEstimate /> } />
             
           </Route>
-          <Route path='subcontractors' element={ <Subcontractors /> } />
+          <Route path='directory' element={ <Directory /> } />
         </Route>
       </Routes>
     </>

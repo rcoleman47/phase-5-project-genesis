@@ -5,6 +5,7 @@ import companyReducer from './Reducers/company';
 import projectsReducer from './Reducers/projects';
 import searchReducer from './Reducers/search';
 import storage from 'redux-persist/lib/storage';
+import costCodesReducer from './Reducers/costcodes';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   company: companyReducer,
   projects: projectsReducer,
   search: searchReducer,
+  costCodes: costCodesReducer,
 });
 
 const persistConfig = {

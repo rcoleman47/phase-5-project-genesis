@@ -52,7 +52,7 @@ export default function ProjectEstimate() {
             {/* <button type='submit'>Select Project</button> */}
           {/* </form> */}
       </div>
-      <EstimateTable projects={projects} projectId={projectId}  />
+      <EstimateTable projects={projects} />
     </>
   )
 }
