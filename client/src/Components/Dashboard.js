@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import DashboardTable from './DashboardTable';
 import DashPagination from './DashPagination';
 
@@ -14,6 +15,8 @@ export default function Dashboard() {
     setSort(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   const totalProjects = projects?.length
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
@@ -24,7 +27,7 @@ export default function Dashboard() {
   const paginate = (number) => setCurrentPage(number);
 
   const handleClick = () => {
-
+    navigate('/projects/new')
   }
 
   return (

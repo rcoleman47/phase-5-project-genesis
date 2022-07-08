@@ -13,7 +13,10 @@ export const projectsSlice = createSlice({
       state.allProjects = action.payload},
     setCurrentProject: (state, action) => {
       state.currentProject = action.payload
-    }
+    },
+    updateCurrentProject: (state, action) => {
+      state.currentProject = [...state].currentProject.filter(attr => attr.id !== action.payload.id)
+    },
   },
 })
 

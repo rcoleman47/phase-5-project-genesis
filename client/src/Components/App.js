@@ -1,5 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Redux/Reducers/user';
@@ -11,6 +10,7 @@ import Dashboard from './Dashboard';
 import ProjectContainer from './ProjectContainer';
 import ProjectEstimate from './ProjectEstimate';
 import Directory from './Directory';
+import NewProjectForm from './NewProjectForm';
 import '../App.css';
 
 
@@ -46,6 +46,7 @@ function App() {
             <Route path='estimate' element={ <ProjectEstimate /> } />
             
           </Route>
+          <Route path='/projects/new' element={ <NewProjectForm /> } />
           <Route path='directory' element={ <Directory /> } />
         </Route>
       </Routes>
