@@ -117,6 +117,64 @@ button:hover {
   border: 1px solid black;
 }
 
+/* Create new project */
+.project-form-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.new-project-form {
+  display: flex;
+  margin-top: 100px;
+}
+.new-project-form label{
+  display: block;
+  text-align: center;
+  margin-left: 10px;
+}
+.new-project-form input{
+  display: block;
+  height: 25px;
+  width: 150px;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+}
+.new-project-form select{
+  display: block;
+  height: 31px;
+  width: 158px;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+ 
+}
+.new-project-form input[type='submit']{
+  display: inline;
+  margin-top: 19px;
+  width: 90px;
+  height: 31px;
+}
+
+.new-project-form select:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+.new-project-form input:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+
 /* Dashboard */
 
 .dashboard {

@@ -2,7 +2,6 @@ import { useSelector} from 'react-redux';
 
 export default function EstimateTable({projects}) {
   const currentProject = useSelector(state => state.projects.currentProject);
-  console.log(currentProject.budget_items[0].division.split(' ')[1]);
 
   const renderBudget = currentProject.budget_items ? currentProject?.budget_items.slice().sort((a, b) => {
     return a.division.split(' ')[1] - b.division.split(' ')[1]

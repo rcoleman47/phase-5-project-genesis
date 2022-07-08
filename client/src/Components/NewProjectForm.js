@@ -53,7 +53,7 @@ export default function NewProjectForm() {
 
 
   return (
-    <div>
+    <div className='project-form-container'>
          
       <form className='new-project-form' onSubmit={handleSubmit} >
 
@@ -95,7 +95,7 @@ export default function NewProjectForm() {
           <select 
             name='sector'
             type='text' 
-            value={phase} 
+            value={sector} 
             onChange={handleChange}>
               <option value={'Restaurant'}>Restaurant</option>
               <option value={'Medical'}>Medical</option>
@@ -111,7 +111,7 @@ export default function NewProjectForm() {
           <select 
             name='classification'
             type='text' 
-            value={phase} 
+            value={classification} 
             onChange={handleChange}>
               <option value={'New Construction'}>New Construction</option>
               <option value={'Remodel'}>Remodel</option>
