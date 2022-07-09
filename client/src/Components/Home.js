@@ -2,13 +2,14 @@ import { Outlet, useNavigate, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
-import { setProjects, removeCurrentProject } from '../Redux/Reducers/projects';
+import { setProjects, removeCurrentProject, setProjectId } from '../Redux/Reducers/projects';
 import { getCodes } from '../Redux/Reducers/costcodes';
 
 
 
 export default function Home() {
   const company = useSelector(state => state.company.value);
+  const projects = useSelector(state => state.projects.allProjects);
   
 
   const dispatch = useDispatch();
@@ -37,6 +38,10 @@ export default function Home() {
   });
 
   const handleClick = () => {
+    dispatch(setProjectId(projects?.[0].id))
+  };
+
+  const handleLogOut= () => {
     fetch('/logout', {
       method: 'DELETE',
     });
@@ -44,7 +49,6 @@ export default function Home() {
     dispatch(logout()); 
 
     dispatch(removeCurrentProject());
-    localStorage.clear();
     
     navigate('/login'); 
   };
@@ -54,10 +58,10 @@ export default function Home() {
       <div className='viewNavContainer' >
       <img src={company ? company.logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} to='/dashboard'>Dashboard</NavLink>
-      <NavLink style={navStyle} to='/project/estimate'>Projects</NavLink>
+      <NavLink style={navStyle} onClick={handleClick} to='/project/estimate'>Projects</NavLink>
       <NavLink style={navStyle} to='/directory'>Directory</NavLink>
       
-      <button onClick={handleClick} >Log Out</button>
+      <button onClick={handleLogOut} >Log Out</button>
       </div>
       <Outlet />
     </div>

@@ -21,7 +21,7 @@ export default function EstimateForm() {
         <DivisionSelector />
 
         <div className='budgetItem-container'>
-          {project.budget_items?.length > 0 ? budgetItemTableHeader : ''}
+          {project?.budget_items?.length > 0 ? budgetItemTableHeader : ''}
           {renderBudgetItems}
         </div>
 

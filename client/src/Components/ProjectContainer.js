@@ -1,15 +1,15 @@
-import ViewNavBar from "./ViewNavBar"
+import ViewNavBar from "./ViewNavBar";
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
 
 export default function ProjectContainer() {
-  const [view, setView] = useState(true);
+  const view = useSelector(state => state.projects.viewProject);
 
   return (
     <div className='project-container'>
         <ViewNavBar />
       <div className={view ? 'projects' : 'estimate-form-container'}>
-        <Outlet context={[view, setView]}/>
+        <Outlet />
       </div>
     </div>
   )
