@@ -50,7 +50,7 @@ button:hover {
   /* margin: 20px 0px 40px 40px; */
 }
 .project-navbar {
-  display: flex;
+  display: block;
   justify-content: center;
   align-self: center;
   width: 10%;
@@ -220,6 +220,20 @@ button:hover {
   width: 90px;
   height: 31px;
 }
+
+.estimate-form-view {
+  margin-left: 200px;
+}
+
+.estimate-form-view select {
+  height: 25px;
+  text-align: center;
+}
+
+.estimate-form-view button {
+  margin-left: 5px;
+}
+
 .budgetItem-container{
   display: flex;
   flex-direction: column;
@@ -460,8 +474,6 @@ button:hover {
 }
 
 .box input[type = "submit"]{
-  border:0;
-  background: none;
   display: block;
   margin: 20px auto;
   text-align: center;
@@ -471,6 +483,7 @@ button:hover {
   color: black;
   transition: 0.25s;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .box input[type = "submit"]:hover{

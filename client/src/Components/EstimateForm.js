@@ -14,9 +14,9 @@ export default function EstimateForm() {
 
   return (
     <div>
-      <div className="page-title">
+      {/* <div className="page-title">
         <h1 style={{color: 'orange'}}>{project?.title} Project Estimate</h1>
-      </div>
+      </div> */}
       <div className='estimate-form-container'>
         <DivisionSelector />
 

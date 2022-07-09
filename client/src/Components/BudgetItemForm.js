@@ -32,7 +32,6 @@ export default function BudgetItemForm({budget_item}) {
     });
     
   };
-  console.log(budget_item?.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
