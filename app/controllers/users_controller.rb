@@ -21,7 +21,12 @@ class UsersController < ApplicationController
   def create
     if user = User.create!(user_params)
       UserMailer.with(user: user, company: Company.find(user.company_id)).welcome_email.deliver_later
-      render json: user, status: 201
+      if user.company.users.count == 1
+        session[:current_user] = user.id
+        render json: user, status: 201
+      else
+        render json: user, status: 201
+      end
     end
   end
 

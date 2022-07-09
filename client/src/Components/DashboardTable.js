@@ -25,21 +25,26 @@ export default function DashboardTable({currentProjects, sort}) {
     )
   } ) : <tr><th>No Current Projects</th></tr>
 
+  const renderTable = 
+  <table>
+    <thead>
+      <tr>
+        <th>Project Name:</th>
+        <th>Location:</th>
+        <th>Phase:</th>
+        <th>Sector:</th>
+        <th>Classification:</th>
+        <th>Size:</th>
+      </tr>
+    </thead>
+    <tbody>
+        {renderProjects}
+    </tbody>
+</table>
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Project Name:</th>
-          <th>Location:</th>
-          <th>Phase:</th>
-          <th>Sector:</th>
-          <th>Classification:</th>
-          <th>Size:</th>
-        </tr>
-      </thead>
-      <tbody>
-          {renderProjects}
-      </tbody>
-    </table>
+    <>
+      {currentProjects ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Start A New Project!</h1>}
+    </>
   )
 }

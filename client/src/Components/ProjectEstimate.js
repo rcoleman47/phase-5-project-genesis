@@ -9,7 +9,7 @@ export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const currentProject = useSelector(state => state.projects.currentProject);
 
-  const [projectId, setProjectId] = useState(projects?.[0].id);
+  const [projectId, setProjectId] = useState(projects?.[0]?.id);
 
   const dispatch = useDispatch();
 
@@ -22,12 +22,14 @@ export default function ProjectEstimate() {
   }, [projectId]);
 
   useEffect(() => {
-    fetch(`/projects/${projectId}`)
-    .then(r => r.json())
-    .then(project => dispatch(setCurrentProject(project)));
+    if (projectId) {
+      fetch(`/projects/${projectId}`)
+      .then(r => r.json())
+      .then(project => dispatch(setCurrentProject(project)));
+    }
   }, [projectId])
 
-  const renderOptions = projects ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
+  const renderOptions = projects?.length > 0 ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
 
   const handleSelect = (e) => {
     setProjectId(e.target.value)

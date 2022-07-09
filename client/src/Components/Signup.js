@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../Redux/Reducers/user';
-import { mount } from '../Redux/Reducers/company';
 import { finished } from '../Redux/Reducers/register';
 
 export default function Signup() {
@@ -10,7 +9,8 @@ export default function Signup() {
   const [signUpForm, setSignUpForm] = useState({
     first_name: '',
     last_name: '',
-    roll: 'Executive',
+    role: 'Executive',
+    admin: true,
     email: '',
     password: '',
     password_confirmation: ''
@@ -47,7 +47,6 @@ export default function Signup() {
       if(r.ok){
         r.json().then( user => {
           dispatch(login(user))
-          dispatch(mount(user.company))
         });
 
         dispatch(finished());
@@ -55,7 +54,8 @@ export default function Signup() {
         setSignUpForm({
           first_name: '',
           last_name: '',
-          roll: 'Executive',
+          role: 'Executive',
+          admin: true,
           email: '',
           password: '',
           password_confirmation: ''

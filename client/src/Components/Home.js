@@ -2,7 +2,7 @@ import { Outlet, useNavigate, NavLink } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
-import { setProjects } from '../Redux/Reducers/projects';
+import { setProjects, removeCurrentProject } from '../Redux/Reducers/projects';
 import { getCodes } from '../Redux/Reducers/costcodes';
 
 
@@ -42,6 +42,9 @@ export default function Home() {
     });
     
     dispatch(logout()); 
+
+    dispatch(removeCurrentProject());
+    localStorage.clear();
     
     navigate('/login'); 
   };

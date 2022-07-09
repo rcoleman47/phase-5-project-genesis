@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { created } from '../Redux/Reducers/register';
+import { mount } from '../Redux/Reducers/company';
 
 export default function NewCompanyForm() {
   const [errors, setErrors] = useState();
@@ -37,7 +38,7 @@ export default function NewCompanyForm() {
     })
     .then( r => {
       if(r.ok){
-        r.json().then( company => console.log(company));
+        r.json().then( company => dispatch(mount(company)));
 
         setNewCompanyForm({
           name: '',
@@ -88,11 +89,12 @@ export default function NewCompanyForm() {
         
         <input type='submit' name='submit' />
 
-        {errors ? errors.map(e => <h5 style={{color: 'orange'}}>{e}</h5> ): null}
+       
 
         <Link style={{color: '#00BFFF'}} to='/login'>Log in to existing account</Link>   
 
       </form>
+      {errors ? errors.map(e => <h5 style={{color: 'orange'}}>{e}</h5> ): null}
     </div>
   )
 }
