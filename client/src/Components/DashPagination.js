@@ -19,6 +19,7 @@ export default function DashPagination({ projectsPerPage, totalProjects, paginat
       }}
       style={{
         background: active === number ? 'orange' : '#c0c0c0',
+        fontWeight: active === number ? '800' : '100',
       }} >
         {number}
     </button>

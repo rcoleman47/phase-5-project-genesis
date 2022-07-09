@@ -21,6 +21,10 @@ code {
   flex-direction: column;
 }
 
+button {
+  height: 25px;
+}
+
 button:hover {
   border: 2px solid;
   border-color: orange;
@@ -60,7 +64,6 @@ button:hover {
   margin-top: 10px;
   text-align: center;
   align-self: right;
-  appearance: none; 
   display: block;
 }
 
@@ -173,6 +176,7 @@ button:hover {
 .new-project-form input:hover {
   border: 2px solid;
   border-color: orange;
+  border-radius: 5%;
 }
 
 
@@ -334,7 +338,9 @@ button:hover {
   display: inline;
   margin-right: 10%;
   margin-top: 1%;
-  height: 25px;
+  height: 31px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .dashboard table {
@@ -389,6 +395,9 @@ button:hover {
   float: right;
   align-self: center;
   margin: 0 10px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
 }
 
 /* Login/Signup */

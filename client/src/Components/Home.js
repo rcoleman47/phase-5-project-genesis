@@ -56,9 +56,9 @@ export default function Home() {
       <NavLink style={navStyle} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} to='/project/estimate'>Projects</NavLink>
       <NavLink style={navStyle} to='/directory'>Directory</NavLink>
-
+      
       <button onClick={handleClick} >Log Out</button>
-    </div>
+      </div>
       <Outlet />
     </div>
   )

@@ -1,11 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 
 export default function ViewNavBar() {
   const [view, setView] = useState('/project/estimate')
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(()=> {

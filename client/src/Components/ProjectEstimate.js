@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { setCurrentProject } from '../Redux/Reducers/projects';
 import { useEffect } from 'react';
@@ -7,11 +8,11 @@ import EstimateTable from './EstimateTable';
 
 export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
-  const currentProject = useSelector(state => state.projects.currentProject);
 
   const [projectId, setProjectId] = useState(projects?.[0]?.id);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setProjectId(JSON.parse(window.localStorage.getItem('projectId')));
@@ -35,24 +36,18 @@ export default function ProjectEstimate() {
     setProjectId(e.target.value)
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch(`/projects/${projectId}`)
-  //   .then(r => r.json())
-  //   .then(project => dispatch(setCurrentProject(project)));
-
-  //   // window.location.reload();
-  // };
+  const handleClick = () => {
+    navigate('/projects/estimate')
+  };
 
   return (
     <>
       <div>
-          {/* <form onSubmit={handleSubmit}> */}
-            <select onChange={handleSelect} value={projectId}  >
-              {renderOptions}
-            </select>
-            {/* <button type='submit'>Select Project</button> */}
-          {/* </form> */}
+        <select onChange={handleSelect} value={projectId}  >
+          {renderOptions}
+        </select>
+
+        <button onClick={handleClick} >Edit Project</button>
       </div>
       <EstimateTable projects={projects} />
     </>
