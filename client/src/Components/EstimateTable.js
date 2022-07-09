@@ -4,7 +4,7 @@ export default function EstimateTable({projects}) {
   const currentProject = useSelector(state => state.projects.currentProject);
 
   const renderBudget = currentProject.budget_items ? currentProject?.budget_items.slice().sort((a, b) => {
-    return a.division.split(' ')[1] - b.division.split(' ')[1]
+    return a.division.split(' ')[1] - b.division.split(' ')[1] || a.cost_code.split(' ')[0] - b.cost_code.split(' ')[0]
   }).map(item => {
     return (
       <tr key={item.id}>
