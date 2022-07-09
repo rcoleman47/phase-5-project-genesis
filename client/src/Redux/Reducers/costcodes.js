@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   all: undefined,
   currentDiv: undefined,
-  currentCodes: undefined,
+  currentDivCodes: undefined,
+  currentCode: undefined,
 };
 
 export const costCodeSlice = createSlice({
@@ -16,7 +17,10 @@ export const costCodeSlice = createSlice({
     setCurrentDiv: (state, action) =>{
       state.currentDiv = action.payload
     },
-    setCurrentCodes: (state, action) =>{
+    setCurrentDivCodes: (state, action) =>{
+      state.currentDivCodes = action.payload
+    },
+    setCurrentCode: (state, action) =>{
       state.currentCode = action.payload
     }
 
@@ -24,6 +28,6 @@ export const costCodeSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { getCodes, setCurrentCodes, setCurrentDiv } = costCodeSlice.actions
+export const { getCodes, setCurrentDivCodes, setCurrentDiv, setCurrentCode } = costCodeSlice.actions
 
 export default costCodeSlice.reducer

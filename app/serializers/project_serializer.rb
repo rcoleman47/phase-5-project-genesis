@@ -4,6 +4,11 @@ class ProjectSerializer < ActiveModel::Serializer
   has_many :budget_items
   
   def cost_per_sf
-    (object.total / object.size).round
+    if object.budget_items.length > 0
+      (object.total / object.size).round
+    else
+      0
+    end
   end
+  
 end

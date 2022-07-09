@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { setCurrentDiv, setCurrentCodes } from '../Redux/Reducers/costcodes';
-import { addCurrentProjectItem } from '../Redux/Reducers/projects';
+import { setCurrentDiv, setCurrentDivCodes, setCurrentCode } from '../Redux/Reducers/costcodes';
+import { setCurrentProject} from '../Redux/Reducers/projects';
 import CostCodeSelector from './CostCodeSelector';
 
 
@@ -9,10 +9,13 @@ import CostCodeSelector from './CostCodeSelector';
 export default function DivisionSelector() {
   const divisions = useSelector(state => state.costCodes.all);
   const currentDiv = useSelector(state => state.costCodes.currentDiv);
+  const currentCode = useSelector(state => state.costCodes.currentCode);
+  const project = useSelector(state => state.projects.currentProject);
 
   const [error, setError] = useState(null);
-  const [codeId, setCodeId] = useState(undefined)
-  const [divisionId, setDivisionId] = useState(divisions?.[0].id);
+  const [codeId, setCodeId] = useState(currentDiv.cost_codes[0].id)
+  const [divisionId, setDivisionId] = useState(divisions[0].id);
+
 
   const dispatch = useDispatch();
 
@@ -21,11 +24,26 @@ export default function DivisionSelector() {
     .then(r => r.json())
     .then(division => {
       dispatch(setCurrentDiv(division))
-      dispatch(setCurrentCodes(division.cost_codes))
+      dispatch(setCurrentDivCodes(division.cost_codes))
     });
   }, [divisionId, codeId])
 
-  const renderDivisions = divisions ? divisions?.map(division => <option key={division.id} value={division.id}>{division.number}: {division.title}</option> ) : <option>No Current Divisions</option>;
+
+  useEffect(() => {
+    fetch(`/cost_codes/${codeId}`)
+    .then(r => {
+      if (r.ok){
+        r.json().then(code => {
+          dispatch(setCurrentCode(code))
+        })
+      }
+      else {
+        r.json().then(json=>console.log(json.error))};
+    });
+  }, [codeId]);
+
+
+  const renderDivisions = divisions ? divisions?.map(division => <option key={division.id} value={division?.id}>{division.number}: {division.title}</option> ) : <option>No Current Divisions</option>;
 
   const handleSelect = (e) => {
     setDivisionId(e.target.value)
@@ -38,19 +56,22 @@ export default function DivisionSelector() {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        division: divisionId,
-        cost_code: codeId,
+        division: currentDiv?.number,
+        cost_code: currentCode?.description,
         unit_quantity: 1,
-        unit: 'ls'
+        unit: 'ls',
+        unit_cost: 1000,
+        project_id: project.id
       })
     })
     .then(r=>{
       if(r.ok){ 
-        r.json().then(item => {
-          dispatch(addCurrentProjectItem(item))
+        r.json().then(project => {
+          dispatch(setCurrentProject(project))
         });
 
         setError(null);
+        window.location.reload();
 
       }
       else
@@ -60,7 +81,7 @@ export default function DivisionSelector() {
   };
 
   return (
-    <div>
+    <div className='estimate-form-selector'>
       <form onSubmit={handleSubmit} value={currentDiv ? currentDiv[0] : ''}>
         <select onChange={handleSelect} value={divisionId}  >
           {renderDivisions}
@@ -70,7 +91,7 @@ export default function DivisionSelector() {
 
         {error ? <h5>{error}</h5> : null}
 
-        <button type='submit'>Select Project</button>
+        <button type='submit'>Add Item</button>
       </form>
     </div>
   )

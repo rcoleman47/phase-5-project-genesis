@@ -8,11 +8,22 @@ export default function EstimateForm() {
 
   const renderBudgetItems = project?.budget_items ? project?.budget_items.map(item => <BudgetItemForm key={item.id} budget_item={item}/>) : <h3>Add Budget Items</h3>
 
+  const budgetItemTableHeader =<table><thead><tr><th>Division</th><th>Cost Code</th><th>Unit Quantity</th><th>Unit</th><th>Unit Cost</th><th>Taxed</th><th>Subcontracted</th><th>Total</th><th>Notes</th></tr></thead></table>
+
   return (
     <div>
-      <DivisionSelector />
+      <div className="page-title">
+        <h1 style={{color: 'orange'}}>{project?.title} Project Estimate</h1>
+      </div>
+      <div className='estimate-form-container'>
+        <DivisionSelector />
 
-      {renderBudgetItems}
+        <div className='budgetItem-container'>
+          {project.budget_items?.length > 0 ? budgetItemTableHeader : ''}
+          {renderBudgetItems}
+        </div>
+
+      </div>
 
     </div>
   )

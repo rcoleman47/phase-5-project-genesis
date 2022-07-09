@@ -175,6 +175,119 @@ button:hover {
   border-color: orange;
 }
 
+
+/* Add new project budgetItems */
+.page-title{
+  display: flex;
+  justify-content: space-evenly;
+}
+.estimate-form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.estimate-form-selector {
+  display: flex;
+  justify-content: center;
+}
+.estimate-form-selector form {
+  display: flex;
+  margin-top: 50px;
+  margin-left: 25px;
+} 
+
+.estimate-form-selector form select {
+  display: block;
+  height: 31px;
+  width: auto;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+}
+
+.estimate-form-selector button{
+  display: inline;
+  margin-left: 15px;
+  width: 90px;
+  height: 31px;
+}
+.budgetItem-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.budgetItem-container table{
+  width: 90%;
+  margin-left: 40px;
+}
+
+.budgetItem-container thead{
+  text-align: center;
+}
+
+.budgetItem-container th{
+  width: 150px;
+  align-items: left;
+}
+
+.budgetItem-form-container {
+  display: flex;
+  height: auto;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.budgetItem-form {
+  display: flex;
+ 
+}
+
+.budgetItem-form input{
+  display: block;
+  height: 25px;
+  width: 150px;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+}
+.budgetItem-form select{
+  display: block;
+  height: 31px;
+  width: 158px;
+  padding: auto;
+  align-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  outline: none;
+ 
+}
+.budgetItem-form input[type='submit']{
+  display: inline;
+  width: 90px;
+  height: 31px;
+}
+
+.budgetItem-form select:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+.budgetItem-form input:hover {
+  border: 2px solid;
+  border-color: orange;
+}
+
 /* Dashboard */
 
 .dashboard {

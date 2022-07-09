@@ -15,7 +15,7 @@ class BudgetItemsController < ApplicationController
 
   def create
     new_budget_item = BudgetItem.create!(budget_item_params)
-    render json: new_budget_item, status: 201
+    render json: new_budget_item.project, status: 201
   end
 
   def update

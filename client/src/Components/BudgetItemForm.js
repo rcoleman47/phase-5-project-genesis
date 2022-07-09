@@ -32,20 +32,20 @@ export default function BudgetItemForm({budget_item}) {
     });
     
   };
+  console.log(budget_item?.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/budget_item${budget_item?.id}`, {
+    fetch(`/budget_items/${budget_item?.id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(budgetItemForm)
     })
     .then(r=>{
       if(r.ok){ 
-        r.json().then(project => {
-          dispatch(addProject(project))
-          dispatch(setCurrentProject(project));
+        r.json().then(item => {
+          console.log(item);
         });
 
         setError(null);
@@ -58,42 +58,27 @@ export default function BudgetItemForm({budget_item}) {
 
 
   return (
-    <div className='project-form-container'>
+    <div className='budgetItem-form-container'>
          
-      <form className='new-project-form' onSubmit={handleSubmit} >
-
-        <label style={{fontWeight: '600'}}>
-          Division:
+      <form className='budgetItem-form' onSubmit={handleSubmit} >
           <input 
             name='division'
             type='text' 
             value={division} 
             readOnly
             />
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Cost Code:
           <input 
             name='cost_code'
             type='text' 
             value={cost_code} 
             readOnly
           />
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Unit Quantity:
           <input 
             name='unit_quantity'
             type='number' 
             value={unit_quantity} 
             onChange={handleChange}
           />
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Unit:
           <select 
             name='unit'
             type='text' 
@@ -107,20 +92,12 @@ export default function BudgetItemForm({budget_item}) {
               <option value={'sqft'}>sqft</option>
               <option value={'yds'}>yds</option>
             </select>
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Unit Cost:
           <input 
             name='unit_cost'
             type='text' 
             value={unit_cost} 
             onChange={handleChange}
           />
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Taxed:
           <select 
             name='taxed'
             type='text' 
@@ -129,10 +106,6 @@ export default function BudgetItemForm({budget_item}) {
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Subcontracted:
           <select 
             name='subcontracted'
             type='text' 
@@ -141,21 +114,22 @@ export default function BudgetItemForm({budget_item}) {
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
-        </label>
-
-        <label style={{fontWeight: '600'}}>
-          Notes:
+          <input 
+            name='unit_cost'
+            type='text' 
+            value={(unit_cost * unit_quantity)} 
+            readOnly
+          />
           <input 
             name='notes'
             type='text' 
             value={notes} 
-            readOnly
+            onChange={handleChange}
             />
-        </label>
 
         {error ? <h5>{error}</h5> : null}
 
-        <input type="submit" value="Create" />
+        <input type="submit" value="Update" />
 
       </form>
       

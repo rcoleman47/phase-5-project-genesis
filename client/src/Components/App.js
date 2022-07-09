@@ -11,6 +11,7 @@ import ProjectContainer from './ProjectContainer';
 import ProjectEstimate from './ProjectEstimate';
 import Directory from './Directory';
 import NewProjectForm from './NewProjectForm';
+import EstimateForm from './EstimateForm';
 import '../App.css';
 
 
@@ -40,13 +41,14 @@ function App() {
         <Route path='/login' element={ <Login /> } />
         <Route path='/register' element={ <Registration /> } />
         
-        <Route index='/' element={ <Home /> } >
+        <Route path='/' element={ <Home /> } >
           <Route path='/dashboard' element={ <Dashboard /> } />
           <Route path='/project' element={ <ProjectContainer /> } >
             <Route path='estimate' element={ <ProjectEstimate /> } />
             
           </Route>
           <Route path='/projects/new' element={ <NewProjectForm /> } />
+          <Route path='/projects/estimate' element={ <EstimateForm /> } />
           <Route path='directory' element={ <Directory /> } />
         </Route>
       </Routes>

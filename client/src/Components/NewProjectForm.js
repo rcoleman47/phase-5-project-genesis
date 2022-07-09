@@ -32,7 +32,6 @@ export default function NewProjectForm() {
     });
     
   };
-  console.log(projectForm)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ export default function NewProjectForm() {
         });
 
         setError(null);
-        navigate('/project/estimate')
+        navigate('/projects/estimate')
       }
       else
         r.json().then(json=>setError(json.error));

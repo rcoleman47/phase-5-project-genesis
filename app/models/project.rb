@@ -40,7 +40,11 @@ class Project < ApplicationRecord
   end
 
   def total
-    budget_items.all.map{|item| item.total}.sum
+    if budget_items.length > 0
+      budget_items.all.map{|item| item.total}.sum
+    else
+      0
+    end
   end
 
 end
