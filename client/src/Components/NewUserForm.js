@@ -16,7 +16,7 @@ export default function NewUserForm({setAddUser}) {
     cell_number: '',
     role: 'Project Manager',
     admin: false,
-    company_id: company?.[0].id,
+    company_id: company?.id,
   });
 
   const {first_name, last_name, email, password, cell_number, role, admin} = userForm;

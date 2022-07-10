@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateBudgetItem } from '../Redux/Reducers/projects';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateBudgetItem, setCurrentProject } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item}) {
   const [error, setError] = useState(null);
@@ -15,6 +15,8 @@ export default function BudgetItemForm({budget_item}) {
     subcontracted:   budget_item?.subcontracted,
     notes:           budget_item?.notes,
   });
+
+  const currentProject = useSelector(state => state.projects.currentProject);
 
   const {tax_rate} = budget_item
 
@@ -55,8 +57,9 @@ export default function BudgetItemForm({budget_item}) {
       if(r.ok){ 
         r.json().then(item => {
           dispatch(updateBudgetItem((item)));
+          console.log(item)
         });
-
+        setCurrentProject(currentProject)
         setError(null);
       }
       else

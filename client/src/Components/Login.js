@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { setProjects } from '../Redux/Reducers/projects';
 import { login } from '../Redux/Reducers/user';
 import { mount } from '../Redux/Reducers/company';
+import { finished } from '../Redux/Reducers/register';
 
 
 export default function Login() {
@@ -55,6 +56,10 @@ export default function Login() {
     })
   };
 
+  const handleClick = () => { 
+    dispatch(finished())
+  }
+
   return (
     <div>
       <form className='box' onSubmit={handleSubmit} >
@@ -78,7 +83,7 @@ export default function Login() {
 
         {error ? <h5 style={{color: 'orange'}}>{error}</h5> : null}
 
-        <Link style={{color: '#00BFFF'}} to='/register'>New company registration</Link>        
+        <Link onClick={handleClick} style={{color: '#00BFFF'}} to='/register'>New company registration</Link>        
       </form>
     </div>
   )

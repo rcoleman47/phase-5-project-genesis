@@ -20,7 +20,7 @@ export default function Directory() {
   const handleCompanySort = (e) => {
     setSort(e.target.value);
   };
-  console.log(users)
+  console.log(company.users)
 
   const handleSubSort = (e) => {
     setSubSort(e.target.value);
@@ -51,7 +51,7 @@ export default function Directory() {
   const paginate = (number) => setCurrentPage(number);
 
 
-  const renderCompanyDirectory = company?.[0].users ? <DirectoryTable sort={sort} company={company} users={users} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
+  const renderCompanyDirectory = company?.users ? <DirectoryTable sort={sort} company={company} users={users} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
 
   const renderSubDirectory = currentSubs ? [...currentSubs].map(sub =>  <SubDirectoryTable key={sub.id} sort={sort} subcontractor={sub} />) : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
 

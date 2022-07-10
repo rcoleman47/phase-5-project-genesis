@@ -5,6 +5,8 @@ import { login } from '../Redux/Reducers/user';
 import { finished } from '../Redux/Reducers/register';
 
 export default function Signup() {
+  const company = useSelector(state => state.company.company);
+
   const [errors, setErrors] = useState();
   const [signUpForm, setSignUpForm] = useState({
     first_name: '',
@@ -16,7 +18,8 @@ export default function Signup() {
     password_confirmation: ''
   });
 
-  const {id} = useSelector(state => state.company.value);
+console.log(company?.id)
+ 
 
   const { first_name, last_name, email, password, password_confirmation } = signUpForm;
 
@@ -31,7 +34,7 @@ export default function Signup() {
     setSignUpForm({
       ...signUpForm,
       [key]: value,
-      company_id: id
+      company_id: company?.id
     })
   };
 

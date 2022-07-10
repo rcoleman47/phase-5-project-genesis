@@ -40,12 +40,16 @@ export default function ProjectEstimate() {
     dispatch(editProject(!viewProject));
   };
 
+  const renderButton = projects?.length > 0 ? <button onClick={handleClick} >{buttonText}</button> : '';
+
+ 
+
   return (
     <>
       <div className={viewProject ? '' :'estimate-form-view'}>
         {viewProject ? renderSelect : ''}
 
-        <button onClick={handleClick} >{buttonText}</button>
+        {renderButton}
       </div>
 
       <div>

@@ -12,9 +12,12 @@ import { setSubs } from '../Redux/Reducers/subcontractors';
 export default function Home() {
   const user = useSelector(state => state.user.value);
   const projects = useSelector(state => state.projects.allProjects);
+  const company = useSelector(state => state.company.company);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  console.log(user)
 
   useEffect(() => {
     fetch('/projects')
@@ -25,11 +28,11 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch('/companies')
+    fetch(`/companies/${user?.company_id}`)
     .then(r => r.json())
     .then(company => {
       dispatch(mount(company))
-      dispatch(setUsers(company[0].users))
+      dispatch(setUsers(company?.users))
     })
   }, []);
 
@@ -57,7 +60,7 @@ export default function Home() {
   });
 
   const handleClick = () => {
-    dispatch(setProjectId(projects?.[0].id));
+    dispatch(setProjectId(projects?.[0]?.id));
     dispatch(editProject(true));
   };
 
@@ -67,8 +70,11 @@ export default function Home() {
     });
     
     dispatch(logout()); 
-
     dispatch(removeCurrentProject());
+    dispatch(setProjects(undefined));
+    dispatch(mount(undefined));
+    dispatch(setUsers(undefined));
+    dispatch(setSubs(undefined));
     
     navigate('/login'); 
   };

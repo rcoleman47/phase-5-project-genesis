@@ -1,6 +1,6 @@
 export default function DirectoryTable({company, users, sort}) {
 
-  const renderUsers = company?.[0].users ? [...users].sort((a, b) => {
+  const renderUsers = company?.users ? [...users].sort((a, b) => {
     if(sort === 'name'){
       return a.name.localeCompare(b.name);
     } else if(sort === 'role'){
@@ -24,7 +24,7 @@ export default function DirectoryTable({company, users, sort}) {
     <thead>
       <tr>
         <th style={{border: 'none', color: 'orange', fontWeight: '900'}}>
-          {company?.[0].name}
+          {company?.name}
         </th>
       </tr>
       <tr>
@@ -41,7 +41,7 @@ export default function DirectoryTable({company, users, sort}) {
 
   return (
     <>
-      {company?.[0].users  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Start A New Project!</h1>}
+      {company?.users  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Start A New Project!</h1>}
     </>
   )
 }
