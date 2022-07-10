@@ -52,8 +52,10 @@ export default function EstimateTable({projects}) {
   </tbody>
   <thead >
     <tr>
-      <th>Total:</th>
-      <th>${currentProject?.total ? currentProject.total.toLocaleString() : '' }</th>
+      <th style={{textAlign: 'right'}}>Total:</th>
+      <th style={{textAlign: 'left'}}>${currentProject?.total ? currentProject.total.toLocaleString() : '' }</th>
+      <th style={{textAlign: 'right'}}>Cost Per SF:</th>
+      <th style={{textAlign: 'left'}}>${currentProject?.cost_per_sf ? currentProject.cost_per_sf.toLocaleString() : '' }</th>
     </tr>
   </thead>
 </table>;

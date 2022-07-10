@@ -16,12 +16,10 @@ export default function ViewNavBar() {
 
   return (
     <div className='project-navbar' >
-      <label>View
       <select onChange={handleSelect} value={view}>
           <option value='/project/estimate' >Estimate</option>
           <option value='/subcontractors' >Subcontractors</option>
         </select>
-      </label>
     </div>
   )
 }

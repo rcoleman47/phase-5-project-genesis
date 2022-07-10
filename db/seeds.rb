@@ -10,7 +10,7 @@ CostCode.destroy_all
 Division.destroy_all
 
 
-# Company
+# # Company
 c1 = Company.create!(name: 'Schema Construction', city: Faker::Address.city, state: Faker::Address.state, address: Faker::Address.street_address, phone_number: Faker::PhoneNumber.cell_phone, logo: 'https://dcassetcdn.com/design_img/3623917/746674/746674_19904371_3623917_a90eaa26_image.jpg')
 
 # Users
@@ -72,7 +72,7 @@ roles = ['Project Manager', 'Estimator', 'Executive', 'Superintendent']
 
 sub_data = []
 
-20.times do 
+15.times do 
   sub_data_hash = {
     name: Faker::Company.name,
     phone_number: Faker::PhoneNumber.cell_phone,
@@ -83,17 +83,13 @@ sub_data = []
   sub_data << sub_data_hash
 end
 
-contact_data = []
 
-4.times do 
-  contact_data_hash = {
-    name: Faker::Name.name, 
-    cell_number: Faker::PhoneNumber.cell_phone, 
-    email: Faker::Internet.email,
-    role: roles.sample,
-  }
-  contact_data << contact_data_hash
-end
+contact_data = Array.new(15){Array.new(4){|a| a = {
+  name: Faker::Name.name, 
+  cell_number: Faker::PhoneNumber.cell_phone, 
+  email: Faker::Internet.email,
+  role: roles.sample,
+}}}
 
 Subcontractor.create_from_collection(sub_data, contact_data)
 

@@ -8,7 +8,7 @@ class Subcontractor < ApplicationRecord
 
 
   def self.create_from_collection(sub_data, contact_data)
-    sub_data.map{|sub| Subcontractor.create!(sub).contacts.create!(contact_data)}
+    sub_data.each_with_index.map{|s, i| Subcontractor.create!(s).contacts.create!(contact_data[i])}
   end
 
 end

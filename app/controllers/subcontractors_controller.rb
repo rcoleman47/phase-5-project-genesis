@@ -2,7 +2,7 @@ class SubcontractorsController < ApplicationController
   before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
-    render json: current_company.subcontractors
+    render json: current_user.company.subcontractors
   rescue
     sign_in_error
   end

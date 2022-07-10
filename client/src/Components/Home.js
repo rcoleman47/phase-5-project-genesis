@@ -29,6 +29,7 @@ export default function Home() {
       dispatch(getCodes(codes))
     })
   }, []);
+  
 
   const navStyle = ({isActive})=>({
     color: isActive ? "#ff8c00":"black",
@@ -60,8 +61,8 @@ export default function Home() {
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/project/estimate'>Projects</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>
-      
-      <button onClick={handleLogOut} >Log Out</button>
+     
+      <button style={{display: 'inline'}} onClick={handleLogOut} >Log Out</button>
       </div>
       <Outlet />
     </div>
