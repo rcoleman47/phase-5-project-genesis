@@ -21,6 +21,7 @@ export default function DashboardTable({currentProjects, sort}) {
         <td>{project.sector}</td>
         <td>{project.classification}</td>
         <td>{project.size.toLocaleString()} sf</td>
+        <td>${project.total.toLocaleString()}</td>
       </tr>
     )
   } ) : <tr><th>No Current Projects</th></tr>
@@ -35,6 +36,7 @@ export default function DashboardTable({currentProjects, sort}) {
         <th>Sector:</th>
         <th>Classification:</th>
         <th>Size:</th>
+        <th>Total:</th>
       </tr>
     </thead>
     <tbody>

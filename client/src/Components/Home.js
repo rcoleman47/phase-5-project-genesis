@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
 import { setProjects, removeCurrentProject, setProjectId, editProject } from '../Redux/Reducers/projects';
 import { getCodes } from '../Redux/Reducers/costcodes';
-import { mount } from '../Redux/Reducers/company';
+import { mount, setUsers } from '../Redux/Reducers/company';
 import { setSubs } from '../Redux/Reducers/subcontractors';
 
 
@@ -29,6 +29,7 @@ export default function Home() {
     .then(r => r.json())
     .then(company => {
       dispatch(mount(company))
+      dispatch(setUsers(company[0].users))
     })
   }, []);
 

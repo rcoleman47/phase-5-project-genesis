@@ -19,7 +19,7 @@ export const projectsSlice = createSlice({
     addProject: (state, action) => {
       state.allProjects = [...state.allProjects, action.payload];
     },
-    removeCurrentProject: (state, action) => {
+    removeCurrentProject: (state) => {
       state.currentProject = initialState.currentProject
     },
     editProject: (state, action) => {

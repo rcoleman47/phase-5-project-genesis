@@ -22,7 +22,7 @@ code {
 }
 
 button {
-  height: 25px;
+  height: 31px;
 }
 
 th {
@@ -78,7 +78,7 @@ button:hover {
 
 .projects select {
   display: inline;
-  height: 25px;
+  height: 31px;
   width: auto;
   padding: auto;
   align-content: center;
@@ -304,30 +304,68 @@ button:hover {
 }
 
 /* Directory */
+.directory button {
+  width: 150px;
+  height: 31px;
+  margin-right: 200px;
+  float: right;
+}
 .directory-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .directory-buttons button {
   display: inline;
   margin-right: 10%;
-  margin-top: 1%;
+  margin-top: 19px;
   height: 31px;
-  width: 150px;
   text-align: center;
   cursor: pointer;
 }
 
-.directory-table {
-  margin-top: 10px;
-  margin-bottom: 20px
+.user-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  justify-content: flex-start;
 }
 
-.directory-table th{
-  width: 400px;
+.user-form {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  margin-left: 100px;
+}
+.user-form label{
+  display: block;
+  text-align: center;
+}
+.user-form input{
+  display: block;
+  height: 25px;
+  width: 125px;
+  padding: auto;
+  align-content: left;
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  outline: none;
+}
+.user-form input[type='submit']{
+  display: block;
+  margin-top: 20px;
+  margin-left: 200px;
+  width: 90px;
+  height: 31px;
 }
 
+.user-form input:hover {
+  border: 2px solid;
+  border-color: orange;
+  border-radius: 5%;
+}
 /* Dashboard */
 
 .dashboard {
@@ -353,7 +391,7 @@ button:hover {
 
 .dashboard select {
   display: inline;
-  height: 25px;
+  height: 31px;
   width: 150px;
   padding: auto;
   align-content: center;
@@ -383,6 +421,8 @@ button:hover {
   border-collapse: collapse;
   width: 95%;
   align-self: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .dashboard tbody {
@@ -390,10 +430,12 @@ button:hover {
 }
 
 .dashboard th {
-  padding: 10px;
+  padding: 5px;
+  width: 400px;
   border: 2px solid black;
   font-size: large;
   text-align: left;
+
 }
 
 .dashboard td {
@@ -402,7 +444,7 @@ button:hover {
 }
 
 .paginate {
-  margin: 15px 0 0 100px;
+  margin: 0 0 0 100px;
 }
 
 .paginate button {

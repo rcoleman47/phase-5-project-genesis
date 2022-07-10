@@ -2,7 +2,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Redux/Reducers/user';
-import { mount } from '../Redux/Reducers/company';
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';

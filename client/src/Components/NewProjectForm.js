@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addProject, editProject, setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
 
 export default function NewProjectForm() {
-  const company = useSelector(state => state.company.value);
+  const company = useSelector(state => state.company.company);
 
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
