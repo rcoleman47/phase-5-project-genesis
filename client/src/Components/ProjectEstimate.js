@@ -1,16 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { setCurrentProject, editProject, setProjectId} from '../Redux/Reducers/projects';
 import EstimateTable from './EstimateTable';
 import EstimateForm from './EstimateForm';
-import NewProjectForm from './NewProjectForm';
+import EditProjectForm from './EditProjectForm';
 
 
 export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
   const viewProject = useSelector(state => state.projects.viewProject);
-
+  const currentProject = useSelector(state => state.projects.currentProject);
 
   const dispatch = useDispatch();
 
@@ -22,7 +22,9 @@ export default function ProjectEstimate() {
     }
   }, [projectId])
 
-  const renderOptions = projects?.length > 0 ? projects?.map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
+  const renderOptions = projects?.length > 0 ? projects?.slice().sort((a, b) => {
+    return a.title.localeCompare(b.title)
+  }).map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
 
   const handleSelect = (e) => {
     dispatch(setProjectId(e.target.value))
@@ -32,6 +34,7 @@ export default function ProjectEstimate() {
 
   const handleClick = () => {
     dispatch(editProject(!viewProject));
+  
   };
 
   return (
@@ -45,7 +48,7 @@ export default function ProjectEstimate() {
       </div>
 
       <div>
-        {viewProject ? '' : <NewProjectForm />}
+        {viewProject ? '' : <EditProjectForm projectId={projectId} />}
       </div>
       {viewProject ? <EstimateTable projects={projects} /> : <EstimateForm  />}
     </>

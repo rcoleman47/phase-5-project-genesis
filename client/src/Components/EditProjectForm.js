@@ -1,26 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { addProject, editProject, setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
+import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
 
-export default function NewProjectForm() {
-  const company = useSelector(state => state.company.value);
+export default function EditProjectForm({projectId}) { 
+  const projects = useSelector(state => state.projects.allProjects);
+
+  const currentProject = projects?.slice().filter(project => project.id === parseInt(projectId))
+  
+  console.log(currentProject[0])
+  console.log(projects[0].id)
+  console.log(projectId)
 
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
-    title: '',
-    location: '',
-    phase: 'Pre-Construction',
-    sector: 'Restaurant',
-    classification: 'New Construction',
-    size: '',
-    company_id: company.id,
+    title: currentProject[0].title,
+    location: currentProject[0].location,
+    phase: currentProject[0].phase,
+    sector: currentProject[0].sector,
+    classification: currentProject[0].classification,
+    size: currentProject[0].size,
   });
 
   const {title, location, phase, sector, classification, size} = projectForm
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -33,26 +36,21 @@ export default function NewProjectForm() {
     
   };
 
-  const handlePostSubmit = (e) => {
+  const handlePatchSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/projects`, {
-      method: 'POST',
+    fetch(`/projects/${currentProject?.id}`, {
+      method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(projectForm)
     })
     .then(r=>{
       if(r.ok){ 
         r.json().then(project => {
-          console.log(project);
-          dispatch(setCurrentProject(project));
-          dispatch(addProject(project))
-          dispatch(setProjectId(project.id));
+          dispatch(updateProject((project)));
         });
 
         setError(null);
-        dispatch(editProject(false));
-        navigate('/project/estimate')
       }
       else
         r.json().then(json=>setError(json.error));
@@ -60,10 +58,11 @@ export default function NewProjectForm() {
 
   };
 
+
   return (
     <div className='project-form-container'>
          
-      <form className='new-project-form' onSubmit={handlePostSubmit} >
+      <form className='new-project-form' onSubmit={handlePatchSubmit} >
 
         <label style={{fontWeight: '600'}}>
           Title:
@@ -137,9 +136,10 @@ export default function NewProjectForm() {
             onChange={handleChange} 
           />
         </label>
-        {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
 
-        <input type="submit" value="Create" />
+        {error ? <h5>{error}</h5> : null}
+
+        <input type="submit" value="Update" />
 
       </form>
       

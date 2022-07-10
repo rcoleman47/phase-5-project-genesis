@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { updateBudgetItem } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item}) {
-  const project = useSelector(state => state.projects.currentProject);
-
   const [error, setError] = useState(null);
   const [budgetItemForm, setBudgetItemForm] = useState({
     division:        budget_item?.division,

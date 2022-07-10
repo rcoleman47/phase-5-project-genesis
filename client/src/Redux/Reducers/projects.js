@@ -4,7 +4,7 @@ const initialState = {
   allProjects: undefined,
   currentProject: undefined,
   viewProject: true,
-  projectId: undefined,
+  projectId: undefined
 };
 
 export const projectsSlice = createSlice({
@@ -35,10 +35,17 @@ export const projectsSlice = createSlice({
         } else {return item}
       })
     },
+    updateProject: (state, action) => {
+      state.currentProject = state.currentProject.map( project =>{
+        if (project.id === action.payload.id) {
+          return action.payload
+        } else {return project}
+      })
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setProjects, setCurrentProject, addProject, removeCurrentProject, editProject, setProjectId, updateBudgetItem } = projectsSlice.actions
+export const { setProjects, setCurrentProject, addProject, removeCurrentProject, editProject, setProjectId, updateBudgetItem, updateProject } = projectsSlice.actions
 
 export default projectsSlice.reducer
