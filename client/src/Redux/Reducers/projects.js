@@ -19,22 +19,26 @@ export const projectsSlice = createSlice({
     addProject: (state, action) => {
       state.allProjects = [...state.allProjects, action.payload];
     },
-    addCurrentProjectItem: (state, action) => {
-      state.currentProject.budget_items = [...state.currentProject.budget_items, action.payload];
-    },
     removeCurrentProject: (state, action) => {
       state.currentProject = initialState.currentProject
     },
-    editProject: state => {
-      state.viewProject = !state.viewProject
+    editProject: (state, action) => {
+      state.viewProject = action.payload
     },
     setProjectId: (state, action) => {
       state.projectId = action.payload
+    },
+    updateBudgetItem: (state, action) => {
+      state.currentProject.budget_items = state.currentProject.budget_items.map(item =>{
+        if (item.id === action.payload.id) {
+          return action.payload
+        } else {return item}
+      })
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setProjects, setCurrentProject, addProject, addCurrentProjectItem, removeCurrentProject, editProject, setProjectId } = projectsSlice.actions
+export const { setProjects, setCurrentProject, addProject, removeCurrentProject, editProject, setProjectId, updateBudgetItem } = projectsSlice.actions
 
 export default projectsSlice.reducer

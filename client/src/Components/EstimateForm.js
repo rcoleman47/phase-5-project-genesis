@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import DivisionSelector from './DivisionSelector';
 import BudgetItemForm from './BudgetItemForm';
 
@@ -14,9 +13,7 @@ export default function EstimateForm() {
 
   return (
     <div>
-      {/* <div className="page-title">
-        <h1 style={{color: 'orange'}}>{project?.title} Project Estimate</h1>
-      </div> */}
+  
       <div className='estimate-form-container'>
         <DivisionSelector />
 

@@ -50,7 +50,7 @@ export default function NewProjectForm() {
         });
 
         setError(null);
-        dispatch(editProject());
+        dispatch(editProject(false));
         navigate('/project/estimate')
       }
       else

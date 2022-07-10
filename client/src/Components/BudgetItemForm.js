@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addProject, setCurrentProject } from '../Redux/Reducers/projects';
+import { updateBudgetItem } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item}) {
   const project = useSelector(state => state.projects.currentProject);
@@ -44,7 +44,7 @@ export default function BudgetItemForm({budget_item}) {
     .then(r=>{
       if(r.ok){ 
         r.json().then(item => {
-          console.log(item);
+          dispatch(updateBudgetItem((item)));
         });
 
         setError(null);

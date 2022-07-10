@@ -3,12 +3,14 @@ import { useEffect } from 'react';
 import { setCurrentProject, editProject, setProjectId} from '../Redux/Reducers/projects';
 import EstimateTable from './EstimateTable';
 import EstimateForm from './EstimateForm';
+import NewProjectForm from './NewProjectForm';
 
 
 export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
-  const view = useSelector(state => state.projects.viewProject);
+  const viewProject = useSelector(state => state.projects.viewProject);
+
 
   const dispatch = useDispatch();
 
@@ -26,22 +28,26 @@ export default function ProjectEstimate() {
     dispatch(setProjectId(e.target.value))
   };
 
-  const buttonText = view ? 'Edit Project' : 'Done Editing';
+  const buttonText = viewProject ? 'Edit Project' : 'Done Editing';
 
   const handleClick = () => {
-    dispatch(editProject());
+    dispatch(editProject(!viewProject));
   };
 
   return (
     <>
-      <div className={view ? '' :'estimate-form-view'}>
+      <div className={viewProject ? '' :'estimate-form-view'}>
         <select onChange={handleSelect} value={projectId}  >
           {renderOptions}
         </select>
 
         <button onClick={handleClick} >{buttonText}</button>
       </div>
-      {view ? <EstimateTable projects={projects} /> : <EstimateForm />}
+
+      <div>
+        {viewProject ? '' : <NewProjectForm />}
+      </div>
+      {viewProject ? <EstimateTable projects={projects} /> : <EstimateForm  />}
     </>
   )
 }
