@@ -56,7 +56,7 @@ export default function EstimateTable({projects}) {
       <th>${currentProject?.total ? currentProject.total.toLocaleString() : '' }</th>
     </tr>
   </thead>
-</table>
+</table>;
 
   return (
    <>

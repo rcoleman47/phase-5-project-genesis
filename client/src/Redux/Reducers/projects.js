@@ -36,7 +36,7 @@ export const projectsSlice = createSlice({
       })
     },
     updateProject: (state, action) => {
-      state.currentProject = state.currentProject.map( project =>{
+      state.allProjects = state.allProjects.map( project =>{
         if (project.id === action.payload.id) {
           return action.payload
         } else {return project}

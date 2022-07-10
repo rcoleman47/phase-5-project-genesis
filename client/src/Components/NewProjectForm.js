@@ -17,7 +17,7 @@ export default function NewProjectForm() {
     company_id: company.id,
   });
 
-  const {title, location, phase, sector, classification, size} = projectForm
+  const {title, location, phase, sector, classification, size} = projectForm;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

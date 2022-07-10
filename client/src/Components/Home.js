@@ -20,7 +20,7 @@ export default function Home() {
     .then(projects => {
       dispatch(setProjects(projects))
     })
-  }, [])
+  }, []);
 
   useEffect(() => {
     fetch('/divisions')
@@ -28,7 +28,7 @@ export default function Home() {
     .then(codes => {
       dispatch(getCodes(codes))
     })
-  }, [])
+  }, []);
 
   const navStyle = ({isActive})=>({
     color: isActive ? "#ff8c00":"black",

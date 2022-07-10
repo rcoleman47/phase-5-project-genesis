@@ -5,7 +5,6 @@ import { setCurrentProject} from '../Redux/Reducers/projects';
 import CostCodeSelector from './CostCodeSelector';
 
 
-
 export default function DivisionSelector() {
   const divisions = useSelector(state => state.costCodes.all);
   const currentDiv = useSelector(state => state.costCodes.currentDiv);

@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   const handleClick = () => {
     navigate('/projects/new')
-  }
+  };
 
   return (
     <div className='dashboard'>

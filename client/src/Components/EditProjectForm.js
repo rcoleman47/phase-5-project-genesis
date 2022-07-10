@@ -1,15 +1,11 @@
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
+import { updateProject } from '../Redux/Reducers/projects';
 
 export default function EditProjectForm({projectId}) { 
   const projects = useSelector(state => state.projects.allProjects);
 
   const currentProject = projects?.slice().filter(project => project.id === parseInt(projectId))
-  
-  console.log(currentProject[0])
-  console.log(projects[0].id)
-  console.log(projectId)
 
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
@@ -21,7 +17,7 @@ export default function EditProjectForm({projectId}) {
     size: currentProject[0].size,
   });
 
-  const {title, location, phase, sector, classification, size} = projectForm
+  const {title, location, phase, sector, classification, size} = projectForm;
 
   const dispatch = useDispatch();
 
@@ -39,7 +35,7 @@ export default function EditProjectForm({projectId}) {
   const handlePatchSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/projects/${currentProject?.id}`, {
+    fetch(`/projects/${currentProject[0].id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(projectForm)
