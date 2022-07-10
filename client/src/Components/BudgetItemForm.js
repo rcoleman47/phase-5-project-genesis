@@ -64,7 +64,7 @@ export default function BudgetItemForm({budget_item}) {
     });
 
   };
-  console.log(isTaxed)
+
   const total = isTaxed ? Math.round((unit_cost * unit_quantity) * (1 + (tax_rate / 100))) : (unit_cost * unit_quantity)
 
   return (

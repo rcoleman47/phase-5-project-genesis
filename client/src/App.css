@@ -319,8 +319,13 @@ button:hover {
   cursor: pointer;
 }
 
+.directory-table {
+  margin-top: 10px;
+  margin-bottom: 20px
+}
+
 .directory-table th{
-  width: 500px;
+  width: 400px;
 }
 
 /* Dashboard */

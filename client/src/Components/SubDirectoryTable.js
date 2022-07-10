@@ -1,14 +1,6 @@
-export default function SubDirectoryTable({subcontractor, sort}) {
+export default function SubDirectoryTable({ subcontractor }) {
 
-  const renderUsers = subcontractor?.contacts ? [...subcontractor?.contacts].sort((a, b) => {
-    if(sort === 'name'){
-      return a.name.localeCompare(b.name);
-    } else if(sort === 'role'){
-        return a.role.localeCompare(b.role);
-    } else{
-        return a.id - b.id
-      }
-    }).map(user => {
+  const renderUsers = subcontractor?.contacts ? [...subcontractor?.contacts].map(user => {
     return (
       <tr key={user.id}>
         <td>{user.name}</td>
@@ -19,12 +11,22 @@ export default function SubDirectoryTable({subcontractor, sort}) {
     )
   } ) : <tr><th>No Subcontractor Team</th></tr>
 
+
   const renderTable = 
   <table className="directory-table">
     <thead>
       <tr>
-        <th style={{border: 'none', color: 'orange', fontWeight: '900'}}>
+        <th style={{color: 'orange', fontWeight: '900'}}>
           {subcontractor?.name}
+        </th>
+        <th style={{fontWeight: '900'}}>
+          {subcontractor?.trade}
+        </th>
+        <th style={{fontWeight: '900'}}>
+          {subcontractor?.address}
+        </th>
+        <th style={{fontWeight: '900'}}>
+          {subcontractor?.phone_number}
         </th>
       </tr>
       <tr>
