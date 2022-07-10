@@ -25,7 +25,11 @@ export default function BudgetItemForm({budget_item}) {
   const handleChange = (e) => {
     let key   = e.target.name;
     let value = e.target.value;
-
+    if(key === 'taxed'){
+      if(value === 'true'){
+        setIsTaxed(true);
+      } else setIsTaxed(false);
+    }
     setBudgetItemForm({
       ...budgetItemForm,
       [key]: value,
@@ -33,7 +37,10 @@ export default function BudgetItemForm({budget_item}) {
   };
 
   const handleTaxChange = (e) => {
-   console.log(e.target.value)
+    let value = e.target.value;
+    if(value === 'true'){
+      setIsTaxed(true);
+    } else setIsTaxed(false);
   };
 
   const handleSubmit = (e) => {
@@ -57,6 +64,8 @@ export default function BudgetItemForm({budget_item}) {
     });
 
   };
+  console.log(isTaxed)
+  const total = isTaxed ? Math.round((unit_cost * unit_quantity) * (1 + (tax_rate / 100))) : (unit_cost * unit_quantity)
 
   return (
     <div className='budgetItem-form-container'>
@@ -119,7 +128,7 @@ export default function BudgetItemForm({budget_item}) {
           <input 
             name='unit_cost'
             type='text' 
-            value={isTaxed ? Math.round((unit_cost * unit_quantity) * (1 + (tax_rate / 100))) : (unit_cost * unit_quantity)} 
+            value={total} 
             readOnly
           />
           <input 
