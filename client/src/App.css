@@ -25,6 +25,10 @@ button {
   height: 25px;
 }
 
+th {
+ width: 500px;
+}
+
 button:hover {
   border: 2px solid;
   border-color: orange;
@@ -297,6 +301,26 @@ button:hover {
 .budgetItem-form input:hover {
   border: 2px solid;
   border-color: orange;
+}
+
+/* Directory */
+.directory-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.directory-buttons button {
+  display: inline;
+  margin-right: 10%;
+  margin-top: 1%;
+  height: 31px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.directory-table th{
+  width: 500px;
 }
 
 /* Dashboard */

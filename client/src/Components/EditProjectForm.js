@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProject } from '../Redux/Reducers/projects';
+import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
 
 export default function EditProjectForm({projectId}) { 
   const projects = useSelector(state => state.projects.allProjects);
@@ -15,9 +15,10 @@ export default function EditProjectForm({projectId}) {
     sector: currentProject[0].sector,
     classification: currentProject[0].classification,
     size: currentProject[0].size,
+    tax_rate: currentProject[0].tax_rate,
   });
 
-  const {title, location, phase, sector, classification, size} = projectForm;
+  const {title, location, phase, sector, classification, size, tax_rate} = projectForm;
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,8 @@ export default function EditProjectForm({projectId}) {
     .then(r=>{
       if(r.ok){ 
         r.json().then(project => {
-          dispatch(updateProject((project)));
+          dispatch(updateProject((project)))
+          dispatch(setCurrentProject(project))
         });
 
         setError(null);
@@ -129,6 +131,16 @@ export default function EditProjectForm({projectId}) {
             name='size'
             type='number' 
             value={size} 
+            onChange={handleChange} 
+          />
+        </label>
+
+        <label style={{fontWeight: '600'}}>
+          Tax Rate:
+          <input 
+            name='tax_rate'
+            type='text' 
+            value={tax_rate} 
             onChange={handleChange} 
           />
         </label>

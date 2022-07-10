@@ -8,6 +8,7 @@ import storage from 'redux-persist/lib/storage';
 import costCodesReducer from './Reducers/costcodes';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
+import subcontractorReducer from './Reducers/subcontractors';
 
 
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   projects: projectsReducer,
   search: searchReducer,
   costCodes: costCodesReducer,
+  subs: subcontractorReducer,
 });
 
 const persistConfig = {

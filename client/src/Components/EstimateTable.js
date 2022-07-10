@@ -38,7 +38,7 @@ export default function EstimateTable({projects}) {
   <thead>
     <tr>
       <th>Cost Code:</th>
-      <th>Unit Quantitiy:</th>
+      <th>Unit Quantity:</th>
       <th>Unit:</th>
       <th>Unit Cost:</th>
       <th>Taxed:</th>

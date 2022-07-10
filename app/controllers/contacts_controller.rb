@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :is_admin, only: [:create, :update, :destroy]
 
   def index
-    render json: current_company.subcontractors.contacts
+    render json: current_user.company.subcontractors.contacts
   rescue
     sign_in_error
   end

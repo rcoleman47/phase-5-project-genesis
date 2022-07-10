@@ -7,8 +7,8 @@ class CompaniesController < ApplicationController
 
   #Route /user_company
   def show
-    if current_company
-      render json: current_company, status: 200
+    if current_user
+      render json: current_user.company, status: 200
     else
       render json: { error: "Not signed in"}, status: :not_found
     end  

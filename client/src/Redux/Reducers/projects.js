@@ -4,7 +4,7 @@ const initialState = {
   allProjects: undefined,
   currentProject: undefined,
   viewProject: true,
-  projectId: undefined
+  projectId: undefined,
 };
 
 export const projectsSlice = createSlice({

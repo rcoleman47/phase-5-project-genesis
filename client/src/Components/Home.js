@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../Redux/Reducers/user';
 import { setProjects, removeCurrentProject, setProjectId, editProject } from '../Redux/Reducers/projects';
 import { getCodes } from '../Redux/Reducers/costcodes';
+import { mount } from '../Redux/Reducers/company';
+import { setSubs } from '../Redux/Reducers/subcontractors';
 
 
 
 export default function Home() {
-  const company = useSelector(state => state.company.value);
+  const user = useSelector(state => state.user.value);
   const projects = useSelector(state => state.projects.allProjects);
   
   const dispatch = useDispatch();
@@ -19,6 +21,22 @@ export default function Home() {
     .then(r => r.json())
     .then(projects => {
       dispatch(setProjects(projects))
+    })
+  }, []);
+
+  useEffect(() => {
+    fetch('/companies')
+    .then(r => r.json())
+    .then(company => {
+      dispatch(mount(company))
+    })
+  }, []);
+
+  useEffect(() => {
+    fetch('/subcontractors')
+    .then(r => r.json())
+    .then(subs => {
+      dispatch(setSubs(subs))
     })
   }, []);
 
@@ -57,7 +75,7 @@ export default function Home() {
   return (
     <div className='pageContainer'>
       <div className='viewNavContainer' >
-      <img src={company ? company.logo : "Loading..."} alt="Company logo" />
+      <img src={user ? user?.company_logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/project/estimate'>Projects</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>

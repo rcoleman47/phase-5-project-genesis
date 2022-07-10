@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :location, :phase, :sector, :classification, :size, :total, :cost_per_sf
+  attributes :id, :title, :location, :phase, :sector, :classification, :size, :total, :cost_per_sf, :tax_rate
 
   has_many :budget_items
   
