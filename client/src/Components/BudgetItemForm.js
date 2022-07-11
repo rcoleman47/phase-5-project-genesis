@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateBudgetItem, setCurrentProject } from '../Redux/Reducers/projects';
+import { updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item}) {
   const [error, setError] = useState(null);
@@ -59,7 +59,7 @@ export default function BudgetItemForm({budget_item}) {
           dispatch(updateBudgetItem((item)));
           console.log(item)
         });
-        setCurrentProject(currentProject)
+        dispatch(updateProject(currentProject))
         setError(null);
       }
       else

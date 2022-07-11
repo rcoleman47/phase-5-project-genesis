@@ -20,7 +20,6 @@ export default function Directory() {
   const handleCompanySort = (e) => {
     setSort(e.target.value);
   };
-  console.log(company.users)
 
   const handleSubSort = (e) => {
     setSubSort(e.target.value);

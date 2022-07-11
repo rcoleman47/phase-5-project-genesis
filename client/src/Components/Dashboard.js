@@ -20,9 +20,21 @@ export default function Dashboard() {
   const totalProjects = projects?.length
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects?.length ? [...projects]?.slice(indexOfFirstProject, indexOfLastProject) : undefined;
+  const currentProjects = projects?.length ? [...projects]?.sort((a, b) => {
+    if(sort === 'title'){
+      return a.title.localeCompare(b.title);
+    } else if(sort === 'phase'){
+        return b.phase.localeCompare(a.phase);
+    } else if(sort === 'sector'){
+        return a.sector.localeCompare(b.sector);
+    } else if(sort === 'classification'){
+        return a.classification.localeCompare(b.classification);
+    } else{
+        return a.id - b.id
+      }
+    }).slice(indexOfFirstProject, indexOfLastProject) : undefined;
   
-  const renderDashboard = projects ? <DashboardTable sort={sort} currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
+  const renderDashboard = projects ? <DashboardTable currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
 
   const paginate = (number) => setCurrentPage(number);
 

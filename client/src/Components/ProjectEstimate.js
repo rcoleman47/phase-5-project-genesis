@@ -30,9 +30,9 @@ export default function ProjectEstimate() {
   };
 
   const renderSelect = 
-<select onChange={handleSelect} value={projectId} >
-  {renderOptions}
-</select>
+    <select onChange={handleSelect} value={projectId} >
+      {renderOptions}
+    </select>
 
   const buttonText = viewProject ? 'Edit Project' : 'Done Editing';
 

@@ -12,7 +12,6 @@ import { setSubs } from '../Redux/Reducers/subcontractors';
 export default function Home() {
   const user = useSelector(state => state.user.value);
   const projects = useSelector(state => state.projects.allProjects);
-  const company = useSelector(state => state.company.company);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
