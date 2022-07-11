@@ -234,21 +234,19 @@ button:hover {
 .budgetItem-container{
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 .budgetItem-container table{
-  width: 90%;
-  margin-left: 40px;
-}
-
-.budgetItem-container thead{
-  text-align: center;
+ margin: 25px 99px 30px 0px;
+ width: 92%;
 }
 
 .budgetItem-container th{
-  width: 150px;
-  align-items: left;
+  width: 158px;
+  border: none;
+  text-align: center;
+  padding: 0 0 0 0;
 }
 
 .budgetItem-form-container {
