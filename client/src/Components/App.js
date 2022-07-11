@@ -12,6 +12,8 @@ import Directory from './Directory';
 import NewProjectForm from './NewProjectForm';
 import ProjectEdit from './ProjectEdit';
 import '../App.css';
+import DirectoryContainer from './DirectoryContainer';
+import SubDirectory from './SubDirectory';
 
 
 function App() {
@@ -45,8 +47,11 @@ function App() {
             <Route path='estimate' element={ <ProjectEstimate /> } />
             <Route path='edit' element={ <ProjectEdit /> } />
           </Route>
-          <Route path='projects/new' element={ <NewProjectForm /> } /> 
-          <Route path='directory' element={ <Directory /> } />
+          <Route path='/project/new' element={ <NewProjectForm /> } /> 
+          <Route path='directory' element={ <DirectoryContainer /> } >
+            <Route path='company' element={ <Directory /> } />
+            <Route path='subcontractors' element={ <SubDirectory /> } />
+          </Route>
         </Route>
       </Routes>
     </>

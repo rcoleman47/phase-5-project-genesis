@@ -39,7 +39,7 @@ export default function Dashboard() {
   const paginate = (number) => setCurrentPage(number);
 
   const handleClick = () => {
-    navigate('/projects/new')
+    navigate('/project/new')
   };
 
   return (

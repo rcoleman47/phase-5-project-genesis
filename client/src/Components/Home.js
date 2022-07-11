@@ -84,7 +84,7 @@ export default function Home() {
       <img src={user ? user?.company_logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/project'>Projects</NavLink>
-      <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>
+      <NavLink style={navStyle} onClick={handleClick} to='/directory/company'>Directory</NavLink>
      
       <button style={{display: 'inline'}} onClick={handleLogOut} >Log Out</button>
       </div>

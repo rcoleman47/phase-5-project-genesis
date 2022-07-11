@@ -63,7 +63,7 @@ export default function NewProjectForm() {
   return (
     <div className='project-form-container'>
          
-      <form className='new-project-form' onSubmit={handlePostSubmit} >
+      <form className='new-project-form' onSubmit={handlePostSubmit} style={{marginTop: '50px'}}>
 
         <label style={{fontWeight: '600'}}>
           Title:
