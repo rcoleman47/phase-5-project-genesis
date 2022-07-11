@@ -9,7 +9,7 @@ export default function DirectoryContainer() {
 
   useEffect(()=> {
     navigate(`${view}`)
-  }, [view])
+  }, [view, navigate])
 
   const handleSelect = (e) => {
     setView(e.target.value);
