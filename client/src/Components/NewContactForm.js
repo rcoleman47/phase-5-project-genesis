@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addSub } from '../Redux/Reducers/subcontractors';
+import { addContact } from '../Redux/Reducers/subcontractors';
 
 
 
-export default function NewSubForm({setAddSub}) {
-  const company = useSelector(state => state.company.company);
+export default function NewContactForm({ setAddContact }) {
+  const subcontractor = useSelector(state => state.subs.currentSub)
 
   const [error, setError] = useState(null);
-  const [subForm, setSubForm] = useState({
+  const [contactForm, setContactForm] = useState({
     name: '',
-    address: '',
-    phone_number: '',
-    trade: '',
-    company_id: company?.id,
+    cell_number: '',
+    email: '',
+    role: 'Executive',
+    subcontractor_id: subcontractor?.id,
   });
 
-  const {name, address, phone_number, trade} = subForm;
+  console.log(subcontractor)
+
+  const {name, cell_number, email, role} = contactForm;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,8 +28,8 @@ export default function NewSubForm({setAddSub}) {
     let key   = e.target.name;
     let value = e.target.value;
   
-    setSubForm({
-      ...subForm,
+    setContactForm({
+      ...contactForm,
       [key]: value
     });
     
@@ -36,18 +38,18 @@ export default function NewSubForm({setAddSub}) {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/subcontractors`, {
+    fetch(`/contacts`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(subForm)
+      body: JSON.stringify(contactForm)
     })
     .then(r=>{
       if(r.ok){ 
-        r.json().then(sub => {
-          dispatch(addSub(sub));
+        r.json().then(contact => {
+          dispatch(addContact(contact));
         });
 
-        setAddSub(true)
+        setAddContact(true)
         setError(null);
       }
       else
@@ -62,7 +64,7 @@ export default function NewSubForm({setAddSub}) {
       <form className='new-project-form' onSubmit={handlePostSubmit} >
 
         <label style={{fontWeight: '600'}}>
-          Subcontractor Name:
+          Name:
           <input  
             name='name'
             type='text' 
@@ -72,36 +74,42 @@ export default function NewSubForm({setAddSub}) {
         </label>
 
         <label style={{fontWeight: '600'}}>
-          Address:
+          Cell Number:
           <input  
-            name='address'
+            name='cell_number'
             type='text' 
-            value={address} 
+            value={cell_number} 
             onChange={handleChange} 
           />
         </label>
 
         <label style={{fontWeight: '600'}}>
-          Phone Number:
+          Email:
           <input  
-            name='phone_number'
+            name='email'
             type='text' 
-            value={phone_number} 
+            value={email} 
             onChange={handleChange}/>
         </label>
 
-        <label style={{fontWeight: '600'}}>
-          Trade:
-          <input  
-            name='trade'
+        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+          Role:
+          <select 
+            style={{width: '135px', marginRight: '20px'}}
+            name='role'
             type='text' 
-            value={trade} 
-            onChange={handleChange}/>
+            value={role} 
+            onChange={handleChange}>
+              <option value={'Executive'}>Executive</option>
+              <option value={'Project Manager'}>Project Manager</option>
+              <option value={'Estimator'}>Estimator</option>
+              <option value={'Superintendent'}>Superintendent</option>
+            </select>
         </label>
 
         {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
 
-        <input type="submit" value="Create" />
+        <input style={{marginLeft: '60px'}} type="submit" value="Create" />
 
       </form>
       

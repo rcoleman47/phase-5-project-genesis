@@ -21,8 +21,6 @@ export default function SubDirectory() {
     setAddSub(!addSub)
   };
 
-  console.log(subcontractors)
-
   const totalSubs = subcontractors?.length
   const indexOfLastSub = currentPage * subsPerPage;
   const indexOfFirstSub = indexOfLastSub - subsPerPage;
@@ -53,7 +51,7 @@ export default function SubDirectory() {
         <button onClick={handleClick} >Add Subcontractor</button>
       </div>
 
-        {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}
+      {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}
 
       {renderSubDirectory}
 

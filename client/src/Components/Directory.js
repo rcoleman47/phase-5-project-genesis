@@ -13,7 +13,6 @@ export default function Directory() {
   const handleCompanySort = (e) => {
     setSort(e.target.value);
   };
-  console.log(users[0])
 
   const renderCompanyDirectory = company?.users ? <DirectoryTable sort={sort} company={company} users={users} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
 
