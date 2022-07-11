@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = '/project/estimate';
+const initialState = {
+  projectView: '/project/estimate',
+  directoryView: '/directory/company'
+};
 
 export const viewSlice = createSlice({
   name: 'view',
   initialState: {value: initialState},
   reducers: {
-    setView: (state, action) => {
-      state.value = action.payload
+    setProjectView: (state, action) => {
+      state.projectView = action.payload
+    },
+    setDirectoryView: (state, action) => {
+      state.directoryView = action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setView } = viewSlice.actions
+export const { setProjectView, setDirectoryView } = viewSlice.actions
 
 export default viewSlice.reducer

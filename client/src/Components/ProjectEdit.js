@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setCurrentProject } from '../Redux/Reducers/projects';
-import { setView } from '../Redux/Reducers/view';
+import { setProjectView } from '../Redux/Reducers/view';
 import EditProjectForm from './EditProjectForm'
 import EstimateForm from './EstimateForm'
 
@@ -22,7 +22,7 @@ export default function ProjectEdit() {
 
 
   const handleClick = () => {
-    dispatch(setView('/project/estimate'))
+    dispatch(setProjectView('/project/estimate'))
     navigate('/project/estimate')
   };
 

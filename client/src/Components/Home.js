@@ -6,7 +6,7 @@ import { setProjects, removeCurrentProject, setProjectId, editProject } from '..
 import { getCodes } from '../Redux/Reducers/costcodes';
 import { mount, setUsers } from '../Redux/Reducers/company';
 import { setSubs } from '../Redux/Reducers/subcontractors';
-import { setView } from '../Redux/Reducers/view';
+import { setDirectoryView, setProjectView } from '../Redux/Reducers/view';
 
 
 
@@ -60,7 +60,8 @@ export default function Home() {
   const handleClick = (e) => {
     dispatch(setProjectId(projects?.[0]?.id));
     dispatch(editProject(true));
-    dispatch(setView(('/project/estimate')))
+    dispatch(setProjectView(('/project/estimate')))
+    dispatch(setDirectoryView('/directory/company'))
   };
 
   const handleLogOut= () => {

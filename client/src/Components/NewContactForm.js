@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { addContact } from '../Redux/Reducers/subcontractors';
 
 
-
-export default function NewContactForm({ setAddContact }) {
+export default function NewContactForm() {
   const subcontractor = useSelector(state => state.subs.currentSub)
 
   const [error, setError] = useState(null);
@@ -17,12 +15,9 @@ export default function NewContactForm({ setAddContact }) {
     subcontractor_id: subcontractor?.id,
   });
 
-  console.log(subcontractor)
-
   const {name, cell_number, email, role} = contactForm;
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -49,7 +44,14 @@ export default function NewContactForm({ setAddContact }) {
           dispatch(addContact(contact));
         });
 
-        setAddContact(true)
+        setContactForm({
+          name: '',
+          cell_number: '',
+          email: '',
+          role: 'Executive',
+          subcontractor_id: subcontractor?.id,
+        });
+      
         setError(null);
       }
       else

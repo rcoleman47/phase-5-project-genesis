@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { setSubs } from '../Redux/Reducers/subcontractors';
 import SubDirectoryTable from './SubDirectoryTable';
 import SubPagination from './SubPagination';
 import NewSubForm from './NewSubForm';
@@ -13,9 +14,19 @@ export default function SubDirectory() {
 
   const subcontractors = useSelector(state => state.subs.allSubs);
 
+  const dispatch = useDispatch();
+
   const handleSubSort = (e) => {
     setSubSort(e.target.value);
   };
+
+  useEffect(() => {
+    fetch('/subcontractors')
+    .then(r => r.json())
+    .then(subs => {
+      dispatch(setSubs(subs))
+    })
+  }, [dispatch]);
 
   const handleClick = (e) => {
     setAddSub(!addSub)
@@ -38,6 +49,8 @@ export default function SubDirectory() {
 
   const paginate = (number) => setCurrentPage(number);
 
+  const buttonText = addSub ? 'Add Subcontractor' : 'Remove Form';
+
   const renderSubDirectory = currentSubs ? [...currentSubs].map(sub =>  <SubDirectoryTable key={sub.id} subcontractor={sub} />) : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
 
   return (
@@ -48,7 +61,7 @@ export default function SubDirectory() {
           <option value='trade' >Trade</option>
         </select>
 
-        <button onClick={handleClick} >Add Subcontractor</button>
+        <button onClick={handleClick} >{buttonText}</button>
       </div>
 
       {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}

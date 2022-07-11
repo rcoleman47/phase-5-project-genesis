@@ -60,11 +60,11 @@ export default function NewUserForm({setAddUser}) {
   };
 
   return (
-    <div className='user-container'>
+    <div className='project-form-container'>
          
-      <form className='user-form' onSubmit={handlePostSubmit} >
+      <form className='new-project-form' onSubmit={handlePostSubmit} >
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           First Name:
           <input 
             name='first_name'
@@ -74,7 +74,7 @@ export default function NewUserForm({setAddUser}) {
             />
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Last Name:
           <input 
             name='last_name'
@@ -84,7 +84,7 @@ export default function NewUserForm({setAddUser}) {
           />
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Email:
           <input 
             name='email'
@@ -93,7 +93,7 @@ export default function NewUserForm({setAddUser}) {
             onChange={handleChange}/>
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Password:
           <input 
             name='password'
@@ -102,7 +102,7 @@ export default function NewUserForm({setAddUser}) {
             onChange={handleChange}/>
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Cell Number:
           <input 
             name='cell_number'
@@ -111,7 +111,7 @@ export default function NewUserForm({setAddUser}) {
             onChange={handleChange}/>
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Role:
           <select 
             style={{width: '135px', marginLeft: '0px'}}
@@ -126,7 +126,7 @@ export default function NewUserForm({setAddUser}) {
             </select>
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', fontWeight: '600'}}>
           Admin:
           <select 
             style={{width: '135px', marginLeft: '0px'}}

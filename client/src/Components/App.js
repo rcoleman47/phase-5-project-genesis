@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Redux/Reducers/user';
-import { setView } from '../Redux/Reducers/view'
+import { setDirectoryView, setProjectView } from '../Redux/Reducers/view'
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
@@ -12,9 +12,11 @@ import ProjectEstimate from './ProjectEstimate';
 import Directory from './Directory';
 import NewProjectForm from './NewProjectForm';
 import ProjectEdit from './ProjectEdit';
-import '../App.css';
 import DirectoryContainer from './DirectoryContainer';
 import SubDirectory from './SubDirectory';
+import SubAddContact from './SubAddContact';
+
+import '../App.css';
 
 
 function App() {
@@ -34,7 +36,8 @@ function App() {
         navigate('/login');
     };
     });
-    dispatch(setView('/project/estimate'))
+    dispatch(setProjectView('/project/estimate'))
+    dispatch(setDirectoryView('/directory/company'))
   }, []);
 
   return (
@@ -54,6 +57,7 @@ function App() {
             <Route path='company' element={ <Directory /> } />
             <Route path='subcontractors' element={ <SubDirectory /> } />
           </Route>
+            <Route path='/directory/subcontractor/edit' element={ <SubAddContact /> } />
         </Route>
       </Routes>
     </>

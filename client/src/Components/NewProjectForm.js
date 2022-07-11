@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addProject, editProject, setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
-import { setView } from '../Redux/Reducers/view';
+import { addProject, setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
+import { setProjectView } from '../Redux/Reducers/view';
 
 export default function NewProjectForm() {
   const company = useSelector(state => state.company.company);
@@ -52,7 +52,7 @@ export default function NewProjectForm() {
         });
 
         setError(null);
-        dispatch(setView('/project/edit'));
+        dispatch(setProjectView('/project/edit'));
         navigate('/project/edit')
   
       }

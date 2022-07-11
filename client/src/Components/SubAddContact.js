@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setCurrentSub } from '../Redux/Reducers/subcontractors';
+import { useSelector, useDispatch } from 'react-redux';
 import { setDirectoryView } from '../Redux/Reducers/view';
+import NewContactForm from './NewContactForm';
 
 
-export default function SubDirectoryTable({ subcontractor }) {
+export default function SubAddContact() {
+  const currentSub = useSelector(state => state.subs.currentSub)
 
-  const renderUsers = subcontractor?.contacts.length > 0 ? [...subcontractor?.contacts].map(user => {
+  const renderUsers = currentSub?.contacts.length > 0 ? [...currentSub?.contacts].map(user => {
     return (
       <tr key={user.id}>
         <td>{user.name}</td>
@@ -21,9 +22,8 @@ export default function SubDirectoryTable({ subcontractor }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(setCurrentSub(subcontractor))
-    dispatch(setDirectoryView('/directory/subcontractor/edit'))
-    navigate('/directory/subcontractor/edit')
+    dispatch(setDirectoryView('/directory/subcontractors'))
+    navigate('/directory/subcontractors')
   };
 
   const renderTable = 
@@ -32,16 +32,16 @@ export default function SubDirectoryTable({ subcontractor }) {
         <thead>
           <tr>
             <th style={{color: 'orange', fontWeight: '900'}}>
-              {subcontractor?.name}
+              {currentSub?.name}
             </th>
             <th style={{fontWeight: '900'}}>
-              {subcontractor?.trade}
+              {currentSub?.trade}
             </th>
             <th style={{fontWeight: '900'}}>
-              {subcontractor?.address}
+              {currentSub?.address}
             </th>
             <th style={{fontWeight: '900'}}>
-              {subcontractor?.phone_number}
+              {currentSub?.phone_number}
             </th>
           </tr>
           <tr>
@@ -55,15 +55,22 @@ export default function SubDirectoryTable({ subcontractor }) {
             {renderUsers}
         </tbody>
     </table>
+
+      <NewContactForm  />
     
-    <div style={{display: 'flex', justifyContent: 'flex-end', width: '7.6%', marginBottom: '10px'}}>
-      <button onClick={handleClick} >Add Contact</button>
+    <div style={{display: 'flex', justifyContent: 'right', width: '50.6%', marginTop: '10px'}}>
+      <button onClick={handleClick} >Complete</button>
     </div>
   </>
 
   return (
-    <>
-      {subcontractor?.contacts  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Add Subcontractors!</h1>}
-    </>
+    <div className='projects-container' >
+      <div className='projects'>
+        <h1 style={{alignSelf: 'center', color: 'orange'}}>Add Contacts to {currentSub.name}</h1>
+        <div className='project-container' style={{marginLeft: '3px'}} >
+          {currentSub?.contacts  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Add Subcontractors!</h1>}
+        </div>
+      </div>
+    </div>
   )
 }

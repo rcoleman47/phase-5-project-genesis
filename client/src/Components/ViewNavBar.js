@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setView } from '../Redux/Reducers/view';
+import { setProjectView } from '../Redux/Reducers/view';
 
 export default function ViewNavBar() {
-  const view = useSelector(state => state.view.value);
+  const view = useSelector(state => state.view.projectView);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export default function ViewNavBar() {
   }, [view])
 
   const handleSelect = (e) => {
-    dispatch(setView(e.target.value));
+    dispatch(setProjectView(e.target.value));
   };
 
   return (

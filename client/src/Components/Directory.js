@@ -20,6 +20,8 @@ export default function Directory() {
     setAddUser(!addUser)
   };
 
+  const buttonText = addUser ? 'Add Employee' : 'Remove Form';
+
   return (
     <>
       <div>
@@ -29,7 +31,7 @@ export default function Directory() {
           <option value='role' >Role</option>
         </select>
 
-        <button onClick={handleClick}>Add Employee</button>
+        <button onClick={handleClick}>{buttonText}</button>
       </div>
 
       {addUser ? '' : <NewUserForm setAddUser={setAddUser} />}

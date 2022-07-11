@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setView } from '../Redux/Reducers/view';
+import { setProjectView } from '../Redux/Reducers/view';
 import { setCurrentProject, setProjectId} from '../Redux/Reducers/projects';
 import EstimateTable from './EstimateTable';
 
@@ -30,7 +30,7 @@ export default function ProjectEstimate() {
   };
 
   const handleClick = () => {
-    dispatch(setView('/project/edit'))
+    dispatch(setProjectView('/project/edit'))
     navigate('/project/edit')
   };
 

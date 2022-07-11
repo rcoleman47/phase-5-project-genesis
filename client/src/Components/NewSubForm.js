@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addSub } from '../Redux/Reducers/subcontractors';
-
+import { addSub, setCurrentSub } from '../Redux/Reducers/subcontractors';
+import { setDirectoryView } from '../Redux/Reducers/view';
 
 
 export default function NewSubForm({setAddSub}) {
@@ -45,9 +45,12 @@ export default function NewSubForm({setAddSub}) {
       if(r.ok){ 
         r.json().then(sub => {
           dispatch(addSub(sub));
+          dispatch(setCurrentSub(sub));
         });
 
         setAddSub(true)
+        dispatch(setDirectoryView('/directory/subcontractor/edit'))
+        navigate('/directory/subcontractor/edit')
         setError(null);
       }
       else
@@ -62,7 +65,7 @@ export default function NewSubForm({setAddSub}) {
       <form className='new-project-form' onSubmit={handlePostSubmit} >
 
         <label style={{fontWeight: '600'}}>
-          Subcontractor Name:
+          Sub Name:
           <input  
             name='name'
             type='text' 
