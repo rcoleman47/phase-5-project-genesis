@@ -16,9 +16,9 @@ export default function DirectoryContainer() {
   };
 
   return (
-    <div className='dashboard'>
+    <div className='dashboard' style={{}}>
 
-      <div className='project-navbar' >
+      <div className='project-navbar' style={{marginRight: '300px', width: '112px'}} >
         <select onChange={handleSelect} value={view}>
           <option value='/directory/company' >Company</option>
           <option value='/directory/subcontractors' >Subcontractors</option>

@@ -1,16 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setCurrentProject, editProject, setProjectId} from '../Redux/Reducers/projects';
+import { setView } from '../Redux/Reducers/view';
+import { setCurrentProject, setProjectId} from '../Redux/Reducers/projects';
 import EstimateTable from './EstimateTable';
-import EstimateForm from './EstimateForm';
-import EditProjectForm from './EditProjectForm';
 
 
 export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
-  const viewProject = useSelector(state => state.projects.viewProject);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +30,7 @@ export default function ProjectEstimate() {
   };
 
   const handleClick = () => {
+    dispatch(setView('/project/edit'))
     navigate('/project/edit')
   };
 
@@ -42,7 +41,7 @@ export default function ProjectEstimate() {
   return (
     <>
       <div>
-        <select onChange={handleSelect} value={projectId} >
+        <select onChange={handleSelect} style={{width: '100px'}} value={projectId} >
           {renderOptions}
          </select>
         {renderButton}

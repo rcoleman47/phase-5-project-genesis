@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addProject, editProject, setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
+import { setView } from '../Redux/Reducers/view';
 
 export default function NewProjectForm() {
   const company = useSelector(state => state.company.company);
@@ -51,8 +52,9 @@ export default function NewProjectForm() {
         });
 
         setError(null);
-        dispatch(editProject(false));
-        navigate('/project/estimate')
+        dispatch(setView('/project/edit'));
+        navigate('/project/edit')
+  
       }
       else
         r.json().then(json=>setError(json.error));

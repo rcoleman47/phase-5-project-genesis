@@ -18,20 +18,7 @@ export default function EstimateTable({projects}) {
         <td>{item.notes}</td>
       </tr>
     )
-  } ) : projects ? projects[0]?.budget_items.map(item => {
-    return (
-      <tr key={item.id}>
-        <td>{item.cost_code}</td>
-        <td>{item.unit_quantity}</td>
-        <td>{item.unit}</td>
-        <td>${item.unit_cost.toLocaleString()}</td>
-        <td>{item.taxed ? 'Yes' : 'No'}</td>
-        <td>{item.subcontracted ? 'Yes' : 'No'}</td>
-        <td>${item.total.toLocaleString()}</td>
-        <td>{item.notes}</td>
-      </tr>
-    )
-  } ) :  <tr style={{alignSelf: 'center', color: 'orange', fontWeight: '800'}}>No Budget Items</tr>;
+  } ) : <tr style={{alignSelf: 'center', color: 'orange', fontWeight: '800'}}>No Budget Items</tr>;
 
   const renderTable = 
 <table>

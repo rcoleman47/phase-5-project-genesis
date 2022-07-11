@@ -9,6 +9,7 @@ import costCodesReducer from './Reducers/costcodes';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import subcontractorReducer from './Reducers/subcontractors';
+import viewReducer from './Reducers/view';
 
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   costCodes: costCodesReducer,
   subs: subcontractorReducer,
+  view: viewReducer,
 });
 
 const persistConfig = {

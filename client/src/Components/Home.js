@@ -6,6 +6,7 @@ import { setProjects, removeCurrentProject, setProjectId, editProject } from '..
 import { getCodes } from '../Redux/Reducers/costcodes';
 import { mount, setUsers } from '../Redux/Reducers/company';
 import { setSubs } from '../Redux/Reducers/subcontractors';
+import { setView } from '../Redux/Reducers/view';
 
 
 
@@ -58,9 +59,10 @@ export default function Home() {
     fontWeight: '900',
   });
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     dispatch(setProjectId(projects?.[0]?.id));
     dispatch(editProject(true));
+    dispatch(setView(('/project/estimate')))
   };
 
   const handleLogOut= () => {
@@ -84,7 +86,7 @@ export default function Home() {
       <img src={user ? user?.company_logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/project'>Projects</NavLink>
-      <NavLink style={navStyle} onClick={handleClick} to='/directory/company'>Directory</NavLink>
+      <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>
      
       <button style={{display: 'inline'}} onClick={handleLogOut} >Log Out</button>
       </div>

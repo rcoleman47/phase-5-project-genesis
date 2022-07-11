@@ -1,17 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setView } from '../Redux/Reducers/view';
 
 export default function ViewNavBar() {
-  const [view, setView] = useState('/project/estimate')
+  const view = useSelector(state => state.view.value);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(()=> {
     navigate(`${view}`)
   }, [view])
 
   const handleSelect = (e) => {
-    setView(e.target.value);
+    dispatch(setView(e.target.value));
   };
 
   return (

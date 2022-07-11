@@ -70,7 +70,6 @@ export default function DivisionSelector() {
         });
 
         setError(null);
-        window.location.reload();
 
       }
       else
@@ -81,8 +80,8 @@ export default function DivisionSelector() {
 
   return (
     <div className='estimate-form-selector'>
-      <form onSubmit={handleSubmit} value={currentDiv ? currentDiv[0] : ''}>
-        <select onChange={handleSelect} value={divisionId}  >
+      <form onSubmit={handleSubmit} value={currentDiv?.[0] ? currentDiv[0] : ''}>
+        <select onChange={handleSelect} value={divisionId} style={{width: '300px', boxSizing: 'border-box'}} >
           {renderDivisions}
         </select> 
     

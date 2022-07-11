@@ -36,7 +36,6 @@ export default function SubDirectory() {
 
   return (
     <>
-
       <div className='directory-buttons' >
         <label>Filter
           <select onChange={handleSubSort} value={subSort}>
@@ -48,14 +47,12 @@ export default function SubDirectory() {
         <button>Add Employee</button>
       </div>
 
-
       {renderSubDirectory}
 
       <SubPagination 
         subsPerPage={subsPerPage} 
         totalSubs={totalSubs} 
         paginate={paginate} />
-
     </>
   )
 }
