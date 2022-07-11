@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setProjectView } from '../Redux/Reducers/view';
 import { useState } from 'react';
 import DashboardTable from './DashboardTable';
 import DashPagination from './DashPagination';
@@ -16,6 +17,7 @@ export default function Dashboard() {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const totalProjects = projects?.length
   const indexOfLastProject = currentPage * projectsPerPage;
@@ -39,6 +41,7 @@ export default function Dashboard() {
   const paginate = (number) => setCurrentPage(number);
 
   const handleClick = () => {
+    dispatch(setProjectView('/project/new'))
     navigate('/project/new')
   };
 

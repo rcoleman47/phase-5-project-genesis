@@ -20,6 +20,7 @@ export default function SubPagination({ subsPerPage, totalSubs, paginate}) {
       style={{
         background: active === number ? 'orange' : '#c0c0c0',
         fontWeight: active === number ? '800' : '100',
+        width: '30px'
       }} >
         {number}
     </button>

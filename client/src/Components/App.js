@@ -48,16 +48,19 @@ function App() {
         
         <Route path='/' element={ <Home /> } >
           <Route path='/dashboard' element={ <Dashboard /> } />
+
           <Route path='/project' element={ <ProjectContainer /> } >
             <Route path='estimate' element={ <ProjectEstimate /> } />
             <Route path='edit' element={ <ProjectEdit /> } />
+            <Route path='new' element={ <NewProjectForm /> } /> 
           </Route>
-          <Route path='/project/new' element={ <NewProjectForm /> } /> 
+
           <Route path='directory' element={ <DirectoryContainer /> } >
             <Route path='company' element={ <Directory /> } />
             <Route path='subcontractors' element={ <SubDirectory /> } />
           </Route>
             <Route path='/directory/subcontractor/edit' element={ <SubAddContact /> } />
+
         </Route>
       </Routes>
     </>

@@ -1,9 +1,17 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import DivisionSelector from './DivisionSelector';
 import BudgetItemForm from './BudgetItemForm';
+import SubBidForm from './SubBidForm';
 
 export default function EstimateForm() {
+  const [addSubBid, setAddSubBid] = useState(true);
+
   const project = useSelector(state => state.projects.currentProject);
+
+  const handleClick = () => {
+    setAddSubBid(!addSubBid);
+  };
 
   const renderBudgetItems = project?.budget_items ? project?.budget_items.slice().sort((a, b) => {
     return a.division.split(' ')[1] - b.division.split(' ')[1] || a.cost_code.split(' ')[0] - b.cost_code.split(' ')[0]
@@ -15,7 +23,10 @@ export default function EstimateForm() {
     <div>
   
       <div className='estimate-form-container'>
-        <DivisionSelector />
+
+        {addSubBid ? <DivisionSelector /> : <SubBidForm />}
+       
+        <button onClick={handleClick} style={{width: '150px', alignSelf: 'center', marginRight: '85px', marginTop: '10px'}} >Add Subcontractor Bid</button>
 
         <div className='budgetItem-container'>
           {project?.budget_items?.length > 0 ? budgetItemTableHeader : ''}

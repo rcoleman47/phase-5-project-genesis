@@ -11,7 +11,7 @@ export default function ViewNavBar() {
 
   useEffect(()=> {
     navigate(`${view}`)
-  }, [view])
+  }, [navigate, view])
 
   const handleSelect = (e) => {
     dispatch(setProjectView(e.target.value));
@@ -21,7 +21,7 @@ export default function ViewNavBar() {
     <div className='project-navbar' >
       <select onChange={handleSelect} value={view}>
           <option value='/project/estimate' >Estimate</option>
-          <option value='/subcontractors' >Subcontractors</option>
+          <option value='/project/directory' >Directory</option>
         </select>
     </div>
   )

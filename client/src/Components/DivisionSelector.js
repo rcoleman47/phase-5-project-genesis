@@ -15,7 +15,6 @@ export default function DivisionSelector() {
   const [codeId, setCodeId] = useState(currentDiv.cost_codes[0].id)
   const [divisionId, setDivisionId] = useState(divisions[0].id);
 
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function DivisionSelector() {
       dispatch(setCurrentDiv(division))
       dispatch(setCurrentDivCodes(division.cost_codes))
     });
-  }, [divisionId, codeId])
+  }, [divisionId])
 
 
   useEffect(() => {

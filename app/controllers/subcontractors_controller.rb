@@ -8,7 +8,7 @@ class SubcontractorsController < ApplicationController
   end
 
   def show
-    render json: subcontractor
+    render json: subcontractor, serializer: SingleSubSerializer
   end
 
   def create
