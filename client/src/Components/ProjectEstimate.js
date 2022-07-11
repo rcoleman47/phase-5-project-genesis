@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { setCurrentProject, editProject, setProjectId} from '../Redux/Reducers/projects';
 import EstimateTable from './EstimateTable';
 import EstimateForm from './EstimateForm';
@@ -12,6 +13,7 @@ export default function ProjectEstimate() {
   const viewProject = useSelector(state => state.projects.viewProject);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (projectId) {
@@ -29,33 +31,23 @@ export default function ProjectEstimate() {
     dispatch(setProjectId(e.target.value))
   };
 
-  const renderSelect = 
-    <select onChange={handleSelect} value={projectId} >
-      {renderOptions}
-    </select>
-
-  const buttonText = viewProject ? 'Edit Project' : 'Done Editing';
-
   const handleClick = () => {
-    dispatch(editProject(!viewProject));
+    navigate('/project/edit')
   };
 
-  const renderButton = projects?.length > 0 ? <button onClick={handleClick} >{buttonText}</button> : '';
+  const renderButton = projects?.length > 0 ? <button onClick={handleClick} >Edit Project</button> : '';
 
  
 
   return (
     <>
-      <div className={viewProject ? '' :'estimate-form-view'}>
-        {viewProject ? renderSelect : ''}
-
+      <div>
+        <select onChange={handleSelect} value={projectId} >
+          {renderOptions}
+         </select>
         {renderButton}
       </div>
-
-      <div>
-        {viewProject ? '' : <EditProjectForm projectId={projectId} />}
-      </div>
-      {viewProject ? <EstimateTable projects={projects} /> : <EstimateForm  />}
+      <EstimateTable projects={projects} /> 
     </>
   )
 }

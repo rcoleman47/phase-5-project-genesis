@@ -83,7 +83,7 @@ export default function Home() {
       <div className='viewNavContainer' >
       <img src={user ? user?.company_logo : "Loading..."} alt="Company logo" />
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
-      <NavLink style={navStyle} onClick={handleClick} to='/project/estimate'>Projects</NavLink>
+      <NavLink style={navStyle} onClick={handleClick} to='/project'>Projects</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>
      
       <button style={{display: 'inline'}} onClick={handleLogOut} >Log Out</button>

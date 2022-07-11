@@ -10,6 +10,7 @@ import ProjectContainer from './ProjectContainer';
 import ProjectEstimate from './ProjectEstimate';
 import Directory from './Directory';
 import NewProjectForm from './NewProjectForm';
+import ProjectEdit from './ProjectEdit';
 import '../App.css';
 
 
@@ -42,6 +43,7 @@ function App() {
           <Route path='/dashboard' element={ <Dashboard /> } />
           <Route path='/project' element={ <ProjectContainer /> } >
             <Route path='estimate' element={ <ProjectEstimate /> } />
+            <Route path='edit' element={ <ProjectEdit /> } />
           </Route>
           <Route path='projects/new' element={ <NewProjectForm /> } /> 
           <Route path='directory' element={ <Directory /> } />
