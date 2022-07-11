@@ -18,7 +18,7 @@ export default function ProjectEdit() {
       .then(r => r.json())
       .then(project => dispatch(setCurrentProject(project)));
     }
-  }, [projectId])
+  }, [projectId, dispatch])
 
 
   const handleClick = () => {

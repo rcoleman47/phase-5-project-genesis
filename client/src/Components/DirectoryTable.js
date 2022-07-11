@@ -1,6 +1,6 @@
 export default function DirectoryTable({company, users, sort}) {
 
-  const renderUsers = company?.users ? [...users].sort((a, b) => {
+  const renderUsers = company?.users ? [...users]?.sort((a, b) => {
     if(sort === 'name'){
       return a.name.localeCompare(b.name);
     } else if(sort === 'role'){

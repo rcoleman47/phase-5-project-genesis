@@ -19,7 +19,7 @@ export default function ProjectEstimate() {
       .then(r => r.json())
       .then(project => dispatch(setCurrentProject(project)));
     }
-  }, [projectId])
+  }, [projectId, dispatch])
 
   const renderOptions = projects?.length > 0 ? projects?.slice().sort((a, b) => {
     return a.title.localeCompare(b.title)

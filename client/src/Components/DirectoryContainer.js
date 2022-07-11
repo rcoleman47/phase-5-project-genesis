@@ -16,7 +16,7 @@ export default function DirectoryContainer() {
   };
 
   return (
-    <div className='dashboard' style={{}}>
+    <div className='project-container' style={{}}>
 
       <div className='project-navbar' style={{marginRight: '300px', width: '112px'}} >
         <select onChange={handleSelect} value={view}>
@@ -25,7 +25,9 @@ export default function DirectoryContainer() {
         </select>
       </div>
 
+    <div className='projects'>
       <Outlet />
+    </div>
 
     </div>
   )

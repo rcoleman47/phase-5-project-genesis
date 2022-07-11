@@ -2,18 +2,26 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import SubDirectoryTable from './SubDirectoryTable';
 import SubPagination from './SubPagination';
+import NewSubForm from './NewSubForm';
 
 
 export default function SubDirectory() {
   const [subSort, setSubSort] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const [subsPerPage] = useState(2);
+  const [addSub, setAddSub] = useState(true);
 
   const subcontractors = useSelector(state => state.subs.allSubs);
 
   const handleSubSort = (e) => {
     setSubSort(e.target.value);
   };
+
+  const handleClick = (e) => {
+    setAddSub(!addSub)
+  };
+
+  console.log(subcontractors)
 
   const totalSubs = subcontractors?.length
   const indexOfLastSub = currentPage * subsPerPage;
@@ -36,16 +44,16 @@ export default function SubDirectory() {
 
   return (
     <>
-      <div className='directory-buttons' >
-        <label>Filter
-          <select onChange={handleSubSort} value={subSort}>
-            <option value='name' >Name</option>
-            <option value='trade' >Trade</option>
-           </select>
-         </label>
+      <div >
+        <select onChange={handleSubSort} value={subSort}>
+          <option value='name' >Name</option>
+          <option value='trade' >Trade</option>
+        </select>
 
-        <button>Add Employee</button>
+        <button onClick={handleClick} >Add Subcontractor</button>
       </div>
+
+        {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}
 
       {renderSubDirectory}
 

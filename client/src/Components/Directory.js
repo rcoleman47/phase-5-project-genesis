@@ -22,14 +22,12 @@ export default function Directory() {
 
   return (
     <>
-      <div className='directory-buttons' >
-        <label>Filter
-          <select onChange={handleCompanySort} value={sort}>
-            <option value='default' >Default</option>
-            <option value='name' >Name</option>
-            <option value='role' >Role</option>
-          </select>
-        </label>
+      <div>
+        <select onChange={handleCompanySort} value={sort}>
+          <option value='default' >Default</option>
+          <option value='name' >Name</option>
+          <option value='role' >Role</option>
+        </select>
 
         <button onClick={handleClick}>Add Employee</button>
       </div>

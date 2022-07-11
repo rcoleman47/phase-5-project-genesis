@@ -10,11 +10,14 @@ export const subcontractorSlice = createSlice({
   reducers: {
     setSubs: (state, action) => {
       state.allSubs = action.payload
-    }
+    },
+    addSub: (state, action) => {
+      state.allSubs = [state.allSubs, action.payload]
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setSubs } = subcontractorSlice.actions
+export const { setSubs, addSub } = subcontractorSlice.actions
 
 export default subcontractorSlice.reducer

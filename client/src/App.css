@@ -17,7 +17,6 @@ code {
   display: flex;
   width: 100%;
   position: absolute;
-  /* align-items: flex-end; */
   flex-direction: column;
 }
 
@@ -51,7 +50,6 @@ button:hover {
   flex-wrap: wrap;
   height: auto;
   width: 100%;
-  /* margin: 20px 0px 40px 40px; */
 }
 .project-navbar {
   display: block;
@@ -302,25 +300,6 @@ button:hover {
 }
 
 /* Directory */
-.directory button {
-  width: 150px;
-  height: 31px;
-  margin-right: 200px;
-  float: right;
-}
-.directory-buttons {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.directory-buttons button {
-  display: inline;
-  margin-right: 10%;
-  margin-top: 19px;
-  height: 31px;
-  text-align: center;
-  cursor: pointer;
-}
 
 .user-container {
   display: flex;

@@ -17,15 +17,13 @@ export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(user)
-
   useEffect(() => {
     fetch('/projects')
     .then(r => r.json())
     .then(projects => {
       dispatch(setProjects(projects))
     })
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     fetch(`/companies/${user?.company_id}`)
@@ -34,7 +32,7 @@ export default function Home() {
       dispatch(mount(company))
       dispatch(setUsers(company?.users))
     })
-  }, []);
+  }, [dispatch, user?.company_id]);
 
   useEffect(() => {
     fetch('/subcontractors')
@@ -42,7 +40,7 @@ export default function Home() {
     .then(subs => {
       dispatch(setSubs(subs))
     })
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     fetch('/divisions')
@@ -50,7 +48,7 @@ export default function Home() {
     .then(codes => {
       dispatch(getCodes(codes))
     })
-  }, []);
+  }, [dispatch]);
   
 
   const navStyle = ({isActive})=>({
