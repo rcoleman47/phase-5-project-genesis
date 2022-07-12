@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentCode } from '../Redux/Reducers/costcodes';
 import { updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
 
-export default function BudgetItemForm({budget_item}) {
+export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   const [error, setError] = useState(null);
   const [isTaxed, setIsTaxed] = useState(budget_item?.taxed);
   const [budgetItemForm, setBudgetItemForm] = useState({
@@ -38,6 +39,11 @@ export default function BudgetItemForm({budget_item}) {
     });
   };
 
+  const handleItemSelect = () => {
+    dispatch(setCurrentCode(budget_item));
+    setAmount(unit_cost)
+  };
+
   const handleTaxChange = (e) => {
     let value = e.target.value;
     if(value === 'true'){
@@ -57,7 +63,6 @@ export default function BudgetItemForm({budget_item}) {
       if(r.ok){ 
         r.json().then(item => {
           dispatch(updateBudgetItem((item)));
-          console.log(item)
         });
         dispatch(updateProject(currentProject))
         setError(null);
@@ -73,7 +78,7 @@ export default function BudgetItemForm({budget_item}) {
   return (
     <div className='budgetItem-form-container'>
          
-      <form className='budgetItem-form' onSubmit={handleSubmit} >
+      <form style={{marginLeft: addSubBid ? '' : '25px'}} className='budgetItem-form' onSubmit={handleSubmit} >
           <input 
             name='division'
             type='text' 
@@ -134,18 +139,19 @@ export default function BudgetItemForm({budget_item}) {
             value={total} 
             readOnly
           />
-          <input 
+         { addSubBid ? <input 
             name='notes'
             type='text' 
             value={notes} 
             onChange={handleChange}
-            />
+            /> : <input style={{border: 'none', width: '0%'}} />}
 
         {error ? <h5>{error}</h5> : null}
 
-        <input type="submit" value="Update" />
+       { addSubBid ? <input type="submit" value="Update" /> : '' }
 
       </form>
+      {addSubBid ? '' : <button style={{padding: '0 10px', marginRight: '250px'}} onClick={handleItemSelect}>Select</button>}
       
     </div>
   )

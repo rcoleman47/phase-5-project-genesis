@@ -3,5 +3,5 @@ class Bid < ApplicationRecord
   belongs_to :project
 
   validates :amount, presence: true, numericality: { only_integer: true}
-  validates :cost_codes, presence: true
+  validates :cost_code, presence: true
 end

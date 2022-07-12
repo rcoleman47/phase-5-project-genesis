@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_message
+  rescue_from ActiveRecord::RecordNotUnique, with: :render_not_unique
 
   def current_user
     User.find_by(id: session[:current_user])
@@ -23,11 +24,15 @@ class ApplicationController < ActionController::API
   private
 
   def render_not_found(error)
-    render json: { error: error }, status: :not_found
+    render json: { error: error }, status: 404
   end
 
   def render_invalid_message(invalid)
-    render json: { error: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    render json: { error: invalid.record.errors.full_messages }, status: 422
+  end
+
+  def render_not_unique(error)
+    render json: { error: 'Bid already exists for this subcontractor' }, status: 406
   end
 
 end

@@ -3,7 +3,7 @@ class ProjectSerializer < ActiveModel::Serializer
 
   has_many :budget_items
   has_many :users
-  has_many :subcontractors
+  has_many :bids
   
   def cost_per_sf
     if object.budget_items.length > 0
