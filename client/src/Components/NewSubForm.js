@@ -50,12 +50,12 @@ export default function NewSubForm({setAddSub}) {
 
         setAddSub(true)
         dispatch(setDirectoryView('/directory/subcontractor/edit'))
-        navigate('/directory/subcontractor/edit')
         setError(null);
       }
       else
-        r.json().then(json=>setError(json.error));
+      r.json().then(json=>setError(json.error));
     });
+    navigate('/directory/subcontractor/edit')
 
   };
 

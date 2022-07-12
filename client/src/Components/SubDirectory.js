@@ -51,7 +51,7 @@ export default function SubDirectory() {
 
   const buttonText = addSub ? 'Add Subcontractor' : 'Remove Form';
 
-  const renderSubDirectory = currentSubs ? [...currentSubs].map(sub =>  <SubDirectoryTable key={sub.id} subcontractor={sub} />) : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Contacts</h3>;
+  const renderSubDirectory = currentSubs ? [...currentSubs].map(sub =>  <SubDirectoryTable key={sub.id} subcontractor={sub} />) : <h1 style={{alignSelf: 'center', color: 'orange'}}>Add Subcontractors and Contacts</h1>;
 
   return (
     <>

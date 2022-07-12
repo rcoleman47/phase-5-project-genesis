@@ -8,9 +8,19 @@ import EstimateForm from './EstimateForm'
 
 export default function ProjectEdit() {
   const projectId = useSelector(state => state.projects.projectId);
-
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    if (projectId) {
+      fetch(`/projects/${projectId}`)
+      .then(r => r.json())
+      .then(project => dispatch(setCurrentProject(project)));
+    }
+  }, [projectId, dispatch])
+
 
   const handleClick = () => {
     dispatch(setProjectView('/project/estimate'))
@@ -25,7 +35,7 @@ export default function ProjectEdit() {
       </div>
 
       <div>
-      <EditProjectForm projectId={projectId} />
+      <EditProjectForm />
       </div>
 
       <EstimateForm  />

@@ -6,6 +6,7 @@ import { setProjectView } from '../Redux/Reducers/view';
 
 export default function NewProjectForm() {
   const company = useSelector(state => state.company.company);
+  const currentProject = useSelector(state => state.projects.currentProject);
 
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
@@ -45,21 +46,18 @@ export default function NewProjectForm() {
     .then(r=>{
       if(r.ok){ 
         r.json().then(project => {
-          console.log(project.id);
           dispatch(setCurrentProject(project));
           dispatch(addProject(project))
           dispatch(setProjectId(project.id));
         });
 
         setError(null);
-        dispatch(setProjectView('/project/edit'));
-        navigate('/project/edit')
-  
+        dispatch(setProjectView('/project/estimate'));  
       }
       else
         r.json().then(json=>setError(json.error));
     });
-
+    navigate('/project/estimate')
   };
 
   return (

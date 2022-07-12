@@ -11,11 +11,13 @@ export default function NewCompanyForm() {
     city: '',
     state: '',
     address: '',
+    phone_number: '',
+    logo: ''
   });
 
   const dispatch = useDispatch();
 
-  const { name, city, state, address } = newCompayForm;
+  const { name, city, state, address, phone_number, logo } = newCompayForm;
 
 
   const handleChange = (e) => {
@@ -45,6 +47,7 @@ export default function NewCompanyForm() {
           city: '',
           state: '',
           address: '',
+          phone_number: '',
         });
 
         dispatch(created())
@@ -86,6 +89,20 @@ export default function NewCompanyForm() {
           onChange={handleChange} 
           value={state}
           placeholder='State' />
+
+        <input 
+          type='text' 
+          name='phone_number' 
+          onChange={handleChange} 
+          value={phone_number}
+          placeholder='Phone Number' />
+
+        <input 
+          type='text' 
+          name='logo' 
+          onChange={handleChange} 
+          value={logo}
+          placeholder='Image URL' />
         
         <input type='submit' name='submit' />
 

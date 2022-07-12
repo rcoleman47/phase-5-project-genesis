@@ -82,7 +82,7 @@ export default function Home() {
   return (
     <div className='pageContainer'>
       <div className='viewNavContainer' >
-      <img src={user ? user?.company_logo : "Loading..."} alt="Company logo" />
+      <img src={user?.company_logo ? user?.company_logo : "https://www.liblogo.com/img-logo/ge1067gea0-genesis-logo-genesis-logo-download-vector.png"} alt="Company logo" />
       <NavLink style={navStyle} onClick={handleClick} to='/dashboard'>Dashboard</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/project'>Projects</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>

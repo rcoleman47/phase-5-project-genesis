@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { setProjects } from '../Redux/Reducers/projects';
+import { setProjectId, setProjects } from '../Redux/Reducers/projects';
 import { login } from '../Redux/Reducers/user';
 import { mount } from '../Redux/Reducers/company';
 import { finished } from '../Redux/Reducers/register';
@@ -49,11 +49,11 @@ export default function Login() {
           email: '',
           password: '',
         });
-
-        navigate('/dashboard');
-
       } else r.json().then(json=>setError(json.error));
-    })
+    });
+    
+    navigate('/dashboard');
+
   };
 
   const handleClick = () => { 

@@ -1,20 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
 
-export default function EditProjectForm({projectId}) { 
-  const projects = useSelector(state => state.projects.allProjects);
-
-  const currentProject = projects?.slice().filter(project => project.id === parseInt(projectId))
-
+export default function EditProjectForm() { 
+  const currentProject = useSelector(state => state.projects.currentProject);
+  
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
-    location: currentProject[0]?.location,
-    phase: currentProject[0]?.phase,
-    sector: currentProject[0]?.sector,
-    classification: currentProject[0]?.classification,
-    size: currentProject[0]?.size,
-    tax_rate: currentProject[0]?.tax_rate,
+    location: currentProject?.location,
+    phase: currentProject?.phase,
+    sector: currentProject?.sector,
+    classification: currentProject?.classification,
+    size: currentProject?.size,
+    tax_rate: currentProject?.tax_rate,
   });
 
   const {location, phase, sector, classification, size, tax_rate} = projectForm;
@@ -66,7 +64,7 @@ export default function EditProjectForm({projectId}) {
           <input 
             name='title'
             type='text' 
-            value={currentProject[0]?.title} 
+            value={currentProject?.title} 
             readOnly
             />
         </label>

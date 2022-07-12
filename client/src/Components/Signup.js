@@ -63,11 +63,10 @@ console.log(company?.id)
           password: '',
           password_confirmation: ''
         });
-
-        navigate('/dashboard');
         
       } else r.json().then(json=>setErrors(json.error));
     })
+    navigate('/dashboard');
 
   };
 
