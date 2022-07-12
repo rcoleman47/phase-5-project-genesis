@@ -52,7 +52,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
         setError(null);
       }
       else
-      r.json().then(json=>setError(json.error));
+      r.json().then(json=>alert(json.error));
     });
     
     setAddSubBid(add => !add)
@@ -63,7 +63,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
          
       <form className='new-project-form' style={{width: '37.5%', marginTop: '31px'}} onSubmit={handleSubmit} >
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Bid Amount:  
           <input
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
@@ -74,7 +74,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
             />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Cost Code:
           <input  
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
@@ -85,7 +85,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Subcontractor:
           <select 
             style={{width: '158px', marginLeft: '5px', marginRight: '15px'}}

@@ -20,13 +20,10 @@ export default function DirectoryTable({company, users, sort}) {
   } ) : <tr><th>No Company Team</th></tr>
 
   const renderTable = 
+  <>
+  <h3 style={{marginLeft: '100px', color: 'orange', fontWeight: '900'}}>{company?.name}</h3>
   <table className="directory-table">
     <thead>
-      <tr>
-        <th style={{border: 'none', color: 'orange', fontWeight: '900'}}>
-          {company?.name}
-        </th>
-      </tr>
       <tr>
         <th>Name:</th>
         <th>Email:</th>
@@ -38,6 +35,7 @@ export default function DirectoryTable({company, users, sort}) {
         {renderUsers}
     </tbody>
 </table>
+</>
 
   return (
     <>

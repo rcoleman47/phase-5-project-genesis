@@ -66,7 +66,7 @@ export default function NewProjectForm() {
          
       <form className='new-project-form' onSubmit={handlePostSubmit} style={{marginTop: '50px'}}>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Title:
           <input 
             name='title'
@@ -76,7 +76,7 @@ export default function NewProjectForm() {
             />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Location:
           <input 
             name='location'
@@ -86,7 +86,7 @@ export default function NewProjectForm() {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Phase:
           <select 
             name='phase'
@@ -99,7 +99,7 @@ export default function NewProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Sector:
           <select 
             name='sector'
@@ -115,7 +115,7 @@ export default function NewProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Classification:
           <select 
             name='classification'
@@ -129,7 +129,7 @@ export default function NewProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Size:
           <input 
             name='size'

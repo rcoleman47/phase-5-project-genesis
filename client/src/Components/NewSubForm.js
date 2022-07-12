@@ -64,7 +64,7 @@ export default function NewSubForm({setAddSub}) {
          
       <form className='new-project-form' onSubmit={handlePostSubmit} >
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Sub Name:
           <input  
             name='name'
@@ -74,7 +74,7 @@ export default function NewSubForm({setAddSub}) {
             />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Address:
           <input  
             name='address'
@@ -84,7 +84,7 @@ export default function NewSubForm({setAddSub}) {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Phone Number:
           <input  
             name='phone_number'
@@ -93,7 +93,7 @@ export default function NewSubForm({setAddSub}) {
             onChange={handleChange}/>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Trade:
           <input  
             name='trade'

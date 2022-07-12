@@ -5,11 +5,33 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://www.lamons.com/wp-content/uploads/2021/08/WITB-header-plans-scaled.jpg');
+  background-position: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.login {
+  position: absolute;
+  background-color: #c0c0c0;
+  display: block;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+form {
+  background: white;
+}
+
+.login h1 {
+ display: block;
+ font-size: 3rem;
+ margin-top: 10px;
+ margin-bottom: 15px;
 }
 
 
@@ -22,6 +44,9 @@ code {
 
 button {
   height: 31px;
+}
+table {
+  background-color: white;
 }
 
 th {
@@ -469,6 +494,7 @@ button:hover {
   box-shadow: 0 0 20px;
   border-radius: 2%;
   text-align: center;
+  background: white;
 }
 
 .box input[type = "text"]{

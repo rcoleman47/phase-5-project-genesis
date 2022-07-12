@@ -59,7 +59,7 @@ export default function EditProjectForm() {
          
       <form className='new-project-form' onSubmit={handlePatchSubmit} >
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Title:
           <input 
             name='title'
@@ -69,7 +69,7 @@ export default function EditProjectForm() {
             />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Location:
           <input 
             name='location'
@@ -79,7 +79,7 @@ export default function EditProjectForm() {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Phase:
           <select 
             name='phase'
@@ -92,7 +92,7 @@ export default function EditProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Sector:
           <select 
             name='sector'
@@ -108,7 +108,7 @@ export default function EditProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Classification:
           <select 
             name='classification'
@@ -122,7 +122,7 @@ export default function EditProjectForm() {
             </select>
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Size:
           <input 
             name='size'
@@ -132,7 +132,7 @@ export default function EditProjectForm() {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Tax Rate:
           <input 
             name='tax_rate'

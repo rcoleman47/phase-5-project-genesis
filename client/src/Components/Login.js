@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
-import { setProjectId, setProjects } from '../Redux/Reducers/projects';
 import { login } from '../Redux/Reducers/user';
-import { mount } from '../Redux/Reducers/company';
 import { finished } from '../Redux/Reducers/register';
 
 
@@ -59,9 +57,12 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div >
+      <div className='login'>
+        <h1>Genesis Project Estimator</h1> 
+      </div>
       <form className='box' onSubmit={handleSubmit} >
-        <h1>LOG IN</h1>
+        <h2>LOG IN</h2>
          
         <input 
           type='text' 

@@ -66,7 +66,7 @@ export default function NewContactForm() {
          
       <form className='new-project-form' onSubmit={handlePostSubmit} >
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Name:
           <input  
             name='name'
@@ -76,7 +76,7 @@ export default function NewContactForm() {
             />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Cell Number:
           <input  
             name='cell_number'
@@ -86,7 +86,7 @@ export default function NewContactForm() {
           />
         </label>
 
-        <label style={{fontWeight: '600'}}>
+        <label style={{fontWeight: '800'}}>
           Email:
           <input  
             name='email'
@@ -95,7 +95,7 @@ export default function NewContactForm() {
             onChange={handleChange}/>
         </label>
 
-        <label style={{display: 'block', width: '100px', fontWeight: '600'}}>
+        <label style={{display: 'block', width: '100px', fontWeight: '800'}}>
           Role:
           <select 
             style={{width: '135px', marginRight: '20px'}}

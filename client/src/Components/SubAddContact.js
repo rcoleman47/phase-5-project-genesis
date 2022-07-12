@@ -67,7 +67,7 @@ export default function SubAddContact() {
   return (
     <div className='projects-container' >
       <div className='projects'>
-        <h1 style={{alignSelf: 'center', color: 'orange'}}>Add Contacts to {currentSub.name}</h1>
+        <h1 style={{background: 'white', alignSelf: 'center', color: 'orange'}}>Add Contacts to {currentSub.name}</h1>
         <div className='project-container' style={{marginLeft: '3px'}} >
           {currentSub?.contacts  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Add Subcontractors!</h1>}
         </div>

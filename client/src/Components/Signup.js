@@ -72,6 +72,9 @@ console.log(company?.id)
 
   return (
     <div>
+      <div className='login'>
+        <h1>Genesis Project Estimator</h1> 
+      </div>
       <form onSubmit={handleSubmit} className='box' >
         <h1>SIGN UP</h1>
 
