@@ -50,14 +50,15 @@ export default function NewProjectForm() {
           dispatch(addProject(project))
           dispatch(setProjectId(project.id));
         });
-
         setError(null);
+
         dispatch(setProjectView('/project/estimate'));  
+
+        navigate('/project/estimate')
       }
       else
         r.json().then(json=>setError(json.error));
     });
-    navigate('/project/estimate')
   };
 
   return (

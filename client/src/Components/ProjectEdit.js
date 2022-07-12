@@ -14,11 +14,9 @@ export default function ProjectEdit() {
   
 
   useEffect(() => {
-    if (projectId) {
-      fetch(`/projects/${projectId}`)
-      .then(r => r.json())
-      .then(project => dispatch(setCurrentProject(project)));
-    }
+    fetch(`/projects/${projectId}`)
+    .then(r => r.json())
+    .then(project => dispatch(setCurrentProject(project)));
   }, [projectId, dispatch])
 
 

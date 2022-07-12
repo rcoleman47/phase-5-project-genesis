@@ -21,7 +21,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
     .then(sub => {
       dispatch(setCurrentSub(sub))
     });
-  }, [subID])
+  }, [subID, dispatch]);
 
   const code = currentCode?.cost_code ? currentCode?.division + ': ' + currentCode?.cost_code : 'Select Item Below'
 
@@ -49,15 +49,15 @@ export default function SubBidForm({amount, setAddSubBid}) {
         r.json().then(bid => {
           dispatch(addProjectBid(bid))
         });
-        setAddSubBid(false)
         setError(null);
       }
       else
-        r.json().then(json=>setError(json.error));
+      r.json().then(json=>setError(json.error));
     });
+    
+    setAddSubBid(add => !add)
   };
 
-  console.log(project)
   return (
     <div className='project-form-container'>
          

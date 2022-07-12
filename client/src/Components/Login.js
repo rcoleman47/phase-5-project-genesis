@@ -41,19 +41,17 @@ export default function Login() {
       if(r.ok){
         r.json().then( user => {
           dispatch(login(user))
-          dispatch(mount(user.company))
-          dispatch(setProjects(user.projects))
         });
 
         setLoginForm({
           email: '',
           password: '',
         });
+
+        navigate('/dashboard');
+
       } else r.json().then(json=>setError(json.error));
     });
-    
-    navigate('/dashboard');
-
   };
 
   const handleClick = () => { 

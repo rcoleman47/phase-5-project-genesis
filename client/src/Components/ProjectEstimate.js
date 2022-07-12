@@ -14,12 +14,10 @@ export default function ProjectEstimate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (projectId) {
-      fetch(`/projects/${projectId}`)
-      .then(r => r.json())
-      .then(project => dispatch(setCurrentProject(project)));
-    }
-  }, [projectId])
+    fetch(`/projects/${projectId}`)
+    .then(r => r.json())
+    .then(project => dispatch(setCurrentProject(project)));
+  }, [projectId, dispatch])
 
   const renderOptions = projects?.length > 0 ? projects?.slice().sort((a, b) => {
     return a.title.localeCompare(b.title)

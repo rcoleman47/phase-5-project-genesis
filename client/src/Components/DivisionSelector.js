@@ -24,7 +24,7 @@ export default function DivisionSelector() {
       dispatch(setCurrentDiv(division))
       dispatch(setCurrentDivCodes(division.cost_codes))
     });
-  }, [divisionId])
+  }, [divisionId, dispatch])
 
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function DivisionSelector() {
       else {
         r.json().then(json=>console.log(json.error))};
     });
-  }, [codeId]);
+  }, [codeId, dispatch]);
 
 
   const renderDivisions = divisions ? divisions?.map(division => <option key={division.id} value={division?.id}>{division.number}: {division.title}</option> ) : <option>No Current Divisions</option>;

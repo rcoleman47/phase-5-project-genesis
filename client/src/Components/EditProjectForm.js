@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
 
@@ -33,7 +33,7 @@ export default function EditProjectForm() {
   const handlePatchSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/projects/${currentProject[0].id}`, {
+    fetch(`/projects/${currentProject.id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(projectForm)

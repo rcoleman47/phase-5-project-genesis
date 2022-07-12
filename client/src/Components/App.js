@@ -2,7 +2,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../Redux/Reducers/user';
-import { setDirectoryView, setProjectView } from '../Redux/Reducers/view'
 import Login from './Login';
 import Registration from './Registration';
 import Home from './Home';
@@ -36,9 +35,8 @@ function App() {
         navigate('/login');
     };
     });
-    dispatch(setProjectView('/project/estimate'))
-    dispatch(setDirectoryView('/directory/company'))
-  }, []);
+    
+  }, [dispatch, navigate]);
 
   return (
     <>
