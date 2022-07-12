@@ -55,6 +55,7 @@ export default function Home() {
     color: isActive ? "#ff8c00":"black",
     marginTop: '30px',
     fontWeight: '900',
+    marginRight: '100px'
   });
 
   const handleClick = (e) => {
@@ -87,7 +88,7 @@ export default function Home() {
       <NavLink style={navStyle} onClick={handleClick} to='/project'>Projects</NavLink>
       <NavLink style={navStyle} onClick={handleClick} to='/directory'>Directory</NavLink>
      
-      <button style={{display: 'inline'}} onClick={handleLogOut} >Log Out</button>
+      <button style={{display: 'inline', marginRight: '50px'}} onClick={handleLogOut} >Log Out</button>
       </div>
       <Outlet />
     </div>

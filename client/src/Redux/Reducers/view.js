@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   projectView: '/project/estimate',
-  directoryView: '/directory/company'
+  directoryView: '/directory/company',
 };
 
 export const viewSlice = createSlice({

@@ -29,7 +29,7 @@ export default function EstimateForm() {
 
         {addSubBid ? <DivisionSelector /> : <SubBidForm setAddSubBid={setAddSubBid} amount={amount}/>}
        
-        <button onClick={handleClick} style={{width: '158px', alignSelf: 'center', marginRight: '95px', marginTop: '10px'}} >{buttonText}</button>
+        <button onClick={handleClick} style={{width: '158px', alignSelf: 'center', marginRight: '83px', marginTop: '10px'}} >{buttonText}</button>
 
         <div className='budgetItem-container'>
           {project?.budget_items?.length > 0 ? budgetItemTableHeader : ''}
