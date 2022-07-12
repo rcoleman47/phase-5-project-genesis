@@ -9,13 +9,18 @@ class UsersController < ApplicationController
   end
 
   # Route /authorized_user
-  def show
+  def show_authorized_user
     current_user = User.find_by(id: session[:current_user])
     if current_user
       render json: current_user
     else
       render json: { error: "Not signed in"}, status: :not_found
     end  
+  end
+
+  def show
+    user = User.find(params[:id])
+    render json: user, status: 200
   end
 
   def create

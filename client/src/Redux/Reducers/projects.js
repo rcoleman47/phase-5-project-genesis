@@ -5,6 +5,7 @@ const initialState = {
   currentProject: undefined,
   viewProject: true,
   projectId: undefined,
+  currentProjectUser: undefined,
 };
 
 export const projectsSlice = createSlice({
@@ -28,8 +29,14 @@ export const projectsSlice = createSlice({
     setProjectId: (state, action) => {
       state.projectId = action.payload
     },
+    setUser: (state, action) => {
+      state.currentProjectUser = action.payload
+    },
     addProjectBid: (state, action) => {
       state.currentProject.bids = [...state.currentProject.bids, action.payload];
+    },
+    addTeamMember: (state, action) => {
+      state.currentProject.users = [...state.currentProject.users, action.payload];
     },
     updateBudgetItem: (state, action) => {
       state.currentProject.budget_items = state.currentProject.budget_items.map(item =>{
@@ -49,6 +56,6 @@ export const projectsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setProjects, addProjectBid, setCurrentProject, addProject, removeCurrentProject, editProject, setProjectId, updateBudgetItem, updateProject } = projectsSlice.actions
+export const { setProjects, addTeamMember, setUser, addProjectBid, setCurrentProject, addProject, removeCurrentProject, editProject, setProjectId, updateBudgetItem, updateProject } = projectsSlice.actions
 
 export default projectsSlice.reducer
