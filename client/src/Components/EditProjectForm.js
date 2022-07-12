@@ -9,7 +9,6 @@ export default function EditProjectForm({projectId}) {
 
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
-    title: currentProject[0]?.title,
     location: currentProject[0]?.location,
     phase: currentProject[0]?.phase,
     sector: currentProject[0]?.sector,
@@ -18,7 +17,7 @@ export default function EditProjectForm({projectId}) {
     tax_rate: currentProject[0]?.tax_rate,
   });
 
-  const {title, location, phase, sector, classification, size, tax_rate} = projectForm;
+  const {location, phase, sector, classification, size, tax_rate} = projectForm;
 
   const dispatch = useDispatch();
 
@@ -67,8 +66,8 @@ export default function EditProjectForm({projectId}) {
           <input 
             name='title'
             type='text' 
-            value={title} 
-            onChange={handleChange}
+            value={currentProject[0]?.title} 
+            readOnly
             />
         </label>
 

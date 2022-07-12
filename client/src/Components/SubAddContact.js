@@ -7,7 +7,8 @@ import NewContactForm from './NewContactForm';
 export default function SubAddContact() {
   const currentSub = useSelector(state => state.subs.currentSub)
 
-  const renderUsers = currentSub?.contacts.length > 0 ? [...currentSub?.contacts].map(user => {
+  console.log(currentSub)
+  const renderUsers = currentSub?.contacts?.length > 0 ? [...currentSub?.contacts].map(user => {
     return (
       <tr key={user.id}>
         <td>{user.name}</td>

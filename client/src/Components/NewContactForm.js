@@ -14,6 +14,7 @@ export default function NewContactForm() {
     role: 'Executive',
     subcontractor_id: subcontractor?.id,
   });
+  console.log(contactForm)
 
   const {name, cell_number, email, role} = contactForm;
 

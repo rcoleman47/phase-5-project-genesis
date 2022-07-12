@@ -112,7 +112,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
             </select>
           <input 
             name='unit_cost'
-            type='text' 
+            type='number' 
             value={unit_cost} 
             onChange={handleChange}
           />
@@ -134,8 +134,8 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
               <option value={false}>No</option>
             </select>
           <input 
-            name='unit_cost'
-            type='text' 
+            name='total'
+            type='number' 
             value={total} 
             readOnly
           />

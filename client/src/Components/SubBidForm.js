@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addProjectBid } from '../Redux/Reducers/projects';
 import { setCurrentSub } from '../Redux/Reducers/subcontractors';
 
 
-export default function SubBidForm({amount}) {
+export default function SubBidForm({amount, setAddSubBid}) {
   const subcontractor = useSelector(state => state.subs.currentSub);
   const subs = useSelector(state => state.subs.allSubs);
   const project = useSelector(state => state.projects.currentProject);
@@ -22,7 +23,7 @@ export default function SubBidForm({amount}) {
     });
   }, [subID])
 
-  const code = currentCode?.cost_code ? currentCode?.division + ': ' + currentCode?.cost_code : 'Select Item'
+  const code = currentCode?.cost_code ? currentCode?.division + ': ' + currentCode?.cost_code : 'Select Item Below'
 
   const renderSubs = subs ? subs?.map(sub => <option key={sub.id} value={sub?.id}>{sub.name}</option> ) : <option>No Current Subcontractors</option>;
 
@@ -46,17 +47,17 @@ export default function SubBidForm({amount}) {
     .then(r=>{
       if(r.ok){ 
         r.json().then(bid => {
-          console.log(bid);
+          dispatch(addProjectBid(bid))
         });
-      
+        setAddSubBid(false)
         setError(null);
       }
       else
         r.json().then(json=>setError(json.error));
     });
-
   };
 
+  console.log(project)
   return (
     <div className='project-form-container'>
          

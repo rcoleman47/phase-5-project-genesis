@@ -45,7 +45,7 @@ export default function NewProjectForm() {
     .then(r=>{
       if(r.ok){ 
         r.json().then(project => {
-          console.log(project);
+          console.log(project.id);
           dispatch(setCurrentProject(project));
           dispatch(addProject(project))
           dispatch(setProjectId(project.id));

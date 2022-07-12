@@ -27,9 +27,9 @@ export default function EstimateForm() {
   
       <div className='estimate-form-container'>
 
-        {addSubBid ? <DivisionSelector /> : <SubBidForm amount={amount}/>}
+        {addSubBid ? <DivisionSelector /> : <SubBidForm setAddSubBid={setAddSubBid} amount={amount}/>}
        
-        <button onClick={handleClick} style={{width: '150px', alignSelf: 'center', marginRight: '85px', marginTop: '10px'}} >{buttonText}</button>
+        <button onClick={handleClick} style={{width: '158px', alignSelf: 'center', marginRight: '95px', marginTop: '10px'}} >{buttonText}</button>
 
         <div className='budgetItem-container'>
           {project?.budget_items?.length > 0 ? budgetItemTableHeader : ''}

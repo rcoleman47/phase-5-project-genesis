@@ -12,15 +12,6 @@ export default function ProjectEdit() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (projectId) {
-      fetch(`/projects/${projectId}`)
-      .then(r => r.json())
-      .then(project => dispatch(setCurrentProject(project)));
-    }
-  }, [projectId, dispatch])
-
-
   const handleClick = () => {
     dispatch(setProjectView('/project/estimate'))
     navigate('/project/estimate')
