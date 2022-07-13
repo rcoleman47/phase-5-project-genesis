@@ -24,8 +24,8 @@ class BudgetItemsController < ApplicationController
   end
 
   def destroy
+    render json: budget_item
     budget_item.destroy!
-    head 204
   end
 
 

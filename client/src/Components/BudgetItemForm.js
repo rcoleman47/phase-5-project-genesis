@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentCode } from '../Redux/Reducers/costcodes';
-import { updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
+import { deleteBudgetItem, updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   const [error, setError] = useState(null);
@@ -24,6 +24,8 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   const {division, cost_code, unit_quantity, unit_cost, unit, taxed, subcontracted, notes} = budgetItemForm
 
   const dispatch = useDispatch();
+  
+  // console.log(currentProject.budget_items)
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -39,9 +41,12 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
     });
   };
 
-  const handleItemSelect = () => {
-    dispatch(setCurrentCode(budget_item));
-    setAmount(unit_cost)
+  const handleItemDelete = () => {
+    fetch(`/budget_items/${budget_item?.id}`, {
+      method: 'DELETE',
+    })
+    .then(r => r.json())
+    .then(item => dispatch(deleteBudgetItem((item))))
   };
 
   const handleTaxChange = (e) => {
@@ -139,22 +144,20 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
             value={total  == null ? '' : total} 
             readOnly
           />
-         { addSubBid ? <input 
+          <input 
             name='notes'
             type='text' 
             value={notes  == null ? '' : notes} 
             onChange={handleChange}
-            /> : <input style={{border: 'none', width: '0%'}} />}
+            />
 
         {error ? <h5>{error}</h5> : null}
 
-       { addSubBid ? <input type="submit" value="Update" /> : '' }
+       { addSubBid ? <input type="submit" value="Update" /> : ''  }
 
       </form>
-      {addSubBid ? '' : <button style={{padding: '0 10px', marginRight: '250px'}} onClick={handleItemSelect}>Select</button>}
+      {addSubBid ? '' : <button onClick={handleItemDelete} style={{padding: '0 10px', marginRight: '25px', marginLeft: '12px', width: '90px'}}>Delete</button>}
       
     </div>
   )
 }
-
-// (unit_cost * unit_quantity) * (1 + (tax_rate / 100))
