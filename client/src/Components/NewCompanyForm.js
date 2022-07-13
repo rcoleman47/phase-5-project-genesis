@@ -5,14 +5,14 @@ import { created } from '../Redux/Reducers/register';
 import { mount } from '../Redux/Reducers/company';
 
 export default function NewCompanyForm() {
-  const [errors, setErrors] = useState();
+  const [errors, setErrors]                = useState();
   const [newCompayForm, setNewCompanyForm] = useState({
-    name: '',
-    city: '',
-    state: '',
-    address: '',
+    name:         '',
+    city:         '',
+    state:        '',
+    address:      '',
     phone_number: '',
-    logo: ''
+    logo:         ''
   });
 
   const dispatch = useDispatch();
@@ -43,10 +43,10 @@ export default function NewCompanyForm() {
         r.json().then( company => dispatch(mount(company)));
 
         setNewCompanyForm({
-          name: '',
-          city: '',
-          state: '',
-          address: '',
+          name:         '',
+          city:         '',
+          state:        '',
+          address:      '',
           phone_number: '',
         });
 

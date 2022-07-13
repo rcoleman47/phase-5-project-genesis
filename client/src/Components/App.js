@@ -27,17 +27,13 @@ function App() {
     fetch('/authorized_user')
     .then(r => {
       if (r.ok){
-        r.json().then(user => {
-          dispatch(login(user))
-          // navigate('/dashboard')
-        })
+        r.json().then(user => dispatch(login(user)))
       }
       else {
-        r.json().then(json=>console.log(json.error));
+        r.json().then(json => console.log(json.error));
         navigate('/login');
     };
-    });
-    
+  });
   }, [dispatch]);
 
   return (

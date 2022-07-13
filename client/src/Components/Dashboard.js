@@ -6,9 +6,9 @@ import DashboardTable from './DashboardTable';
 import DashPagination from './DashPagination';
 
 export default function Dashboard() {
-  const [sort, setSort] = useState('default');
+  const [sort, setSort]               = useState('default');
   const [currentPage, setCurrentPage] = useState(1);
-  const [projectsPerPage] = useState(15);
+  const [projectsPerPage]             = useState(15);
 
   const projects = useSelector(state => state.projects.allProjects);
 
@@ -38,7 +38,7 @@ export default function Dashboard() {
   
   const renderDashboard = projects ? <DashboardTable currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
 
-  const paginate = (number) => setCurrentPage(number);
+  const paginate        = (number) => setCurrentPage(number);
 
   const handleClick = () => {
     dispatch(setProjectView('/project/new'))

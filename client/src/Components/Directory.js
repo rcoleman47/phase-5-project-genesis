@@ -4,11 +4,11 @@ import DirectoryTable from './DirectoryTable';
 import NewUserForm from './NewUserForm';
 
 export default function Directory() {
-  const [sort, setSort] = useState('default');
+  const [sort, setSort]       = useState('default');
   const [addUser, setAddUser] = useState(true);
 
   const company = useSelector(state => state.company.company);
-  const users = useSelector(state => state.company.users);
+  const users   = useSelector(state => state.company.users);
 
   const handleCompanySort = (e) => {
     setSort(e.target.value);
@@ -20,7 +20,7 @@ export default function Directory() {
     setAddUser(!addUser)
   };
 
-  const buttonText = addUser ? 'Add Employee' : 'Remove Form';
+  const buttonText  = addUser ? 'Add Employee' : 'Remove Form';
 
   return (
     <>

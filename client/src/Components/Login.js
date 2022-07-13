@@ -6,14 +6,14 @@ import { finished } from '../Redux/Reducers/register';
 
 
 export default function Login() {
-  const [error, setError] = useState();
+  const [error, setError]         = useState();
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   });
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch            = useDispatch();
+  const navigate            = useNavigate();
 
   const { email, password } = loginForm;
 

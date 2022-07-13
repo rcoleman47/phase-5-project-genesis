@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProject, updateProject } from '../Redux/Reducers/projects';
 
 export default function EditProjectForm() { 
-  const currentProject = useSelector(state => state.projects.currentProject);
+  const currentProject    = useSelector(state => state.projects.currentProject);
   
   const [error, setError] = useState(null);
   const [projectForm, setProjectForm] = useState({
-    location: currentProject?.location,
-    phase: currentProject?.phase,
-    sector: currentProject?.sector,
+    location:       currentProject?.location,
+    phase:          currentProject?.phase,
+    sector:         currentProject?.sector,
     classification: currentProject?.classification,
-    size: currentProject?.size,
-    tax_rate: currentProject?.tax_rate,
+    size:           currentProject?.size,
+    tax_rate:       currentProject?.tax_rate,
   });
 
   const {location, phase, sector, classification, size, tax_rate} = projectForm;

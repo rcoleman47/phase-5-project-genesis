@@ -5,18 +5,17 @@ import { addProject, setCurrentProject, setProjectId } from '../Redux/Reducers/p
 import { setProjectView } from '../Redux/Reducers/view';
 
 export default function NewProjectForm() {
-  const company = useSelector(state => state.company.company);
-  const currentProject = useSelector(state => state.projects.currentProject);
+  const company                       = useSelector(state => state.company.company);
 
-  const [error, setError] = useState(null);
+  const [error, setError]             = useState(null);
   const [projectForm, setProjectForm] = useState({
-    title: '',
-    location: '',
-    phase: 'Pre-Construction',
-    sector: 'Restaurant',
-    classification: 'New Construction',
-    size: '',
-    company_id: company.id,
+    title:           '',
+    location:        '',
+    phase:           'Pre-Construction',
+    sector:          'Restaurant',
+    classification:  'New Construction',
+    size:            '',
+    company_id:      company.id,
   });
 
   const {title, location, phase, sector, classification, size} = projectForm;

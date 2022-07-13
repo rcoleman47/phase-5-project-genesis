@@ -11,7 +11,7 @@ import { setDirectoryView, setProjectView } from '../Redux/Reducers/view';
 
 
 export default function Home() {
-  const user = useSelector(state => state.user.value);
+  const user     = useSelector(state => state.user.value);
   const projects = useSelector(state => state.projects.allProjects);
   
   const dispatch = useDispatch();

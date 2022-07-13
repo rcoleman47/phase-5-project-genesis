@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBudgetItem, updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
 
 export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
-  const [error, setError] = useState(null);
-  const [isTaxed, setIsTaxed] = useState(budget_item?.taxed);
+  const [error, setError]                   = useState(null);
+  const [isTaxed, setIsTaxed]               = useState(budget_item?.taxed);
   const [budgetItemForm, setBudgetItemForm] = useState({
     division:        budget_item?.division,
     cost_code:       budget_item?.cost_code,
@@ -19,11 +18,11 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
 
   const currentProject = useSelector(state => state.projects.currentProject);
 
-  const {tax_rate} = budget_item
+  const {tax_rate}     = budget_item
 
   const {division, cost_code, unit_quantity, unit_cost, unit, taxed, subcontracted, notes} = budgetItemForm
 
-  const dispatch = useDispatch();
+  const dispatch       = useDispatch();
 
   const handleChange = (e) => {
     let key   = e.target.name;

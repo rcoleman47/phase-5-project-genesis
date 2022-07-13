@@ -6,13 +6,13 @@ import CostCodeSelector from './CostCodeSelector';
 
 
 export default function DivisionSelector() {
-  const divisions = useSelector(state => state.costCodes.all);
-  const currentDiv = useSelector(state => state.costCodes.currentDiv);
-  const currentCode = useSelector(state => state.costCodes.currentCode);
-  const project = useSelector(state => state.projects.currentProject);
+  const divisions    = useSelector(state => state.costCodes.all);
+  const currentDiv   = useSelector(state => state.costCodes.currentDiv);
+  const currentCode  = useSelector(state => state.costCodes.currentCode);
+  const project      = useSelector(state => state.projects.currentProject);
 
-  const [error, setError] = useState(null);
-  const [codeId, setCodeId] = useState(currentDiv.cost_codes[0].id)
+  const [error, setError]           = useState(null);
+  const [codeId, setCodeId]         = useState(currentDiv.cost_codes[0].id)
   const [divisionId, setDivisionId] = useState(divisions[0].id);
 
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { setDirectoryView } from '../Redux/Reducers/view';
 
 export default function DirectoryContainer() {
-  const view = useSelector(state => state.view.directoryView)
+  const view     = useSelector(state => state.view.directoryView)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
