@@ -24,8 +24,6 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   const {division, cost_code, unit_quantity, unit_cost, unit, taxed, subcontracted, notes} = budgetItemForm
 
   const dispatch = useDispatch();
-  
-  // console.log(currentProject.budget_items)
 
   const handleChange = (e) => {
     let key   = e.target.name;

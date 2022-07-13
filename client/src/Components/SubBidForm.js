@@ -4,16 +4,24 @@ import { addProjectBid } from '../Redux/Reducers/projects';
 import { setCurrentSub } from '../Redux/Reducers/subcontractors';
 
 
-export default function SubBidForm({amount, setAddSubBid}) {
+export default function SubBidForm() {
   const subcontractor = useSelector(state => state.subs.currentSub);
   const subs = useSelector(state => state.subs.allSubs);
   const project = useSelector(state => state.projects.currentProject);
-  const currentCode = useSelector(state => state.costCodes.currentCode);
 
   const [error, setError] = useState(null);
   const [subID, setSubID] = useState(subs?.[0].id);
+  const [projectID, setProjectID] = useState(project?.id)
+  const [bidForm, setBidForm] = useState({
+    amount: 0,
+    cost_code: '',
+  });
  
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {setProjectID(project.id);}, 0);
+  }, [project.id])
 
   useEffect(() => {
     fetch(`/subcontractors/${subID}`)
@@ -23,12 +31,24 @@ export default function SubBidForm({amount, setAddSubBid}) {
     });
   }, [subID, dispatch]);
 
-  const code = currentCode?.cost_code ? currentCode?.division + ': ' + currentCode?.cost_code : 'Select Item Below'
+  console.log(projectID)
+  console.log(projectID)
 
-  const renderSubs = subs ? subs?.map(sub => <option key={sub.id} value={sub?.id}>{sub.name}</option> ) : <option>No Current Subcontractors</option>;
+  const renderSubs = subs ? [...subs]?.sort((a, b)=> a.trade.localeCompare(b.trade)).map(sub => <option key={sub.id} value={sub?.id}>{sub.name}: {sub.trade}</option> ) : <option>No Current Subcontractors</option>;
 
   const handleSelect = (e) => {
     setSubID(e.target.value);
+  };
+
+  const handleChange = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setBidForm({
+      ...bidForm,
+      [key]: value
+    })
+    
   };
 
   const handleSubmit = (e) => {
@@ -38,9 +58,9 @@ export default function SubBidForm({amount, setAddSubBid}) {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        amount: amount,
-        cost_code: code,
-        project_id: project?.id,
+        amount: bidForm.amount,
+        cost_code: bidForm.cost_code,
+        project_id: projectID,
         subcontractor_id: subcontractor?.id,
       })
     })
@@ -54,14 +74,12 @@ export default function SubBidForm({amount, setAddSubBid}) {
       else
       r.json().then(json=>alert(json.error));
     });
-    
-    setAddSubBid(add => !add)
   };
 
   return (
     <div className='project-form-container'>
          
-      <form className='new-project-form' style={{width: '37.5%', marginTop: '31px'}} onSubmit={handleSubmit} >
+      <form className='new-project-form' style={{width: '37.5%', marginBottom: '25px'}} onSubmit={handleSubmit} >
 
         <label style={{fontWeight: '800'}}>
           Bid Amount:  
@@ -69,19 +87,20 @@ export default function SubBidForm({amount, setAddSubBid}) {
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
             name='amount'
             type='number' 
-            value={amount == null ? '' : amount} 
-            readOnly
+            value={bidForm.amount} 
+            onChange={handleChange}
             />
         </label>
 
         <label style={{fontWeight: '800'}}>
-          Cost Code:
+          Description:
           <input  
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
             name='cost_code'
             type='text' 
-            value={code == null ? '' : code} 
-            readOnly
+            value={bidForm.cost_code}
+            placeholder='Enter Bid Description' 
+            onChange={handleChange}
           />
         </label>
 

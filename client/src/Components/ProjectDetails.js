@@ -4,9 +4,11 @@ import { setCurrentProject, setProjectId } from '../Redux/Reducers/projects';
 import ProjectTeamTable from './ProjectTeamTable';
 import ProjectBidTable from './ProjectBidTable';
 import ProjectUserForm from './ProjectUserForm';
+import SubBidForm from './SubBidForm';
 
-export default function ProjectDetails() {
+export default function ProjectTeam() {
   const [addUser, setAddUser] = useState(true);
+  const [addBid, setAddBid] = useState(true);
 
   const project = useSelector(state => state.projects.currentProject);
   const projects = useSelector(state => state.projects.allProjects);
@@ -28,13 +30,22 @@ export default function ProjectDetails() {
     dispatch(setProjectId(e.target.value))
   };
 
-  const handleClick = (e) => {
+  const handleUserClick = (e) => {
     setAddUser(!addUser)
   };
 
-  const buttonText = addUser ? 'Add to Team' : 'Remove Form';
+  const handleBidClick = (e) => {
+    setAddBid(!addBid)
+  };
 
-  const renderButton = projects?.length > 0 ? <button onClick={handleClick}>{buttonText}</button> : '';
+  const addUserButton = addUser ? 'Add to Team' : 'Remove Form';
+
+  const addBidButton = addBid ? 'Enter Bid' : 'Remove Form';
+
+  const renderUserButton = projects?.length > 0 ? <button onClick={handleUserClick}>{addUserButton}</button> : '';
+
+  const renderBidButton = projects?.length > 0 ? <button style={{margin: '0 0 15px 310px'}} onClick={handleBidClick}>{addBidButton}</button> : '';
+
 
   const renderProjectTeam = project?.users ? <ProjectTeamTable projectUsers={project.users} projectName={project.name} /> : <h3 style={{background: 'white',alignSelf: 'center', color: 'orange'}}>No Team Assigned to Project</h3>;
 
@@ -50,7 +61,7 @@ export default function ProjectDetails() {
         <select onChange={handleSelect} style={{width: '100px'}} value={projectId} >
           {renderOptions}
          </select>
-        {renderButton}
+        {renderUserButton}
       </div>
      
       {addUser ? '' : <ProjectUserForm setAddUser={setAddUser} />}
@@ -59,6 +70,10 @@ export default function ProjectDetails() {
 
       <div style={{marginLeft: '45%', height: '100px'}}>
         <h1 style={{textAlign: 'center', background: 'white', width: '10%'}}>Bids</h1>
+      </div>
+      <div>
+        {renderBidButton}
+        {addBid ? '' : <SubBidForm project={project} setAddBid={setAddBid} />}
       </div>
 
       {renderSubBids}
