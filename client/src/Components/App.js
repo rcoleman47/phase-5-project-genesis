@@ -17,6 +17,7 @@ import SubAddContact from './SubAddContact';
 import ProjectDetails from './ProjectDetails';
 
 import '../App.css';
+import NotFound from './NotFound';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='*' element={ <NotFound /> } />
+
         <Route path='/login' element={ <Login /> } />
         <Route path='/register' element={ <Registration /> } />
         

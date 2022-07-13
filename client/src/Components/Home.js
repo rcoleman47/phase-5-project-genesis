@@ -59,7 +59,7 @@ export default function Home() {
   });
 
   const handleClick = (e) => {
-    dispatch(setProjectId(projects?.[0]?.id));
+    dispatch(setProjectId([...projects]?.sort((a, b) => a.title.localeCompare(b.title))?.[0]?.id));
     dispatch(editProject(true));
     dispatch(setProjectView(('/project/estimate')))
     dispatch(setDirectoryView('/directory/company'))
