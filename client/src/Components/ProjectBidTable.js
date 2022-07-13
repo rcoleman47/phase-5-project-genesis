@@ -30,7 +30,7 @@ export default function ProjectBidTable({projectBids, projectName}) {
 
   return (
     <>
-      {projectBids.length > 0  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Add to Project Team</h1>}
+      {projectBids.length > 0  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange', marginRight: '90px'}}>Add Bids to Project</h1>}
     </>
   )
 }

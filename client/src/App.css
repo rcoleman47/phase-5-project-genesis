@@ -21,6 +21,7 @@ code {
   text-align: center;
   align-items: center;
   width: 100%;
+  border: 4px solid black;
 }
 
 form {
@@ -56,6 +57,10 @@ th {
 button:hover {
   border: 2px solid;
   border-color: orange;
+}
+
+select {
+  width: 150px;
 }
 
 /* projects */
@@ -462,7 +467,7 @@ button:hover {
   width: 100%;
   height: auto;
   background: #c0c0c0;
-  border-bottom: 2px solid #c0c0c0;
+  border-bottom: 4px solid black;
 }
 
 .viewNavContainer img {

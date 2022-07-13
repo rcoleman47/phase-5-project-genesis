@@ -18,9 +18,6 @@ export default function Signup() {
     password_confirmation: ''
   });
 
-console.log(company?.id)
- 
-
   const { first_name, last_name, email, password, password_confirmation } = signUpForm;
 
   const dispatch = useDispatch();

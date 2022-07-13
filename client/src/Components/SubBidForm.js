@@ -69,7 +69,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
             name='amount'
             type='number' 
-            value={amount} 
+            value={amount == null ? '' : amount} 
             readOnly
             />
         </label>
@@ -80,7 +80,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
             style={{width: '150px', marginLeft: '5px', marginRight: '15px'}}
             name='cost_code'
             type='text' 
-            value={code} 
+            value={code == null ? '' : code} 
             readOnly
           />
         </label>
@@ -92,7 +92,7 @@ export default function SubBidForm({amount, setAddSubBid}) {
             name='subcontractor_id'
             type='text' 
             onChange={handleSelect}
-            value={subID} >
+            value={subID == null ? 'null' : subID} >
               {renderSubs}
             </select>
         </label>

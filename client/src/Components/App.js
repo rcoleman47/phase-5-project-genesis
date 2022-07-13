@@ -29,9 +29,11 @@ function App() {
       if (r.ok){
         r.json().then(user => {
           dispatch(login(user))
+          navigate('/dashboard')
         })
       }
       else {
+        r.json().then(json=>console.log(json.error));
         navigate('/login');
     };
     });

@@ -80,7 +80,7 @@ export default function DivisionSelector() {
   return (
     <div className='estimate-form-selector'>
       <form onSubmit={handleSubmit} value={currentDiv?.[0] ? currentDiv[0] : ''}>
-        <select onChange={handleSelect} value={divisionId} style={{width: '300px', boxSizing: 'border-box'}} >
+        <select onChange={handleSelect} value={divisionId} style={{width: '300px'}} >
           {renderDivisions}
         </select> 
     

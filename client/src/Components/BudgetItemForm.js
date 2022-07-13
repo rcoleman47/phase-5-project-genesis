@@ -82,25 +82,25 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
           <input 
             name='division'
             type='text' 
-            value={division} 
+            value={division == null ? '' : division} 
             readOnly
             />
           <input 
             name='cost_code'
             type='text' 
-            value={cost_code} 
+            value={cost_code == null ? '' : cost_code} 
             readOnly
           />
           <input 
             name='unit_quantity'
             type='number' 
-            value={unit_quantity} 
+            value={unit_quantity == null ? '' : unit_quantity} 
             onChange={handleChange}
           />
           <select 
             name='unit'
             type='text' 
-            value={unit} 
+            value={unit == null ? '' : unit} 
             onChange={handleChange}>
               <option value={'ls'}>ls</option>
               <option value={'ea'}>ea</option>
@@ -113,13 +113,13 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
           <input 
             name='unit_cost'
             type='number' 
-            value={unit_cost} 
+            value={unit_cost == null ? '' : unit_cost} 
             onChange={handleChange}
           />
           <select 
             name='taxed'
             type='text' 
-            value={taxed} 
+            value={taxed == null ? '' : taxed} 
             onClick={handleTaxChange}
             onChange={handleChange}>
               <option value={true}>Yes</option>
@@ -128,7 +128,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
           <select 
             name='subcontracted'
             type='text' 
-            value={subcontracted} 
+            value={subcontracted == null ? '' : subcontracted} 
             onChange={handleChange}>
               <option value={true}>Yes</option>
               <option value={false}>No</option>
@@ -136,13 +136,13 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
           <input 
             name='total'
             type='number' 
-            value={total} 
+            value={total  == null ? '' : total} 
             readOnly
           />
          { addSubBid ? <input 
             name='notes'
             type='text' 
-            value={notes} 
+            value={notes  == null ? '' : notes} 
             onChange={handleChange}
             /> : <input style={{border: 'none', width: '0%'}} />}
 
