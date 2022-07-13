@@ -13,6 +13,7 @@ export default function ProjectTeam() {
   const project = useSelector(state => state.projects.currentProject);
   const projects = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
+  const subcontractors = useSelector(state => state.subs.allSubs);
 
   const dispatch = useDispatch();
 
@@ -44,12 +45,12 @@ export default function ProjectTeam() {
 
   const renderUserButton = projects?.length > 0 ? <button onClick={handleUserClick}>{addUserButton}</button> : '';
 
-  const renderBidButton = projects?.length > 0 ? <button style={{margin: '0 0 15px 310px'}} onClick={handleBidClick}>{addBidButton}</button> : '';
+  const renderBidButton = projects?.length > 0 ? <button style={{margin: '0 0 15px 44px'}} onClick={handleBidClick}>{addBidButton}</button> : '';
 
 
   const renderProjectTeam = project?.users ? <ProjectTeamTable projectUsers={project.users} projectName={project.name} /> : <h3 style={{background: 'white',alignSelf: 'center', color: 'orange'}}>No Team Assigned to Project</h3>;
 
-  const renderSubBids = project?.bids ? <ProjectBidTable projectBids={project.bids} projectName={project.name} /> : <h3 style={{background: 'white',alignSelf: 'center', color: 'orange'}}>No Subcontractor Bids for this Project</h3>;
+  const renderSubBids = subcontractors?.length > 0 ? <ProjectBidTable projectBids={project.bids} projectName={project.name} /> : <h1 style={{textAlign: 'center', color: 'orange', marginRight: '90px'}}>Add Subcontractors to Main Directory</h1>;
 
 
   return (
@@ -72,7 +73,7 @@ export default function ProjectTeam() {
         <h1 style={{textAlign: 'center', background: 'white', width: '10%'}}>Bids</h1>
       </div>
       <div>
-        {renderBidButton}
+        {subcontractors?.length > 0 ? renderBidButton : ''}
         {addBid ? '' : <SubBidForm project={project} setAddBid={setAddBid} />}
       </div>
 

@@ -31,9 +31,6 @@ export default function SubBidForm() {
     });
   }, [subID, dispatch]);
 
-  console.log(projectID)
-  console.log(projectID)
-
   const renderSubs = subs ? [...subs]?.sort((a, b)=> a.trade.localeCompare(b.trade)).map(sub => <option key={sub.id} value={sub?.id}>{sub.name}: {sub.trade}</option> ) : <option>No Current Subcontractors</option>;
 
   const handleSelect = (e) => {
