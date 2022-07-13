@@ -38,7 +38,7 @@ export default function NotFound() {
     </div>
     <div className='not-found-container'>
         <h1>Genesis Project Estimator</h1> 
-        <h2 style={{justifySelf: 'bottom'}}>Whoops! Page Not Found!</h2>
+        <h2>Whoops! Page Not Found!</h2>
     </div>
   
   </div>
