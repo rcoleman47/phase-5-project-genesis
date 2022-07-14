@@ -62,7 +62,7 @@ export default function SubDirectory() {
           <option value='trade' >Trade</option>
         </select>
 
-        {user.admin ? <button onClick={handleClick} >{buttonText}</button> : ''}
+        {user?.admin ? <button onClick={handleClick} >{buttonText}</button> : ''}
       </div>
 
       {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}

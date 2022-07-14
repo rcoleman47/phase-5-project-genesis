@@ -43,7 +43,7 @@ export default function ProjectEstimate() {
         <select onChange={handleSelect} style={{width: '100px'}} value={projectId} >
           {renderOptions}
          </select>
-        {user.admin ? renderButton : ''}
+        {user?.admin ? renderButton : ''}
       </div>
       <EstimateTable projects={projects} /> 
     </>

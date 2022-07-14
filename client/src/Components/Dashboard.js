@@ -59,7 +59,7 @@ export default function Dashboard() {
           </select>
         </label>
        
-        {user.admin ? <button onClick={handleClick} >Create New Project</button> : ''}
+        {user?.admin ? <button onClick={handleClick} >Create New Project</button> : ''}
       </div>
 
       {renderDashboard}

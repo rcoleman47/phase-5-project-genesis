@@ -32,7 +32,7 @@ export default function Directory() {
           <option value='role' >Role</option>
         </select>
 
-        {user.admin ? <button onClick={handleClick}>{buttonText}</button> : ''}
+        {user?.admin ? <button onClick={handleClick}>{buttonText}</button> : ''}
       </div>
 
       {addUser ? '' : <NewUserForm setAddUser={setAddUser} />}

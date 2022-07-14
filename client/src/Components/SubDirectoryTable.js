@@ -58,7 +58,7 @@ export default function SubDirectoryTable({ subcontractor }) {
     </table>
     
     <div style={{display: 'flex', justifyContent: 'flex-end', width: '7.6%', marginBottom: '10px'}}>
-      {user.admin ? <button onClick={handleClick} >Add Contact</button> : ''}
+      {user?.admin ? <button onClick={handleClick} >Add Contact</button> : ''}
     </div>
   </>
 
