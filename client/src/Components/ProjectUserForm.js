@@ -9,7 +9,7 @@ export default function ProjectUserForm({setAddUser}) {
   const currentUser = useSelector(state => state.projects.currentProjectUser);
 
   
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [userID, setUserID] = useState(users?.[0].id);
   
   
@@ -46,7 +46,7 @@ export default function ProjectUserForm({setAddUser}) {
           console.log(userProject.user)
           dispatch(addTeamMember(userProject.user))
         });
-        setError(null);
+        // setError(null);
       }
       else
       r.json().then(json=>alert(json.error));
@@ -70,7 +70,7 @@ export default function ProjectUserForm({setAddUser}) {
             </select>
         </label>
 
-        {error ?  <h5 style={{color: 'orange', display: 'block'}}>{error}</h5> : null}
+        {/* {error ?  <h5 style={{color: 'orange', display: 'block'}}>{error}</h5> : null} */}
 
         <input style={{width: '120px', marginLeft: '15px'}} type="submit" value="Add To Project" />
 

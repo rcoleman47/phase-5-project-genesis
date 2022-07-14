@@ -7,7 +7,7 @@ import { setProjectView } from '../Redux/Reducers/view';
 export default function NewProjectForm() {
   const company                       = useSelector(state => state.company.company);
 
-  const [error, setError]             = useState(null);
+  // const [error, setError]             = useState(null);
   const [projectForm, setProjectForm] = useState({
     title:           '',
     location:        '',
@@ -49,14 +49,14 @@ export default function NewProjectForm() {
           dispatch(addProject(project))
           dispatch(setProjectId(project.id));
         });
-        setError(null);
+        // setError(null);
 
         dispatch(setProjectView('/project/estimate'));  
 
         navigate('/project/estimate')
       }
       else
-        r.json().then(json=>setError(json.error));
+        r.json().then(json=>alert(json.error.join(', ')));
     });
   };
 
@@ -137,11 +137,12 @@ export default function NewProjectForm() {
             onChange={handleChange} 
           />
         </label>
-        {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
 
         <input type="submit" value="Create" />
 
       </form>
+        
+        {/* {error ? error.map(e => <><h5 style={{color: 'orange', display: 'block'}}>{e}</h5><br/></> ): null} */}
       
     </div>
   )

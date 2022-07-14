@@ -36,7 +36,7 @@ export default function Dashboard() {
       }
     }).slice(indexOfFirstProject, indexOfLastProject) : undefined;
   
-  const renderDashboard = projects ? <DashboardTable currentProjects={currentProjects} /> : <h3 style={{alignSelf: 'center', color: 'orange'}}>No Projects</h3>;
+  const renderDashboard = projects ? <DashboardTable currentProjects={currentProjects} /> : '';
 
   const paginate        = (number) => setCurrentPage(number);
 

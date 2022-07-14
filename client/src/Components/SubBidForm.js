@@ -9,7 +9,7 @@ export default function SubBidForm() {
   const subs = useSelector(state => state.subs.allSubs);
   const project = useSelector(state => state.projects.currentProject);
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [subID, setSubID] = useState(subs?.[0].id);
   const [projectID, setProjectID] = useState(project?.id)
   const [bidForm, setBidForm] = useState({
@@ -66,10 +66,10 @@ export default function SubBidForm() {
         r.json().then(bid => {
           dispatch(addProjectBid(bid))
         });
-        setError(null);
+        // setError(null);
       }
       else
-      r.json().then(json=>alert(json.error));
+      r.json().then(json=>alert(json.error.join(', ')));
     });
   };
 
@@ -113,7 +113,7 @@ export default function SubBidForm() {
             </select>
         </label>
 
-        {error ?  <h5 style={{color: 'orange', display: 'block'}}>{error}</h5> : null}
+        {/* {error ?  <h5 style={{color: 'orange', display: 'block'}}>{error}</h5> : null} */}
 
         <input style={{marginLeft: '15px'}} type="submit" value="Create Bid" />
 

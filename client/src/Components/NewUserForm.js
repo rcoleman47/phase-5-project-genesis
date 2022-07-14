@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { addUser } from '../Redux/Reducers/company';
 
 
 export default function NewUserForm({setAddUser}) {
   const company = useSelector(state => state.company.company);
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [userForm, setUserForm] = useState({
     first_name: '',
     last_name: '',
@@ -22,7 +21,6 @@ export default function NewUserForm({setAddUser}) {
   const {first_name, last_name, email, password, cell_number, role, admin} = userForm;
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -51,10 +49,10 @@ export default function NewUserForm({setAddUser}) {
         });
 
         setAddUser(true)
-        setError(null);
+        // setError(null);
       }
       else
-        r.json().then(json=>setError(json.error));
+        r.json().then(json=>alert(json.error.join(', ')));
     });
 
   };
@@ -139,7 +137,7 @@ export default function NewUserForm({setAddUser}) {
             </select>
         </label>
 
-        {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
+        {/* {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null} */}
 
         <input type="submit" value="Create" />
 

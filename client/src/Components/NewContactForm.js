@@ -6,7 +6,7 @@ import { addContact } from '../Redux/Reducers/subcontractors';
 export default function NewContactForm() {
   const subcontractor                 = useSelector(state => state.subs.currentSub)
 
-  const [error, setError]             = useState(null);
+  // const [error, setError]             = useState(null);
   const [contactForm, setContactForm] = useState({
     name:             '',
     cell_number:      '',
@@ -52,10 +52,10 @@ export default function NewContactForm() {
           subcontractor_id: subcontractor?.id,
         });
       
-        setError(null);
+        // setError(null);
       }
       else
-        r.json().then(json=>setError(json.error));
+        r.json().then(json=>alert(json.error.join(', ')));
     });
 
   };
@@ -109,7 +109,7 @@ export default function NewContactForm() {
             </select>
         </label>
 
-        {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
+        {/* {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null} */}
 
         <input style={{marginLeft: '60px'}} type="submit" value="Create" />
 

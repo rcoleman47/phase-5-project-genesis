@@ -8,7 +8,7 @@ import { setDirectoryView } from '../Redux/Reducers/view';
 export default function NewSubForm({setAddSub}) {
   const company = useSelector(state => state.company.company);
 
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [subForm, setSubForm] = useState({
     name: '',
     address: '',
@@ -50,12 +50,12 @@ export default function NewSubForm({setAddSub}) {
 
         setAddSub(true)
         dispatch(setDirectoryView('/directory/subcontractor/edit'))
-        setError(null);
+        navigate('/directory/subcontractor/edit')
+        // setError(null);
       }
       else
-      r.json().then(json=>setError(json.error));
+      r.json().then(json=>alert(json.error.join(', ')));
     });
-    navigate('/directory/subcontractor/edit')
 
   };
 
@@ -102,7 +102,7 @@ export default function NewSubForm({setAddSub}) {
             onChange={handleChange}/>
         </label>
 
-        {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null}
+        {/* {error ? error.map(e => <h5 style={{color: 'orange', display: 'block'}}>{e}</h5>): null} */}
 
         <input type="submit" value="Create" />
 

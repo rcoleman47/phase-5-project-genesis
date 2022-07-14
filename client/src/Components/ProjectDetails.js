@@ -55,11 +55,11 @@ export default function ProjectTeam() {
 
   return (
     <>
-      <div style={{marginLeft: '30%', height: '100px'}}>
-        <h1 style={{textAlign: 'center', background: 'white', width: '50%'}}>{project.title}</h1>
+      <div style={{display: 'flex', marginLeft: '2.5%', height: '100px'}}>
+        <h1 style={{textAlign: 'center', background: 'white', border: '2px solid black', width: 'auto', padding: '10px'}}>{project.title}</h1>
       </div>
       <div>
-        <select onChange={handleSelect} style={{width: '100px'}} value={projectId} >
+        <select onChange={handleSelect} style={{width: '100px', marginLeft: '2.5%'}} value={projectId} >
           {renderOptions}
          </select>
         {renderUserButton}
@@ -69,8 +69,8 @@ export default function ProjectTeam() {
 
       {renderProjectTeam}
 
-      <div style={{marginLeft: '45%', height: '100px'}}>
-        <h1 style={{textAlign: 'center', background: 'white', width: '10%'}}>Bids</h1>
+      <div style={{display: 'flex', marginLeft: '2.5%', height: '100px'}}>
+        <h1 style={{textAlign: 'center', background: 'white', border: '2px solid black', width: 'auto', padding: '10px'}}>Bids</h1>
       </div>
       <div>
         {subcontractors?.length > 0 ? renderBidButton : ''}
