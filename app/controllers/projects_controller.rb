@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
     else
       render json: current_user.projects
     end
+  rescue
+    sign_in_error
   end
 
   def show

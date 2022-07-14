@@ -43,7 +43,6 @@ export default function ProjectUserForm({setAddUser}) {
     .then(r=>{
       if(r.ok){ 
         r.json().then(userProject => {
-          console.log(userProject.user)
           dispatch(addTeamMember(userProject.user))
         });
         // setError(null);

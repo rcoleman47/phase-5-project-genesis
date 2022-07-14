@@ -9,6 +9,7 @@ export default function Directory() {
 
   const company = useSelector(state => state.company.company);
   const users   = useSelector(state => state.company.users);
+  const user = useSelector(state => state.user.value);
 
   const handleCompanySort = (e) => {
     setSort(e.target.value);
@@ -31,7 +32,7 @@ export default function Directory() {
           <option value='role' >Role</option>
         </select>
 
-        <button onClick={handleClick}>{buttonText}</button>
+        {user.admin ? <button onClick={handleClick}>{buttonText}</button> : ''}
       </div>
 
       {addUser ? '' : <NewUserForm setAddUser={setAddUser} />}

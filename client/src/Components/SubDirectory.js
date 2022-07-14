@@ -13,6 +13,7 @@ export default function SubDirectory() {
   const [addSub, setAddSub] = useState(true);
 
   const subcontractors = useSelector(state => state.subs.allSubs);
+  const user = useSelector(state => state.user.value);
 
   const dispatch = useDispatch();
 
@@ -61,7 +62,7 @@ export default function SubDirectory() {
           <option value='trade' >Trade</option>
         </select>
 
-        <button onClick={handleClick} >{buttonText}</button>
+        {user.admin ? <button onClick={handleClick} >{buttonText}</button> : ''}
       </div>
 
       {addSub ? '' : <NewSubForm setAddSub={setAddSub} />}

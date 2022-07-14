@@ -9,6 +9,7 @@ import EstimateTable from './EstimateTable';
 export default function ProjectEstimate() {
   const projects = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
+  const user = useSelector(state => state.user.value);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function ProjectEstimate() {
         <select onChange={handleSelect} style={{width: '100px'}} value={projectId} >
           {renderOptions}
          </select>
-        {renderButton}
+        {user.admin ? renderButton : ''}
       </div>
       <EstimateTable projects={projects} /> 
     </>

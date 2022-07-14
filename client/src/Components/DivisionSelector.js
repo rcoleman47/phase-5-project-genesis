@@ -58,7 +58,7 @@ export default function DivisionSelector() {
         cost_code: currentCode?.description,
         unit_quantity: 1,
         unit: 'ls',
-        unit_cost: 1000,
+        unit_cost: 0,
         project_id: project.id
       })
     })

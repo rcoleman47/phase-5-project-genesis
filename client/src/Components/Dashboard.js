@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [projectsPerPage]             = useState(15);
 
   const projects = useSelector(state => state.projects.allProjects);
+  const user = useSelector(state => state.user.value);
 
   const handleSelect = (e) => {
     setSort(e.target.value);
@@ -58,7 +59,7 @@ export default function Dashboard() {
           </select>
         </label>
        
-        <button onClick={handleClick} >Create New Project</button>
+        {user.admin ? <button onClick={handleClick} >Create New Project</button> : ''}
       </div>
 
       {renderDashboard}

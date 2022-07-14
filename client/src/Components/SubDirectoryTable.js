@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentSub } from '../Redux/Reducers/subcontractors';
 import { setDirectoryView } from '../Redux/Reducers/view';
 
 
 export default function SubDirectoryTable({ subcontractor }) {
+  const user = useSelector(state => state.user.value);
 
   const renderUsers = subcontractor?.contacts.length > 0 ? [...subcontractor?.contacts].map(user => {
     return (
@@ -57,7 +58,7 @@ export default function SubDirectoryTable({ subcontractor }) {
     </table>
     
     <div style={{display: 'flex', justifyContent: 'flex-end', width: '7.6%', marginBottom: '10px'}}>
-      <button onClick={handleClick} >Add Contact</button>
+      {user.admin ? <button onClick={handleClick} >Add Contact</button> : ''}
     </div>
   </>
 

@@ -14,11 +14,12 @@ export default function Signup() {
     role: 'Executive',
     admin: true,
     email: '',
+    cell_number: '',
     password: '',
     password_confirmation: ''
   });
 
-  const { first_name, last_name, email, password, password_confirmation } = signUpForm;
+  const { first_name, last_name, email, cell_number, password, password_confirmation } = signUpForm;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export default function Signup() {
           role: 'Executive',
           admin: true,
           email: '',
+          cell_number: '',
           password: '',
           password_confirmation: ''
         });
@@ -95,6 +97,13 @@ export default function Signup() {
           onChange={handleChange} 
           value={email} 
           placeholder='Email address' />
+
+        <input 
+          type='text' 
+          name='cell_number' 
+          onChange={handleChange} 
+          value={cell_number} 
+          placeholder='Cell Number' />
 
         <input 
           type='password' 
