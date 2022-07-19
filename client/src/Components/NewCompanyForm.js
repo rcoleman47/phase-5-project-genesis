@@ -52,7 +52,7 @@ export default function NewCompanyForm() {
 
         dispatch(created())
         
-      } else r.json().then(json=>console.log(json.error));
+      } else r.json().then(json=>setErrors(json.error));
     })
 
   };
@@ -116,10 +116,10 @@ export default function NewCompanyForm() {
 
        
 
+          {errors ? errors.map(e => <h5 style={{color: 'orange', marginBottom: '1px', marginTop: '1px'}}>{e}</h5> ): null}
         <Link style={{color: '#00BFFF'}} to='/login'>Log in to existing account</Link>   
 
       </form>
-      {errors ? errors.map(e => <h5 style={{color: 'orange'}}>{e}</h5> ): null}
     </div>
   )
 }

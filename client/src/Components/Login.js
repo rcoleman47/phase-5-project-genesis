@@ -61,30 +61,30 @@ export default function Login() {
       <div className='login'>
         <h1>Genesis Project Estimator</h1> 
       </div>
-      <form className='box' onSubmit={handleSubmit} >
-        <h2>LOG IN</h2>
-         
-        <input 
-          type='text' 
-          name='email' 
-          onChange={handleChange}
-          autoComplete='off' 
-          value={email} 
-          placeholder='Email address' />
+        <form className='box' onSubmit={handleSubmit} >
+          <h2>LOG IN</h2>
+          
+          <input 
+            type='text' 
+            name='email' 
+            onChange={handleChange}
+            autoComplete='off' 
+            value={email} 
+            placeholder='Email address' />
 
-        <input 
-          type='password' 
-          name='password' 
-          onChange={handleChange} 
-          value={password} 
-          placeholder='Password' />
+          <input 
+            type='password' 
+            name='password' 
+            onChange={handleChange} 
+            value={password} 
+            placeholder='Password' />
 
-        <input type='submit' name='submit' />
+          <input type='submit' name='submit' />
 
-        {error ? <h5 style={{color: 'orange'}}>{error}</h5> : null}
+          {error ? <h5 style={{color: 'orange'}}>{error}</h5> : null}
 
-        <Link onClick={handleClick} style={{color: '#00BFFF'}} to='/register'>New company registration</Link>        
-      </form>
+          <Link onClick={handleClick} style={{color: '#00BFFF'}} to='/register'>New company registration</Link>        
+        </form>
     </div>
   )
 }

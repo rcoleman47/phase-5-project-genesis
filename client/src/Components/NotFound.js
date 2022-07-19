@@ -1,7 +1,7 @@
 import React from 'react'
-import { Outlet, useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setProjects, removeCurrentProject, setProjectId, editProject } from '../Redux/Reducers/projects';
+import { setProjectId, editProject } from '../Redux/Reducers/projects';
 import { setDirectoryView, setProjectView } from '../Redux/Reducers/view';
 
 
@@ -10,7 +10,6 @@ export default function NotFound() {
   const projects = useSelector(state => state.projects.allProjects);
   
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleClick = (e) => {
     dispatch(setProjectId([...projects]?.sort((a, b) => a.title.localeCompare(b.title))?.[0]?.id));
