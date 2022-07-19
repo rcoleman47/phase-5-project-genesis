@@ -33,7 +33,7 @@ export default function NewCompanyForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('/companies', {
+    fetch('genesis-estimator.herokuapp.com/companies', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCompayForm),
