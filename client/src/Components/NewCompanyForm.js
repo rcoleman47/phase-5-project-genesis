@@ -52,7 +52,7 @@ export default function NewCompanyForm() {
 
         dispatch(created())
         
-      } else r.json().then(json=>setErrors(json.error));
+      } else r.json().then(json=>console.log(json.error));
     })
 
   };
