@@ -71,6 +71,7 @@ export default function NewContactForm() {
             name='name'
             type='text' 
             value={name} 
+            autoComplete='off' 
             onChange={handleChange}
             />
         </label>
@@ -81,6 +82,7 @@ export default function NewContactForm() {
             name='cell_number'
             type='text' 
             value={cell_number} 
+            autoComplete='off' 
             onChange={handleChange} 
           />
         </label>
@@ -91,6 +93,7 @@ export default function NewContactForm() {
             name='email'
             type='text' 
             value={email} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 

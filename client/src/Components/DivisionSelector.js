@@ -12,8 +12,8 @@ export default function DivisionSelector() {
   const project      = useSelector(state => state.projects.currentProject);
 
   const [error, setError]           = useState(null);
-  const [codeId, setCodeId]         = useState(currentDiv.cost_codes[0].id)
-  const [divisionId, setDivisionId] = useState(divisions[0].id);
+  const [codeId, setCodeId]         = useState(currentDiv?.cost_codes[0].id)
+  const [divisionId, setDivisionId] = useState(divisions[0]?.id);
 
   const dispatch = useDispatch();
 

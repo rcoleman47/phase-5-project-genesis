@@ -30,7 +30,7 @@ export default function ProjectTeamTable({projectUsers, projectName}) {
 
   return (
     <>
-      {projectUsers.length > 0  ? renderTable : <h1 style={{textAlign: 'center', color: 'orange', marginRight: '90px'}}>Add to Project Team</h1>}
+      {projectUsers.length > 0  ? renderTable : <div style={{display: 'flex', marginLeft: '38.75%', height: '100px'}}><h1 style={{textAlign: 'center', color: 'orange', marginRight: '90px', background: 'white', border: '2px solid black', padding: '10px'}}>Add to Project Team</h1></div>}
     </>
   )
 }

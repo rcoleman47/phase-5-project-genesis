@@ -70,6 +70,7 @@ export default function NewSubForm({setAddSub}) {
             name='name'
             type='text' 
             value={name} 
+            autoComplete='off' 
             onChange={handleChange}
             />
         </label>
@@ -80,6 +81,7 @@ export default function NewSubForm({setAddSub}) {
             name='address'
             type='text' 
             value={address} 
+            autoComplete='off' 
             onChange={handleChange} 
           />
         </label>
@@ -90,6 +92,7 @@ export default function NewSubForm({setAddSub}) {
             name='phone_number'
             type='text' 
             value={phone_number} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 
@@ -99,6 +102,7 @@ export default function NewSubForm({setAddSub}) {
             name='trade'
             type='text' 
             value={trade} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 

@@ -55,7 +55,7 @@ export default function ProjectUserForm({setAddUser}) {
   return (
     <div className='project-form-container' >
          
-      <form className='new-project-form' style={{width: '20%', marginTop: '15px', marginRight: '90px'}} onSubmit={handleSubmit} >
+      <form className='new-project-form' style={{width: '20%', marginTop: '15px', marginRight: '60px'}} onSubmit={handleSubmit} >
 
         <label style={{fontWeight: '800'}}>
           Team Member:

@@ -82,6 +82,7 @@ export default function Signup() {
           name='first_name' 
           onChange={handleChange} 
           value={first_name} 
+          autoComplete='off' 
           placeholder='First Name' />
 
         <input 
@@ -89,6 +90,7 @@ export default function Signup() {
           name='last_name' 
           onChange={handleChange} 
           value={last_name} 
+          autoComplete='off' 
           placeholder='Last Name' />
 
         <input 
@@ -96,6 +98,7 @@ export default function Signup() {
           name='email' 
           onChange={handleChange} 
           value={email} 
+          autoComplete='off' 
           placeholder='Email address' />
 
         <input 
@@ -103,6 +106,7 @@ export default function Signup() {
           name='cell_number' 
           onChange={handleChange} 
           value={cell_number} 
+          autoComplete='off' 
           placeholder='Cell Number' />
 
         <input 

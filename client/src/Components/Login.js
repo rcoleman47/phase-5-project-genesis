@@ -67,7 +67,8 @@ export default function Login() {
         <input 
           type='text' 
           name='email' 
-          onChange={handleChange} 
+          onChange={handleChange}
+          autoComplete='off' 
           value={email} 
           placeholder='Email address' />
 

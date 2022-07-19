@@ -75,7 +75,8 @@ export default function EditProjectForm() {
             name='location'
             type='text' 
             value={location} 
-            onChange={handleChange} 
+            onChange={handleChange}
+            autoComplete='off'  
           />
         </label>
 

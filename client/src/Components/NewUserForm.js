@@ -68,6 +68,7 @@ export default function NewUserForm({setAddUser}) {
             name='first_name'
             type='text' 
             value={first_name} 
+            autoComplete='off' 
             onChange={handleChange}
             />
         </label>
@@ -78,6 +79,7 @@ export default function NewUserForm({setAddUser}) {
             name='last_name'
             type='text' 
             value={last_name} 
+            autoComplete='off' 
             onChange={handleChange} 
           />
         </label>
@@ -88,6 +90,7 @@ export default function NewUserForm({setAddUser}) {
             name='email'
             type='text' 
             value={email} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 
@@ -97,6 +100,7 @@ export default function NewUserForm({setAddUser}) {
             name='password'
             type='text' 
             value={password} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 
@@ -106,6 +110,7 @@ export default function NewUserForm({setAddUser}) {
             name='cell_number'
             type='text' 
             value={cell_number} 
+            autoComplete='off' 
             onChange={handleChange}/>
         </label>
 

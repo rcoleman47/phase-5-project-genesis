@@ -71,6 +71,7 @@ export default function NewProjectForm() {
             name='title'
             type='text' 
             value={title} 
+            autoComplete='off' 
             onChange={handleChange}
             />
         </label>
@@ -81,6 +82,7 @@ export default function NewProjectForm() {
             name='location'
             type='text' 
             value={location} 
+            autoComplete='off' 
             onChange={handleChange} 
           />
         </label>

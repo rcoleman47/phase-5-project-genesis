@@ -70,6 +70,7 @@ export default function NewCompanyForm() {
           name='name' 
           onChange={handleChange} 
           value={name} 
+          autoComplete='off' 
           placeholder='Company Name' />
 
         <input 
@@ -77,6 +78,7 @@ export default function NewCompanyForm() {
           name='address' 
           onChange={handleChange} 
           value={address} 
+          autoComplete='off' 
           placeholder='Address' />
 
         <input 
@@ -84,6 +86,7 @@ export default function NewCompanyForm() {
           name='city' 
           onChange={handleChange} 
           value={city} 
+          autoComplete='off' 
           placeholder='City' />
 
         <input 
@@ -91,6 +94,7 @@ export default function NewCompanyForm() {
           name='state' 
           onChange={handleChange} 
           value={state}
+          autoComplete='off' 
           placeholder='State' />
 
         <input 
@@ -98,6 +102,7 @@ export default function NewCompanyForm() {
           name='phone_number' 
           onChange={handleChange} 
           value={phone_number}
+          autoComplete='off' 
           placeholder='Phone Number' />
 
         <input 

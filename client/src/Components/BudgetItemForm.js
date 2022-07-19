@@ -146,6 +146,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
             type='text' 
             value={notes  == null ? '' : notes} 
             onChange={handleChange}
+            autoComplete='off' 
             />
 
         {error ? <h5>{error}</h5> : null}
