@@ -18,7 +18,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/projects')
+    fetch('http://127.0.0.1:3000/projects')
     .then(r => r.json())
     .then(projects => {
       dispatch(setProjects(projects))
@@ -26,7 +26,7 @@ export default function Home() {
   }, [dispatch]);
 
   useEffect(() => {
-    fetch(`/companies/${user?.company_id}`)
+    fetch(`http://127.0.0.1:3000/companies/${user?.company_id}`)
     .then(r => r.json())
     .then(company => {
       dispatch(mount(company))
@@ -35,7 +35,7 @@ export default function Home() {
   }, [dispatch, user?.company_id]);
 
   useEffect(() => {
-    fetch('/subcontractors')
+    fetch('http://127.0.0.1:3000/subcontractors')
     .then(r => r.json())
     .then(subs => {
       dispatch(setSubs(subs))
@@ -43,7 +43,7 @@ export default function Home() {
   }, [dispatch]);
 
   useEffect(() => {
-    fetch('/divisions')
+    fetch('http://127.0.0.1:3000/divisions')
     .then(r => r.json())
     .then(codes => {
       dispatch(getCodes(codes))

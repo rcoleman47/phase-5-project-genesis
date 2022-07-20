@@ -16,7 +16,7 @@ export default function ProjectUserForm({setAddUser}) {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    fetch(`/users/${userID}`)
+    fetch(`http://127.0.0.1:3000/users/${userID}`)
     .then(r => r.json())
     .then(user => {
       dispatch(setUser(user))
@@ -32,7 +32,7 @@ export default function ProjectUserForm({setAddUser}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/user_projects`, {
+    fetch(`http://127.0.0.1:3000/user_projects`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

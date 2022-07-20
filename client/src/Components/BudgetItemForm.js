@@ -39,7 +39,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   };
 
   const handleItemDelete = () => {
-    fetch(`/budget_items/${budget_item?.id}`, {
+    fetch(`http://127.0.0.1:3000/budget_items/${budget_item?.id}`, {
       method: 'DELETE',
     })
     .then(r => r.json())
@@ -56,7 +56,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/budget_items/${budget_item?.id}`, {
+    fetch(`http://127.0.0.1:3000/budget_items/${budget_item?.id}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(budgetItemForm)

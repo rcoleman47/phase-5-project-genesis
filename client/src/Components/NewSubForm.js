@@ -36,7 +36,7 @@ export default function NewSubForm({setAddSub}) {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/subcontractors`, {
+    fetch(`http://127.0.0.1:3000/subcontractors`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(subForm)

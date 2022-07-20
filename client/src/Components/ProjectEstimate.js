@@ -15,7 +15,7 @@ export default function ProjectEstimate() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/projects/${projectId}`)
+    fetch(`http://127.0.0.1:3000/projects/${projectId}`)
     .then(r => r.json())
     .then(project => dispatch(setCurrentProject(project)));
   }, [projectId, dispatch])

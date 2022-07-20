@@ -33,7 +33,7 @@ export default function NewContactForm() {
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`/contacts`, {
+    fetch(`http://127.0.0.1:3000/contacts`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(contactForm)
