@@ -34,7 +34,7 @@ export default function DashboardTable({currentProjects }) {
 
   return (
     <>
-      {currentProjects ? renderTable : <h1 style={{textAlign: 'center', color: 'orange'}}>Start A New Project!</h1>}
+      {currentProjects ? renderTable : <div style={{display: 'flex', marginLeft: '38%', height: '100px'}}><h1 style={{textAlign: 'center', color: 'orange', background: 'white', border: '2px solid black', width: 'auto', padding: '10px'}}>Start A New Project!</h1></div>}
     </>
   )
 }
