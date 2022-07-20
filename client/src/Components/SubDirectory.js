@@ -22,7 +22,7 @@ export default function SubDirectory() {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/subcontractors')
+    fetch('/subcontractors')
     .then(r => r.json())
     .then(subs => {
       dispatch(setSubs(subs))

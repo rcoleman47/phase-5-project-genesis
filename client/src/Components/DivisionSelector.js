@@ -18,7 +18,7 @@ export default function DivisionSelector() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:3000/divisions/${divisionId}`)
+    fetch(`/divisions/${divisionId}`)
     .then(r => r.json())
     .then(division => {
       dispatch(setCurrentDiv(division))
@@ -28,7 +28,7 @@ export default function DivisionSelector() {
 
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:3000/cost_codes/${codeId}`)
+    fetch(`/cost_codes/${codeId}`)
     .then(r => {
       if (r.ok){
         r.json().then(code => {
@@ -50,7 +50,7 @@ export default function DivisionSelector() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://127.0.0.1:3000/budget_items`, {
+    fetch(`/budget_items`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

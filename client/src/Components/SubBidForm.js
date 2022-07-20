@@ -24,7 +24,7 @@ export default function SubBidForm() {
   }, [project.id])
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:3000/subcontractors/${subID}`)
+    fetch(`/subcontractors/${subID}`)
     .then(r => r.json())
     .then(sub => {
       dispatch(setCurrentSub(sub))
@@ -51,7 +51,7 @@ export default function SubBidForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://127.0.0.1:3000/bids`, {
+    fetch(`/bids`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

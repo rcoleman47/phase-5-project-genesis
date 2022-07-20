@@ -25,7 +25,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/authorized_user')
+    fetch('/authorized_user')
     .then(r => {
       if (r.ok){
         r.json().then(user => dispatch(login(user)))

@@ -12,7 +12,7 @@ export default function ProjectContainer() {
 
   useEffect(() => {
     if (projectId) {
-      fetch(`http://127.0.0.1:3000/projects/${projectId}`)
+      fetch(`/projects/${projectId}`)
       .then(r => r.json())
       .then(project => dispatch(setCurrentProject(project)));
     }
