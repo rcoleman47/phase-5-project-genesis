@@ -12,7 +12,7 @@ export default function EstimateForm() {
     setAddSubBid(!addSubBid);
   };
 
-  const renderBudgetItems = project?.budget_items ? project?.budget_items.slice().sort((a, b) => {
+  const renderBudgetItems     = project?.budget_items ? project?.budget_items.slice().sort((a, b) => {
     return a.division.split(' ')[1] - b.division.split(' ')[1] || a.cost_code.split(' ')[0] - b.cost_code.split(' ')[0]
   }).map(item => <BudgetItemForm addSubBid={addSubBid} key={item.id} budget_item={item} />) : <h3>Add Budget Items</h3>;
 

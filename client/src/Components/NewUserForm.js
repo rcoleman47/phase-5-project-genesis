@@ -8,19 +8,19 @@ export default function NewUserForm({setAddUser}) {
 
   // const [error, setError] = useState(null);
   const [userForm, setUserForm] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    cell_number: '',
-    role: 'Project Manager',
-    admin: false,
-    company_id: company?.id,
+    first_name:   '',
+    last_name:    '',
+    email:        '',
+    password:     '',
+    cell_number:  '',
+    role:         'Project Manager',
+    admin:        false,
+    company_id:   company?.id,
   });
 
   const {first_name, last_name, email, password, cell_number, role, admin} = userForm;
 
-  const dispatch = useDispatch();
+  const dispatch     = useDispatch();
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -48,7 +48,7 @@ export default function NewUserForm({setAddUser}) {
           dispatch(addUser(user));
         });
 
-        setAddUser(true)
+        setAddUser(true);
         // setError(null);
       }
       else

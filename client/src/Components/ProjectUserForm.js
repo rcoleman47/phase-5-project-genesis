@@ -4,16 +4,14 @@ import { addTeamMember, setUser } from '../Redux/Reducers/projects';
 
 
 export default function ProjectUserForm({setAddUser}) {
-  const project = useSelector(state => state.projects.currentProject);
-  const users = useSelector(state => state.company.users);
-  const currentUser = useSelector(state => state.projects.currentProjectUser);
+  const project             = useSelector(state => state.projects.currentProject);
+  const users               = useSelector(state => state.company.users);
+  const currentUser         = useSelector(state => state.projects.currentProjectUser);
 
-  
   // const [error, setError] = useState(null);
   const [userID, setUserID] = useState(users?.[0].id);
   
-  
-  const dispatch = useDispatch();
+  const dispatch            = useDispatch();
   
   useEffect(() => {
     fetch(`/users/${userID}`)
@@ -23,7 +21,7 @@ export default function ProjectUserForm({setAddUser}) {
     });
   }, [userID, dispatch]);
 
-  const renderUsers = users ? users?.map(user => <option key={user.id} value={user?.id}>{user.first_name} {user.last_name}</option> ) : <option>No Current Users</option>;
+  const renderUsers  = users ? users?.map(user => <option key={user.id} value={user?.id}>{user.first_name} {user.last_name}</option> ) : <option>No Current Users</option>;
 
   const handleSelect = (e) => {
     setUserID(e.target.value);

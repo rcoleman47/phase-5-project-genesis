@@ -20,8 +20,8 @@ export default function NewProjectForm() {
 
   const {title, location, phase, sector, classification, size} = projectForm;
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch     = useDispatch();
+  const navigate     = useNavigate();
 
   const handleChange = (e) => {
     let key   = e.target.name;

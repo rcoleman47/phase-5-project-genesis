@@ -10,17 +10,17 @@ export default function NewSubForm({setAddSub}) {
 
   // const [error, setError] = useState(null);
   const [subForm, setSubForm] = useState({
-    name: '',
-    address: '',
+    name:         '',
+    address:      '',
     phone_number: '',
-    trade: '',
-    company_id: company?.id,
+    trade:        '',
+    company_id:   company?.id,
   });
 
   const {name, address, phone_number, trade} = subForm;
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch     = useDispatch();
+  const navigate     = useNavigate();
 
   const handleChange = (e) => {
     let key   = e.target.name;
@@ -48,9 +48,9 @@ export default function NewSubForm({setAddSub}) {
           dispatch(setCurrentSub(sub));
         });
 
-        setAddSub(true)
-        dispatch(setDirectoryView('/directory/subcontractor/edit'))
-        navigate('/directory/subcontractor/edit')
+        setAddSub(true);
+        dispatch(setDirectoryView('/directory/subcontractor/edit'));
+        navigate('/directory/subcontractor/edit');
         // setError(null);
       }
       else

@@ -6,23 +6,23 @@ import { setDirectoryView, setProjectView } from '../Redux/Reducers/view';
 
 
 export default function NotFound() {
-  const user     = useSelector(state => state.user.value);
-  const projects = useSelector(state => state.projects.allProjects);
+  const user        = useSelector(state => state.user.value);
+  const projects    = useSelector(state => state.projects.allProjects);
   
-  const dispatch = useDispatch();
+  const dispatch    = useDispatch();
 
   const handleClick = (e) => {
     dispatch(setProjectId([...projects]?.sort((a, b) => a.title.localeCompare(b.title))?.[0]?.id));
     dispatch(editProject(true));
-    dispatch(setProjectView(('/project/estimate')))
-    dispatch(setDirectoryView('/directory/company'))
+    dispatch(setProjectView(('/project/estimate')));
+    dispatch(setDirectoryView('/directory/company'));
   };
 
   const navStyle = ({isActive})=>({
-    color: isActive ? "#ff8c00":"black",
-    marginTop: '30px',
-    fontWeight: '900',
-    marginRight: '300px'
+    color: isActive ? '#ff8c00' : 'black',
+    marginTop:        '30px',
+    fontWeight:       '900',
+    marginRight:      '300px'
   });
 
 

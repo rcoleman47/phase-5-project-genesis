@@ -7,30 +7,30 @@ import EstimateTable from './EstimateTable';
 
 
 export default function ProjectEstimate() {
-  const projects = useSelector(state => state.projects.allProjects);
+  const projects  = useSelector(state => state.projects.allProjects);
   const projectId = useSelector(state => state.projects.projectId);
-  const user = useSelector(state => state.user.value);
+  const user      = useSelector(state => state.user.value);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch  = useDispatch();
+  const navigate  = useNavigate();
 
   useEffect(() => {
     fetch(`/projects/${projectId}`)
     .then(r => r.json())
     .then(project => dispatch(setCurrentProject(project)));
-  }, [projectId, dispatch])
+  }, [projectId, dispatch]);
 
   const renderOptions = projects?.length > 0 ? projects?.slice().sort((a, b) => {
     return a.title.localeCompare(b.title)
   }).map(project => <option key={project.id} value={project.id}>{project.title}</option> ) : <option>No Current Projects</option>;
 
   const handleSelect = (e) => {
-    dispatch(setProjectId(e.target.value))
+    dispatch(setProjectId(e.target.value));
   };
 
-  const handleClick = () => {
-    dispatch(setProjectView('/project/edit'))
-    navigate('/project/edit')
+  const handleClick  = () => {
+    dispatch(setProjectView('/project/edit'));
+    navigate('/project/edit');
   };
 
   const renderButton = projects?.length > 0 ? <button onClick={handleClick} >Edit Project</button> : '';
@@ -45,6 +45,7 @@ export default function ProjectEstimate() {
          </select>
         {user?.admin ? renderButton : ''}
       </div>
+      
       <EstimateTable projects={projects} /> 
     </>
   )

@@ -58,14 +58,14 @@ export default function Home() {
     marginRight: '100px'
   });
 
-  const handleClick = (e) => {
+  const handleClick  = (e) => {
     dispatch(setProjectId([...projects]?.sort((a, b) => a.title.localeCompare(b.title))?.[0]?.id));
     dispatch(editProject(true));
     dispatch(setProjectView(('/project/estimate')))
     dispatch(setDirectoryView('/directory/company'))
   };
 
-  const handleLogOut= () => {
+  const handleLogOut = () => {
     fetch('/logout', {
       method: 'DELETE',
     });

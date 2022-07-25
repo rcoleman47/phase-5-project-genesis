@@ -5,10 +5,10 @@ import { setCurrentProject } from '../Redux/Reducers/projects';
 import ViewNavBar from "./ViewNavBar";
 
 export default function ProjectContainer() {
-  const view = useSelector(state => state.projects.viewProject);
+  const view      = useSelector(state => state.projects.viewProject);
   const projectId = useSelector(state => state.projects.projectId);
 
-  const dispatch = useDispatch();
+  const dispatch  = useDispatch();
 
   useEffect(() => {
     if (projectId) {

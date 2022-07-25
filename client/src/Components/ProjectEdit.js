@@ -9,20 +9,20 @@ import EstimateForm from './EstimateForm'
 export default function ProjectEdit() {
   const projectId = useSelector(state => state.projects.projectId);
   
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch  = useDispatch();
+  const navigate  = useNavigate();
   
 
   useEffect(() => {
     fetch(`/projects/${projectId}`)
     .then(r => r.json())
     .then(project => dispatch(setCurrentProject(project)));
-  }, [projectId, dispatch])
+  }, [projectId, dispatch]);
 
 
   const handleClick = () => {
-    dispatch(setProjectView('/project/estimate'))
-    navigate('/project/estimate')
+    dispatch(setProjectView('/project/estimate'));
+    navigate('/project/estimate');
   };
 
   return (
@@ -33,7 +33,7 @@ export default function ProjectEdit() {
       </div>
 
       <div>
-      <EditProjectForm />
+        <EditProjectForm />
       </div>
 
       <EstimateForm  />
