@@ -10,8 +10,8 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage]             = useState(15);
 
-  const projects = useSelector(state => state.projects.allProjects);
-  const user = useSelector(state => state.user.value);
+  const projects     = useSelector(state => state.projects.allProjects);
+  const user         = useSelector(state => state.user.value);
 
   const handleSelect = (e) => {
     setSort(e.target.value);
@@ -20,10 +20,10 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const totalProjects = projects?.length
-  const indexOfLastProject = currentPage * projectsPerPage;
+  const totalProjects       = projects?.length;
+  const indexOfLastProject  = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects?.length ? [...projects]?.sort((a, b) => {
+  const currentProjects     = projects?.length ? [...projects]?.sort((a, b) => {
     if(sort === 'title'){
       return a.title.localeCompare(b.title);
     } else if(sort === 'phase'){
@@ -41,7 +41,7 @@ export default function Dashboard() {
 
   const paginate        = (number) => setCurrentPage(number);
 
-  const handleClick = () => {
+  const handleClick     = () => {
     dispatch(setProjectView('/project/new'))
     navigate('/project/new')
   };

@@ -18,13 +18,13 @@ export default function Login() {
   const { email, password } = loginForm;
 
   const handleChange = (e) => {
-    const key = e.target.name;
+    const key   = e.target.name;
     const value = e.target.value;
 
     setLoginForm({
       ...loginForm,
       [key]: value
-    })
+    });
   };
 
   const handleSubmit = (e) => {
@@ -53,8 +53,8 @@ export default function Login() {
   };
 
   const handleClick = () => { 
-    dispatch(finished())
-  }
+    dispatch(finished());
+  };
 
   return (
     <div >

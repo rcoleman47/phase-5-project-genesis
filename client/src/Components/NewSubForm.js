@@ -8,7 +8,7 @@ import { setDirectoryView } from '../Redux/Reducers/view';
 export default function NewSubForm({setAddSub}) {
   const company = useSelector(state => state.company.company);
 
-  // const [error, setError] = useState(null);
+  // const [error, setError]  = useState(null);
   const [subForm, setSubForm] = useState({
     name:         '',
     address:      '',

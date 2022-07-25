@@ -5,29 +5,29 @@ import { login } from '../Redux/Reducers/user';
 import { finished } from '../Redux/Reducers/register';
 
 export default function Signup() {
-  const company = useSelector(state => state.company.company);
+  const company                     = useSelector(state => state.company.company);
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors]         = useState();
   const [signUpForm, setSignUpForm] = useState({
-    first_name: '',
-    last_name: '',
-    role: 'Executive',
-    admin: true,
-    email: '',
-    cell_number: '',
-    password: '',
+    first_name:            '',
+    last_name:             '',
+    role:                  'Executive',
+    admin:                 true,
+    email:                 '',
+    cell_number:           '',
+    password:              '',
     password_confirmation: ''
   });
 
   const { first_name, last_name, email, cell_number, password, password_confirmation } = signUpForm;
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const dispatch     = useDispatch();
+  const navigate     = useNavigate();
 
 
   const handleChange = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
+    const key        = e.target.name;
+    const value      = e.target.value;
 
     setSignUpForm({
       ...signUpForm,
@@ -36,7 +36,7 @@ export default function Signup() {
     })
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit  = (e) => {
     e.preventDefault();
 
     fetch('/users', {
@@ -53,13 +53,13 @@ export default function Signup() {
         dispatch(finished());
 
         setSignUpForm({
-          first_name: '',
-          last_name: '',
-          role: 'Executive',
-          admin: true,
-          email: '',
-          cell_number: '',
-          password: '',
+          first_name:            '',
+          last_name:             '',
+          role:                  'Executive',
+          admin:                 true,
+          email:                 '',
+          cell_number:           '',
+          password:              '',
           password_confirmation: ''
         });
 

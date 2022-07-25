@@ -7,7 +7,7 @@ import { setProjectView } from '../Redux/Reducers/view';
 export default function NewProjectForm() {
   const company                       = useSelector(state => state.company.company);
 
-  // const [error, setError]             = useState(null);
+  // const [error, setError]          = useState(null);
   const [projectForm, setProjectForm] = useState({
     title:           '',
     location:        '',

@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function DashPagination({ projectsPerPage, totalProjects, paginate}) {
+export default function DashPagination({projectsPerPage, totalProjects, paginate}) {
   const [active, setActive] = useState(1);
 
-  const pageNumbers = [];
+  const pageNumbers         = [];
 
   for(let i = 1; i <= Math.ceil(totalProjects / projectsPerPage);  i++) {
     pageNumbers.push(i);
   };
 
-  const renderPageNumbers = pageNumbers.map(number => (
+  const renderPageNumbers   = pageNumbers.map(number => (
     <button 
       key={number} 
       onClick={() => {
@@ -19,11 +19,11 @@ export default function DashPagination({ projectsPerPage, totalProjects, paginat
       }}
       style={{
         background: active === number ? 'orange' : '#c0c0c0',
-        fontWeight: active === number ? '800' : '100',
+        fontWeight: active === number ? '800'    : '100',
       }} >
         {number}
     </button>
-  ))
+  ));
 
   return (
     <div className='paginate'>

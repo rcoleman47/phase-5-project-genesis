@@ -17,38 +17,38 @@ export default function DirectoryTable({company, users, sort}) {
         <td>{user.role}</td>
       </tr>
     )
-  } ) : <tr><th>No Company Team</th></tr>
+  } ) : <tr><th>No Company Team</th></tr>;
   
   const renderTable = 
   <>
-  <table className="directory-table">
-    <thead>
-       <tr>
-        <th style={{color: 'orange', fontWeight: '900'}}>
-          {company?.name}
-        </th>
-        <th style={{fontWeight: '900'}}>
-          {company?.address}
-        </th>
-        <th style={{fontWeight: '900'}}>
-          {company?.city_state}
-        </th>
-        <th style={{fontWeight: '900'}}>
-          {company?.phone_number}
-        </th>
-      </tr>
-      <tr>
-        <th>Name:</th>
-        <th>Email:</th>
-        <th>Cell Number:</th>
-        <th>Role:</th>
-      </tr>
-    </thead>
-    <tbody>
-        {renderUsers}
-    </tbody>
-</table>
-</>
+    <table className="directory-table">
+      <thead>
+        <tr>
+          <th style={{color: 'orange', fontWeight: '900'}}>
+            {company?.name}
+          </th>
+          <th style={{fontWeight: '900'}}>
+            {company?.address}
+          </th>
+          <th style={{fontWeight: '900'}}>
+            {company?.city_state}
+          </th>
+          <th style={{fontWeight: '900'}}>
+            {company?.phone_number}
+          </th>
+        </tr>
+        <tr>
+          <th>Name:</th>
+          <th>Email:</th>
+          <th>Cell Number:</th>
+          <th>Role:</th>
+        </tr>
+      </thead>
+      <tbody>
+          {renderUsers}
+      </tbody>
+  </table>
+</>;
 
   return (
     <>

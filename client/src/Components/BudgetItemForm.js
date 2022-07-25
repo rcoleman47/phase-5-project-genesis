@@ -18,9 +18,9 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
 
   const currentProject = useSelector(state => state.projects.currentProject);
 
-  const {tax_rate}     = budget_item
+  const {tax_rate}     = budget_item;
 
-  const {division, cost_code, unit_quantity, unit_cost, unit, taxed, subcontracted, notes} = budgetItemForm
+  const {division, cost_code, unit_quantity, unit_cost, unit, taxed, subcontracted, notes} = budgetItemForm;
 
   const dispatch       = useDispatch();
 
@@ -151,7 +151,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
 
         {error ? <h5>{error}</h5> : null}
 
-       { addSubBid ? <input type="submit" value="Update" /> : ''  }
+       {addSubBid ? <input type="submit" value="Update" /> : ''}
 
       </form>
       {addSubBid ? '' : <button onClick={handleItemDelete} style={{padding: '0 10px', marginRight: '25px', marginLeft: '12px', width: '90px'}}>Delete</button>}

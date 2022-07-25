@@ -15,7 +15,6 @@ import DirectoryContainer from './DirectoryContainer';
 import SubDirectory from './SubDirectory';
 import SubAddContact from './SubAddContact';
 import ProjectDetails from './ProjectDetails';
-
 import '../App.css';
 import NotFound from './NotFound';
 

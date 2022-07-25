@@ -6,14 +6,14 @@ import { setCurrentSub } from '../Redux/Reducers/subcontractors';
 
 export default function SubBidForm() {
   const subcontractor = useSelector(state => state.subs.currentSub);
-  const subs = useSelector(state => state.subs.allSubs);
-  const project = useSelector(state => state.projects.currentProject);
+  const subs          = useSelector(state => state.subs.allSubs);
+  const project       = useSelector(state => state.projects.currentProject);
 
   // const [error, setError] = useState(null);
-  const [subID, setSubID] = useState(subs?.[0].id);
+  const [subID, setSubID]         = useState(subs?.[0].id);
   const [projectID, setProjectID] = useState(project?.id)
-  const [bidForm, setBidForm] = useState({
-    amount: 0,
+  const [bidForm, setBidForm]     = useState({
+    amount:    0,
     cost_code: '',
   });
  
@@ -21,7 +21,7 @@ export default function SubBidForm() {
 
   useEffect(() => {
     setTimeout(() => {setProjectID(project.id);}, 0);
-  }, [project.id])
+  }, [project.id]);
 
   useEffect(() => {
     fetch(`/subcontractors/${subID}`)
@@ -31,21 +31,20 @@ export default function SubBidForm() {
     });
   }, [subID, dispatch]);
 
-  const renderSubs = subs ? [...subs]?.sort((a, b)=> a.trade.localeCompare(b.trade)).map(sub => <option key={sub.id} value={sub?.id}>{sub.name}: {sub.trade}</option> ) : <option>No Current Subcontractors</option>;
+  const renderSubs   = subs ? [...subs]?.sort((a, b)=> a.trade.localeCompare(b.trade)).map(sub => <option key={sub.id} value={sub?.id}>{sub.name}: {sub.trade}</option> ) : <option>No Current Subcontractors</option>;
 
   const handleSelect = (e) => {
     setSubID(e.target.value);
   };
 
   const handleChange = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
+    const key        = e.target.name;
+    const value      = e.target.value;
 
     setBidForm({
       ...bidForm,
       [key]: value
-    })
-    
+    });
   };
 
   const handleSubmit = (e) => {

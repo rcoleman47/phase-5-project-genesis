@@ -43,11 +43,11 @@ export default function DivisionSelector() {
 
   const renderDivisions = divisions ? divisions?.map(division => <option key={division.id} value={division?.id}>{division.number}: {division.title}</option> ) : <option>No Current Divisions</option>;
 
-  const handleSelect = (e) => {
-    setDivisionId(e.target.value)
+  const handleSelect    = (e) => {
+    setDivisionId(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit    = (e) => {
     e.preventDefault();
 
     fetch(`/budget_items`, {

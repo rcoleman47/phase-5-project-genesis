@@ -5,7 +5,7 @@ import NewContactForm from './NewContactForm';
 
 
 export default function SubAddContact() {
-  const currentSub = useSelector(state => state.subs.currentSub)
+  const currentSub  = useSelector(state => state.subs.currentSub);
 
   const renderUsers = currentSub?.contacts?.length > 0 ? [...currentSub?.contacts].map(user => {
     return (
@@ -16,14 +16,14 @@ export default function SubAddContact() {
         <td>{user.role}</td>
       </tr>
     )
-  } ) : <tr><th  style={{color: 'orange', fontWeight: '800', background: 'black'}}>No Contacts</th></tr>
+  } ) : <tr><th style={{color: 'orange', fontWeight: '800', background: 'black'}}>No Contacts</th></tr>;
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate    = useNavigate();
+  const dispatch    = useDispatch();
 
   const handleClick = () => {
-    dispatch(setDirectoryView('/directory/subcontractors'))
-    navigate('/directory/subcontractors')
+    dispatch(setDirectoryView('/directory/subcontractors'));
+    navigate('/directory/subcontractors');
   };
 
   const renderTable = 
@@ -61,7 +61,7 @@ export default function SubAddContact() {
     <div style={{display: 'flex', justifyContent: 'right', width: '50.6%', marginTop: '10px'}}>
       <button onClick={handleClick} >Complete</button>
     </div>
-  </>
+  </>;
 
   return (
     <div className='projects-container' >

@@ -6,7 +6,7 @@ import { addContact } from '../Redux/Reducers/subcontractors';
 export default function NewContactForm() {
   const subcontractor                 = useSelector(state => state.subs.currentSub)
 
-  // const [error, setError]             = useState(null);
+  // const [error, setError]          = useState(null);
   const [contactForm, setContactForm] = useState({
     name:             '',
     cell_number:      '',

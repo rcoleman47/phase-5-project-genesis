@@ -1,6 +1,6 @@
 import { useSelector} from 'react-redux';
 
-export default function EstimateTable({projects}) {
+export default function EstimateTable() {
   const currentProject = useSelector(state => state.projects.currentProject);
 
   const renderBudget   = currentProject?.budget_items?.length > 0 ? currentProject?.budget_items.slice().sort((a, b) => {

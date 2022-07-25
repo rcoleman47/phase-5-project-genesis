@@ -6,7 +6,7 @@ import { addUser } from '../Redux/Reducers/company';
 export default function NewUserForm({setAddUser}) {
   const company = useSelector(state => state.company.company);
 
-  // const [error, setError] = useState(null);
+  // const [error, setError]    = useState(null);
   const [userForm, setUserForm] = useState({
     first_name:   '',
     last_name:    '',

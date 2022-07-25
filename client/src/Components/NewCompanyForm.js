@@ -21,13 +21,13 @@ export default function NewCompanyForm() {
 
 
   const handleChange = (e) => {
-    const key = e.target.name;
+    const key   = e.target.name;
     const value = e.target.value;
 
     setNewCompanyForm({
       ...newCompayForm,
       [key]: value
-    })
+    });
   };
 
   const handleSubmit = (e) => {
@@ -50,10 +50,10 @@ export default function NewCompanyForm() {
           phone_number: '',
         });
 
-        dispatch(created())
+        dispatch(created());
         
       } else r.json().then(json=>setErrors(json.error));
-    })
+    });
 
   };
 

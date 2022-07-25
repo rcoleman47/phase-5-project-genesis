@@ -17,7 +17,7 @@ export default function EditProjectForm() {
 
   const {location, phase, sector, classification, size, tax_rate} = projectForm;
 
-  const dispatch = useDispatch();
+  const dispatch     = useDispatch();
 
   const handleChange = (e) => {
     let key   = e.target.name;

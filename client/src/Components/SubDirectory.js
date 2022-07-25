@@ -7,15 +7,15 @@ import NewSubForm from './NewSubForm';
 
 
 export default function SubDirectory() {
-  const [subSort, setSubSort] = useState('name');
+  const [subSort, setSubSort]         = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
-  const [subsPerPage] = useState(2);
-  const [addSub, setAddSub] = useState(true);
+  const [subsPerPage]                 = useState(2);
+  const [addSub, setAddSub]           = useState(true);
 
-  const subcontractors = useSelector(state => state.subs.allSubs);
-  const user = useSelector(state => state.user.value);
+  const subcontractors                = useSelector(state => state.subs.allSubs);
+  const user                          = useSelector(state => state.user.value);
 
-  const dispatch = useDispatch();
+  const dispatch      = useDispatch();
 
   const handleSubSort = (e) => {
     setSubSort(e.target.value);
@@ -30,14 +30,14 @@ export default function SubDirectory() {
   }, [dispatch]);
 
   const handleClick = (e) => {
-    setAddSub(!addSub)
+    setAddSub(!addSub);
   };
 
-  const totalSubs = subcontractors?.length
-  const indexOfLastSub = currentPage * subsPerPage;
+  const totalSubs       = subcontractors?.length
+  const indexOfLastSub  = currentPage * subsPerPage;
   const indexOfFirstSub = indexOfLastSub - subsPerPage;
 
-  const currentSubs = subcontractors?.length ? [...subcontractors].sort((a, b) => {
+  const currentSubs     = subcontractors?.length ? [...subcontractors].sort((a, b) => {
     if(subSort === 'name'){
       return a.name.localeCompare(b.name);
     } else if(subSort === 'trade'){
@@ -48,9 +48,9 @@ export default function SubDirectory() {
     })?.slice(indexOfFirstSub, indexOfLastSub) : undefined;
 
 
-  const paginate = (number) => setCurrentPage(number);
+  const paginate           = (number) => setCurrentPage(number);
 
-  const buttonText = addSub ? 'Add Subcontractor' : 'Remove Form';
+  const buttonText         = addSub ? 'Add Subcontractor' : 'Remove Form';
 
   const renderSubDirectory = currentSubs ? [...currentSubs].map(sub =>  <SubDirectoryTable key={sub.id} subcontractor={sub} />) : <div style={{display: 'flex', marginLeft: '32.5%', height: '100px'}}><h1 style={{textAlign: 'center', color: 'orange', background: 'white', border: '2px solid black', width: 'auto', padding: '10px'}}>Add Subcontractors and Contacts!</h1></div>;
 

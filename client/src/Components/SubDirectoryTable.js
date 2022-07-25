@@ -4,8 +4,8 @@ import { setCurrentSub } from '../Redux/Reducers/subcontractors';
 import { setDirectoryView } from '../Redux/Reducers/view';
 
 
-export default function SubDirectoryTable({ subcontractor }) {
-  const user = useSelector(state => state.user.value);
+export default function SubDirectoryTable({subcontractor}) {
+  const user        = useSelector(state => state.user.value);
 
   const renderUsers = subcontractor?.contacts.length > 0 ? [...subcontractor?.contacts].map(user => {
     return (
@@ -16,15 +16,15 @@ export default function SubDirectoryTable({ subcontractor }) {
         <td>{user.role}</td>
       </tr>
     )
-  } ) : <tr><th  style={{color: 'orange', fontWeight: '800', background: 'black'}}>No Contacts</th></tr>
+  } ) : <tr><th style={{color: 'orange', fontWeight: '800', background: 'black'}}>No Contacts</th></tr>;
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate    = useNavigate();
+  const dispatch    = useDispatch();
 
   const handleClick = () => {
-    dispatch(setCurrentSub(subcontractor))
-    dispatch(setDirectoryView('/directory/subcontractor/edit'))
-    navigate('/directory/subcontractor/edit')
+    dispatch(setCurrentSub(subcontractor));
+    dispatch(setDirectoryView('/directory/subcontractor/edit'));
+    navigate('/directory/subcontractor/edit');
   };
 
   const renderTable = 
@@ -60,7 +60,7 @@ export default function SubDirectoryTable({ subcontractor }) {
     <div style={{display: 'flex', justifyContent: 'flex-end', width: '7.6%', marginBottom: '10px'}}>
       {user?.admin ? <button onClick={handleClick} >Add Contact</button> : ''}
     </div>
-  </>
+  </>;
 
   return (
     <>

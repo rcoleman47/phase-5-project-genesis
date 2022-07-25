@@ -12,7 +12,7 @@ export default function DashboardTable({currentProjects }) {
         <td>${project.total.toLocaleString()}</td>
       </tr>
     )
-  } ) : <tr><th>No Current Projects</th></tr>
+  } ) : <tr><th>No Current Projects</th></tr>;
 
   const renderTable = 
   <table>
@@ -30,11 +30,26 @@ export default function DashboardTable({currentProjects }) {
     <tbody>
         {renderProjects}
     </tbody>
-</table>
+  </table>;
+
+  const divStyle = {
+    display:    'flex', 
+    marginLeft: '38%',
+    height:     '100px'
+  };
+
+  const h1Style = {
+    textAlign:  'center', 
+    color:      'orange', 
+    background: 'white', 
+    border:     '2px solid black', 
+    width:      'auto', 
+    padding:    '10px'
+  };
 
   return (
     <>
-      {currentProjects ? renderTable : <div style={{display: 'flex', marginLeft: '38%', height: '100px'}}><h1 style={{textAlign: 'center', color: 'orange', background: 'white', border: '2px solid black', width: 'auto', padding: '10px'}}>Start A New Project!</h1></div>}
+      {currentProjects ? renderTable : <div style={divStyle}><h1 style={h1Style}>Start A New Project!</h1></div>}
     </>
   )
 }

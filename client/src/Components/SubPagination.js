@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function SubPagination({ subsPerPage, totalSubs, paginate}) {
+export default function SubPagination({subsPerPage, totalSubs, paginate}) {
   const [active, setActive] = useState(1);
 
-  const pageNumbers = [];
+  const pageNumbers         = [];
 
   for(let i = 1; i <= Math.ceil(totalSubs / subsPerPage);  i++) {
     pageNumbers.push(i);
   };
 
-  const renderPageNumbers = pageNumbers.map(number => (
+  const renderPageNumbers   = pageNumbers.map(number => (
     <button 
       key={number} 
       onClick={() => {
@@ -19,12 +19,12 @@ export default function SubPagination({ subsPerPage, totalSubs, paginate}) {
       }}
       style={{
         background: active === number ? 'orange' : '#c0c0c0',
-        fontWeight: active === number ? '800' : '100',
-        width: '30px'
+        fontWeight: active === number ? '800'    : '100',
+        width:      '30px'
       }} >
         {number}
     </button>
-  ))
+  ));
 
   return (
     <div className='paginate'>

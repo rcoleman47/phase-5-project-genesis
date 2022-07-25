@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { setProjectView } from '../Redux/Reducers/view';
 
 export default function ViewNavBar() {
-  const view = useSelector(state => state.view.projectView);
+  const view     = useSelector(state => state.view.projectView);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(()=> {
     navigate(`${view}`)
-  }, [navigate, view])
+  }, [navigate, view]);
 
   const handleSelect = (e) => {
     dispatch(setProjectView(e.target.value));
