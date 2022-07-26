@@ -57,7 +57,7 @@ export default function SubDirectory() {
   return (
     <>
       <div >
-        <select onChange={handleSubSort} value={subSort}>
+        <select onChange={handleSubSort} value={subSort} style={{width: '100px'}}>
           <option value='name' >Name</option>
           <option value='trade' >Trade</option>
         </select>

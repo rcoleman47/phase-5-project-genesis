@@ -7,7 +7,7 @@ export default function CostCodeSelector({currentDiv, codeId, setCodeId}) {
 
   return (
     <div>
-      <select onChange={handleSelect} value={codeId}  >
+      <select onChange={handleSelect} value={codeId} style={{width: '300px'}}>
         <option value={undefined}>Select Cost Code</option>
         {renderCodes}
       </select> 

@@ -50,7 +50,7 @@ export default function Dashboard() {
     <div className='dashboard'>
       <div className='dashboard-buttons' >
         <label>
-          <select style={{marginTop: '20px'}} onChange={handleSelect} value={sort}>
+          <select style={{marginTop: '20px', width: '100px'}} onChange={handleSelect} value={sort}>
             <option value='default' >Default</option>
             <option value='title' >Name</option>
             <option value='phase' >Phase</option>

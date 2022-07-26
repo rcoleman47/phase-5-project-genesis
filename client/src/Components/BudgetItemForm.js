@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteBudgetItem, updateBudgetItem, updateProject } from '../Redux/Reducers/projects';
 
-export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
+export default function BudgetItemForm({budget_item, addSubBid}) {
   const [error, setError]                   = useState(null);
   const [isTaxed, setIsTaxed]               = useState(budget_item?.taxed);
   const [budgetItemForm, setBudgetItemForm] = useState({
+    id:              budget_item?.id,
     division:        budget_item?.division,
     cost_code:       budget_item?.cost_code,
     unit_quantity:   budget_item?.unit_quantity,
@@ -37,6 +38,7 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
       [key]: value,
     });
   };
+
 
   const handleItemDelete = () => {
     fetch(`/budget_items/${budget_item?.id}`, {

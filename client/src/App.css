@@ -107,7 +107,7 @@ select {
 
 .project-navbar select {
   height: 30px;
-  width: auto;
+  width: 100px;
   padding: auto;
   margin-top: 30px;
   text-align: center;
@@ -245,7 +245,6 @@ select {
 .estimate-form-selector form select {
   display: block;
   height: 31px;
-  width: auto;
   padding: auto;
   align-content: center;
   text-align: center;

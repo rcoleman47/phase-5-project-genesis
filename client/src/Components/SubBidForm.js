@@ -20,7 +20,7 @@ export default function SubBidForm() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {setProjectID(project.id);}, 0);
+    setTimeout(() => {setProjectID(project.id)}, 0);
   }, [project.id]);
 
   useEffect(() => {

@@ -26,7 +26,7 @@ export default function Directory() {
   return (
     <>
       <div>
-        <select onChange={handleCompanySort} value={sort}>
+        <select onChange={handleCompanySort} value={sort} style={{width: '100px'}}>
           <option value='default' >Default</option>
           <option value='name'    >Name</option>
           <option value='role'    >Role</option>

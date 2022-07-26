@@ -19,7 +19,7 @@ export default function EstimateTable() {
         <td>{item.notes}</td>
       </tr>
     )
-  } ) : <tr style={{color: 'orange', textAlign: 'center', background: 'black', fontWeight: '800'}}>No Budget Items</tr>;
+  } ) : <tr style={{color: 'orange', textAlign: 'center', background: 'black', fontWeight: '800'}}>Add Budget Items</tr>;
 
   const renderTable = 
   <table>
