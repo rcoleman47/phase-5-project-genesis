@@ -18,7 +18,7 @@ export default function DashboardTable({currentProjects }) {
   <table>
     <thead>
       <tr>
-        <th>Project Name:</th>
+        <th style={{width:'20%'}}>Project Name:</th>
         <th>Location:</th>
         <th>Phase:</th>
         <th>Sector:</th>

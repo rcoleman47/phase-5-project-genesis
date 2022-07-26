@@ -18,7 +18,22 @@ export default function EstimateForm() {
 
   const buttonText            = addSubBid ? 'Delete Item' : 'Add Items';
 
-  const budgetItemTableHeader = <table><thead><tr><th>Division</th><th>Cost Code</th><th>Unit Quantity</th><th>Unit</th><th>Unit Cost</th><th>Taxed</th><th>Subcontracted</th><th>Total</th><th>Notes</th></tr></thead></table>;
+  const budgetItemTableHeader = 
+    <table>
+      <thead>
+        <tr>
+          <th style={{paddingRight: '5px'}}>Division:</th>
+          <th style={{paddingRight: '5px'}}>Cost Code:</th>
+          <th>Unit Quantity:</th>
+          <th>Unit:</th>
+          <th>Unit Cost:</th>
+          <th style={{paddingRight: '15px'}}>Taxed:</th>
+          <th style={{paddingRight: '15px'}}>Subcontracted:</th>
+          <th>Total:</th>
+          <th style={{paddingRight: '0px'}}>Notes:</th>
+        </tr>
+      </thead>
+    </table>;
 
   return (
     <div>

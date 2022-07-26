@@ -137,8 +137,8 @@ export default function BudgetItemForm({budget_item, addSubBid, setAmount}) {
             </select>
           <input 
             name='total'
-            type='number' 
-            value={total  == null ? '' : total} 
+            type='text' 
+            value={total  == null ? '' : total.toLocaleString()} 
             readOnly
           />
           <input 

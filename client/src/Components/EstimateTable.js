@@ -8,8 +8,9 @@ export default function EstimateTable() {
   }).map(item => {
     return (
       <tr key={item.id}>
+        <td style={{textAlign: 'center'}}>{item.division.slice(9)}</td>
         <td>{item.cost_code}</td>
-        <td>{item.unit_quantity}</td>
+        <td style={{textAlign: 'center'}}>{item.unit_quantity}</td>
         <td>{item.unit}</td>
         <td>${item.unit_cost.toLocaleString()}</td>
         <td>{item.taxed ? 'Yes' : 'No'}</td>
@@ -24,7 +25,8 @@ export default function EstimateTable() {
   <table>
     <thead>
       <tr>
-        <th>Cost Code:</th>
+        <th style={{textAlign: 'center'}}>Division:</th>
+        <th style={{width: '35%'}}>Cost Code:</th>
         <th>Unit Quantity:</th>
         <th>Unit:</th>
         <th>Unit Cost:</th>

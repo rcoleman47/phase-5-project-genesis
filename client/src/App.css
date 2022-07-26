@@ -238,7 +238,7 @@ select {
 }
 .estimate-form-selector form {
   display: flex;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-left: 25px;
 } 
 
@@ -282,15 +282,17 @@ select {
 }
 
 .budgetItem-container table{
- margin: 25px 99px 30px 0px;
- width: 92%;
+ margin: 30px 5.1% 10px 0px;
+ width: 90.1%;
+ border-collapse: collapse;
+ border: 2px solid black;
 }
 
 .budgetItem-container th{
-  width: 158px;
+  width: 140px;
   border: none;
   text-align: center;
-  padding: 0 0 0 0;
+  border: 2px solid black;
 }
 
 .budgetItem-form-container {

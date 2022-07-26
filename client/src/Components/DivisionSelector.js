@@ -15,7 +15,7 @@ export default function DivisionSelector() {
   const [codeId, setCodeId]         = useState(currentDiv?.cost_codes[0].id)
   const [divisionId, setDivisionId] = useState(divisions[0]?.id);
 
-  const dispatch = useDispatch();
+  const dispatch     = useDispatch();
 
   useEffect(() => {
     fetch(`/divisions/${divisionId}`)
@@ -54,12 +54,12 @@ export default function DivisionSelector() {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        division: currentDiv?.number,
-        cost_code: currentCode?.description,
-        unit_quantity: 1,
-        unit: 'ls',
-        unit_cost: 0,
-        project_id: project.id
+        division:       currentDiv?.number,
+        cost_code:      currentCode?.description,
+        unit_quantity:  1,
+        unit:           'ls',
+        unit_cost:      0,
+        project_id:     project.id
       })
     })
     .then(r=>{
